@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台 - 人才招聘系统</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+
+   <!-- <link href="http://localhost/phpyun/js/layui/css/layui.css?v=4274" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://localhost/phpyun/js/layui/layui.js?v=4274"></script>
+    <script type="text/javascript" src="http://localhost/phpyun/js/layui/phpyun_layer.js?v=4274"></script>
+    <script type="text/javascript" src="http://localhost/phpyun/js/member_public.js?v=4274"></script>
+    <script type="text/javascript" src="http://localhost/phpyun/js/public.js?v=4274"></script>-->
+
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/ucenter_header}"></div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}"></div>
+    <div class="yun_m_rightsidebar">
+        <div class="user_new_tit"><span class="user_new_tit_n">面试通知</span><span class="user_new_tit_r">安全提醒：招聘企业无权收取任何费用，求职中请加强自我保护，避免上当受骗！</span></div>
+        <div class="yun_m_rightbox fltR mt20 re">
+
+            <div id="gms_showclew"></div>
+
+            <!-- 收到简历列表 -->
+            <iframe id="supportiframe" name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
+            <div class="resume_box_list">
+
+                <div class="user_new_listtit">
+                    <div class=" user_new_job">面试职位</div>
+                    <div class=" user_new_time">邀请时间</div>
+                    <div class=" user_new_zt">面试状态</div>
+                    <div class=" user_new_yqh">邀请函</div>
+                    <div class=" user_new_cz">操作</div>
+                </div>
+
+                <div class="jobnotice_list">
+                    <div class=" user_new_job">
+                        <div class="">
+                            <a href="http://localhost/phpyun/index.php?m=job&c=comapply&id=1" target="_blank" class="user_new_jobname">Java开发工程师</a>
+                        </div>
+                        <div class="user_new_jobxz">5000-6000元</div>
+                        <div class="  user_new_comname"><a href="http://localhost/phpyun/index.php?m=company&c=show&id=1" target="_blank" class="cor3">某科技有限公司1</a></div>
+
+                    </div>
+
+                    <div class="user_new_time"><span class="msg_zt_s">2025-06-20</span></div>
+
+                    <div class="user_new_zt">
+
+                        <!--<span class="sg_zt_czw_zt">
+        <font color="#f60">尚未回复</font>
+    </span>-->
+
+
+
+                        <a href="javascript:void(0);" onclick="layer_del('确定要同意面试邀请？', 'index.php?c=invite&act=inviteset&id=1&browse=3')"
+                           class="user_new_bth">同意面试</a>
+                        <a href="javascript:void(0);" onclick="remark('1');" class="user_new_btjh">残忍拒绝</a>
+
+
+                    </div>
+                    <div class=" user_new_yqh"><a href="javascript:getcont('1');" class="user_new_yqh_a">邀请函</a> </div>
+                    <div class=" user_new_cz"><a href="javascript:void(0);" onclick="layer_del('您确定要删除？', 'index.php?c=invite&act=del&id=1'); "
+                                                 class="user_new_yqh_sc">删除</a> </div>
+
+
+
+                </div>
+
+
+                <div class="diggg"></div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="getcont" style="width:100%; display:none;">
+        <div class="aud_face">
+            <div class="audition_list"><span class="audition_list_span"></span></div>
+            <div style="padding:10px;">
+                <div class="invitation_user">尊敬的 <span class="invitation_user_name">老先生</span> 您好!</div>
+                <div class="invitation_cont">
+                    &nbsp;&nbsp;&nbsp;&nbsp;经过人力资源部的初步筛选,我们认为您基本具备 <i class="invitation_cont_job" id="jobname"></i>
+                    岗位的任职资格，因此正式邀请您来我公司参加面试。
+                </div>
+                <div class="invitation_cont_tip">具体详见如下：</div>
+                <div class="invitation_cont_p">
+                    <span class="invitation_cont_pn">【面试时间】</span><em class="audition_list_e" id="intertime"></em>
+                </div>
+                <div class="invitation_cont_p">
+                    <span class="invitation_cont_pn">【面试地址】</span><em class="audition_list_e" id="address"></em>
+                </div>
+                <div class="invitation_cont_p nocontent">
+                    <span class="invitation_cont_pn">【面试备注】</span><em class="" id="content"></em>
+                </div>
+                <div class="invitation_cont_p">
+                    <span class="invitation_cont_pn">【联系方式】</span><em class="audition_list_e" id="linkman"></em>
+                    ( TEL：<em class="invitation_cont_tel" id="linktel"></em> )
+                </div>
+            </div>
+            <div class="invitation_cont_jy">
+                <div class="invitation_cont_d">特此邀请&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="invitation_cont_d"><em class="" id="comname"></em>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="invitation_cont_d"><em class="" id="datetime"></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <div class="" id="infobox" style="display:none; ">
+        <div>
+            <form action="index.php?c=invite&act=inviteset" method="post" id="formstatus" target="supportiframe">
+                <input name="id" value="0" type="hidden">
+                <input name="browse" value="4" type="hidden">
+                <div class="invite_no" >
+                    <textarea id="remark" placeholder="请填写拒绝原因" name="remark" class="invite_notextarea"></textarea>
+
+                    <div class="invite_nobth" >
+                        <button type="submit" name='submit' value='1' class="invite_nobth_bth" >确认</button>
+
+                    </div> </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function getcont(id) {
+            $.post("index.php?c=invite&act=ajax", {
+                id: id
+            }, function(data) {
+                var data = eval('(' + data + ')');
+                $("#comname").html(data.comname);
+                $("#jobname").html(data.jobname);
+                $("#linkman").html(data.linkman);
+                $("#linktel").html(data.linktel);
+                $("#intertime").html(data.intertime);
+                $("#address").html(data.address);
+                if (data.content) {
+                    $("#content").html(data.content);
+                } else {
+                    $(".nocontent").attr("style","display: none;");
+                }
+
+                $("#datetime").html(data.datetime);
+                $.layer({
+                    type: 1,
+                    title: '面试邀请函',
+                    shade: [0],
+                    closeBtn: [0, true],
+                    border: [10, 0.3, '#000', true],
+                    area: ['600px', 'auto'],
+                    page: {
+                        dom: "#getcont"
+                    }
+                });
+            })
+        }
+        function remark(id){
+            $("input[name=id]").val(id);
+            $.layer({
+                type : 1,
+                title :'确认要拒绝面试邀请？',
+                closeBtn : [0 , true],
+                border : [10 , 0.3 , '#000', true],
+                area : ['300px','auto'],
+                page : {dom :"#infobox"}
+            });
+        }
+    </script>
+    <div class="clear"></div>
+
+    <div class=foot>
+        <div class="footernav">
+            <div class="footer_bot_p">Copyright C 20092014 All Rights Reserved 版权所有 鑫潮人力资源服务苏ICP备12049413号-3</div>
+            <div class="footer_bot_p">地址: 电话(Tel):400-880-XXXX EMAIL:admin@admin.com</div>
+            <div class="footer_bot_p">Powered by <a target="_blank" href="http://www.phpyun.com">PHPYun.</a></div>
+        </div>
+    </div>
+
+    <div id="uclogin" style="display:none"></div>
+
+    <iframe id="supportiframe" name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
+
+    <!-- layui 当前显示弹出框index-->
+    <input type='hidden' id="layindex" value="">
+    <!--邀请好友注册海报-->
+    <script>
+        var weburl = 'http://localhost/phpyun';
+        var invite_reg_hbids = [];
+
+        function getInviteRegHbList() {
+            let lr = false;
+            $.ajax({
+                type: 'post',
+                url: weburl + '/index.php?m=ajax&c=getInviteRegHbList',
+                async: false,
+                dataType: 'json',
+                success: function(res){
+                    if(res && res.list && res.list.length > 0){
+                        res.list.forEach(function (item) {
+                            invite_reg_hbids.push(item.id);
+                        });
+
+                        lr = true;
+                    }
+                }
+            })
+            return lr;
+        }
+
+        function getInviteRegHb(hb) {
+            layer.closeAll();
+            let hbNum = invite_reg_hbids.length;
+
+            if(hbNum == 0){
+                var lr = this.getInviteRegHbList();
+                if(!lr){
+                    layer.msg("功能无法使用，请联系网站客服", 2, 8)
+                    return false;
+                }
+                hbNum = invite_reg_hbids.length; // 重新分配海报数量
+            }
+
+            var url = weburl + '/index.php?m=ajax&c=getInviteRegHb&hb=' + invite_reg_hbids[hb];
+            if (hb < (parseInt(hbNum) - 1)) {
+                var next = hb + 1;
+            } else {
+                var next = 0;
+            }
+
+            var loading = layer.load('生成中...', 0);
+
+            var image = new Image();
+            image.src = url;
+            image.onload = function() {
+                layer.closeAll();
+
+                layer.open({
+                    type: 1,
+                    title: false,
+                    content: '<div class="hb_tc"><img src="' + image.src + '" style="max-width: 100%;"><div class="hb_tc_bth"><a href="javascript:;" onclick="getInviteRegHb(' + next + ');" class="hb_tc_hyz">换一张</a><a href="javascript:;" onclick="downInviteRegHb(' + hb + ');" class="hb_tc_xz">下载海报</a></div></div>',
+                    area: ['360px', 'auto'],
+                    offset: '55px',
+                    closeBtn: 0,
+                    shadeClose: true
+                });
+            };
+        }
+
+        function downInviteRegHb(hb) {
+            var loading = layer.load('下载中...', 0);
+            var url   =   weburl + '/index.php?m=ajax&c=getInviteRegHb&hb=' +  + invite_reg_hbids[hb];
+            var image = new Image();
+            image.src = url;
+            image.onload = function() {
+                layer.closeAll();
+                var a = document.createElement('a');          // 创建一个a节点插入的document
+                var event = new MouseEvent('click')           // 模拟鼠标click点击事件
+                a.download = 'whb_' +invite_reg_hbids[hb];     // 设置a节点的download属性值
+                a.href = url;                                 // 将图片的src赋值给a节点的href
+                a.dispatchEvent(event);
+            }
+        }
+
+    </script>
+    <style>
+        .hb_tc_bth{padding:10px 0; text-align: center;}
+        .hb_tc_bth .hb_tc_hyz{width:120px;height:40px; line-height: 40px; text-align: center; display: inline-block; background-color: #3478ea;color:#fff;border-radius:3px;color:#fff;}
+        .hb_tc_xz{width:120px;height:40px; line-height: 40px; text-align: center; display: inline-block; margin-left: 10px; background-color: #01af67;color:#fff;border-radius:3px;color:#fff;}
+        .hb_tc_bth a:hover{color:#fff}
+    </style>
+</body>
+</html>
+

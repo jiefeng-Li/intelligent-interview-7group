@@ -1,0 +1,49 @@
+server:
+  port: 10005
+
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: gateway
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                exposed-headers: "*"
+                allowed-headers: "*"
+                allowedMethods:
+                  - GET
+                  - PUT
+                  - POST
+                  - DELETE
+                  - OPTIONS
+                max-age: 3600
+          routes:
+            - id: service-base
+              uri: lb://service-base
+              predicates:
+                - Path=/base/**
+              filters:
+                - StripPrefix=1
+            - id: service-user
+              uri: lb://service-user
+              predicates:
+                - Path=/user/**
+              filters:
+                - StripPrefix=1
+            - id: service-resume
+              uri: lb://service-resume
+              predicates:
+                - Path=/resume/**
+              filters:
+                - StripPrefix=1
+logging:
+  level:
+    root: debug

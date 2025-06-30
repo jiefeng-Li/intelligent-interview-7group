@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/imgareaselect.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function(){
+            $("#sizeit").click(function (){
+                //获取文件上传控件中用户选择的文件
+                let image=$("#image").prop("files")[0]
+                //将数据封装FormData的对象中
+                let data=new FormData();
+                data.append("file",image);
+                //将FormData作为数据使用jQuery的ajax函数发送到后端接口
+                $.ajax({
+                    url:"upload",
+                    type:'post',
+                    data:data,
+                    contentType:false,
+                    processData:false,
+                    success:function (r){
+                        console.log(r)
+                        $("#avatar").attr("src",r.data)
+                        $.ajax({
+                            url: "http://localhost:10005/user/updateAvatar?" + $.param({"avatar": r.data}),
+                            type: 'get',
+                            headers: {
+                                "token": localStorage.getItem("token")
+                            },
+                            success: function(r) {
+                                console.log("avatar update success")
+                            }
+                        })
+
+                    }
+                })
+
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/ucenter_header}"></div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}"></div>
+    <div class="yun_m_rightbox fltR mt20 re">
+        <form id="infoform" name="MyForm" method="post" action="" target="supportiframe" enctype="multipart/form-data"
+              class="layui-form">
+            <div class="member_right_index_h1 fltL">
+                <span class="member_right_h1_span fltL">账号设置</span>
+                <i class="member_right_h1_icon user_bg"></i>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="job_list_tit">
+                <ul class="">
+                    <li>
+                        <a href="">基本信息</a></li>
+                    <li><a href="">账号安全</a></li>
+                    <li><a href="">绑定授权</a></li>
+                    <li  class="job_list_tit_cur"><a href="">上传照片 </a></li>
+                </ul>
+            </div>
+
+            <div class="resume_Prompt_box">
+                <div class="resume_Prompt"><i class="resume_Prompt_icon"></i>安全提醒：招聘企业无权收取任何费用，求职中请加强自我保护，避免上当受骗！
+                </div>
+            </div>
+            <div class="resume_box_list" style="margin-top:0px;">
+                <div class="uppic_msg">提示：有时因页面缓存问题，上传后照片不能及时更新，请刷新页面即可</div>
+                <div class="clear"></div>
+                <div class="uppic_left">
+                    <div class="uppic_tip">方式一：选择本地照片，上传编辑自己的头像</div>
+                    <div class="uppic_tip_bth">
+                        <a class="uppic_tip_bthupload" href="javascript:;">选择照片</a>
+                        <input id="image" class="uppic_tip_bthfile" type="file" name="image" onchange="ajaxfile();">
+                    </div>
+                    <div class="uppic_tip_gs">最大100M,支持jpg,png,jpeg,bmp,gif格式</div>
+                    <div class="search_con">
+                        <div class="clear"></div>
+                        <div class="oppic_img_cont">
+                            <div class="uppic_tit">
+                                头像预览
+                            </div>
+                            <div class="oppic_img_big">
+                                <div class="oppic_img_big_img">
+                                    <img id="avatar" src="" width='120' height='120'/>
+                                </div>
+                                <div class="oppic_img_big_p">大头像120×120</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="uppic_flash" style="display:block;width:580px" id='uppic_flash'>
+                        <div class="uppic_big_zx">
+                            <img src="" style="float: left; margin-right: 10px;" id="thumbnail"/>
+                        </div>
+                        <div style="width:150px; float:left">
+
+                            <div id="preview1" class="uppic_previ1">
+                                <img id="preview1_img" src="" style="position: relative;"/>
+
+                            </div>
+
+
+                        </div>
+                        <div class="uppic_pb">
+                            <form name="form1" id="form1">
+                                <input name="sizeit" id="sizeit" type="button" value="保存头像" class="uppic_pb_bth"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="uppic_right">
+                    <div class="uppic_right_tit">方式二：手机拍照上传</div>
+                    <div class="uppic_ewm">
+                        <img src="" alt="手机扫码拍照上传"
+                             width="130" height="130"/>
+                    </div>
+                    <div class="uppic_ewm_p"> 扫描二维码</div>
+                    <div class=""> 手机拍照上传后，请刷新此页面</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    layui.use(['layer', 'form', 'laydate'], function () {
+
+    });
+</script>
+<div class="clear"></div>
+<div class=foot>
+
+</div>
+</body>
+</html>

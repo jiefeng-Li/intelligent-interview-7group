@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<head>
+    <title>企业用户后台管理系统 - 人才招聘系统</title>
+    <meta http-equiv=Content-Type content="text/span; charset=utf-8"/>
+    <link th:href="@{/styles/two_style.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/m_style.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+</head>
+<body>
+<div class="body_box">
+    <header>
+        <div class="header" th:insert="~{/commons/ecenter_header}"></div>
+    </header>
+    <div class="w1000">
+        <div class="admin_mainbody">
+            <div class="sidebar" th:insert="~{/commons/ecenter_menu}"></div>
+            <div class="clear"></div>
+            <div class='right_box'>
+                <div class="newmember_tit">
+                    <ul>
+                        <li class="newmember_titcur"><a href="" title="看过我的职位" class="   ">应聘简历</a></li>
+                        <li><a href="" title="关注我的简历" class=" ">我的下载</a></li>
+                        <li><a href="" title="看过我的职位" class=" ">谁看过我</a></li>
+                        <li><a href="" title="关注我的简历" class=" ">对我感兴趣</a></li>
+                        <li><a href="" title="您浏览简历的记录" class=" ">我看过的简历</a></li>
+                        <li><a href="" title="加入人才库的简历" class=" ">我的收藏</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="newmember_screenbox">
+                    <div class="newmember_screen">
+                        <ul>
+                            <li class="job_list_tit_cur">
+                                <a href="">全部</a>
+                            </li>
+                            <li>
+                                <a href="">未查看(0)</a>
+                            </li>
+                            <li>
+                                <a href="">已面试(0)</a>
+                            </li>
+                            <li>
+                                <a href="">不合适(0)</a>
+                            </li>
+                            <li>
+                                <a href="">已入职(0)</a>
+                            </li>
+                        </ul>
+
+                        <div class="joblist_search">
+                            <form class='layui-form' action="" method='get' id='MyForm'>
+                                <div class="joblist_search_box">
+                                    <input type="text" placeholder="在当前条件下筛选" class="joblist_search_box_text"
+                                           name='keyword' value=''/>
+                                    <input type="submit" value="" class="joblist_search_bth"/>
+                                </div>
+                                <a id="joblist_search_more" href="javascript:void(0);"
+                                   class="joblist_search_more">更多筛选</a>
+                            </form>
+                        </div>
+
+                        <div class="ypjob" id="yp_jobname" onclick="yp_jobshow();">
+                            <div class="ypjob_name">应聘职位筛选</div>
+                            <div id="yp_joblist" class="ypjob_box" style="display: none;">
+                                <a href="javascript:void(0);" onclick="sxjob('',this);">全部</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admincont_box">
+                    <div class="com_body">
+                        <div class="admin_textbox_04">
+                            <form action="" target="supportiframe" method="post" id="myform" class="layui-form">
+                                <table class="com_table">
+                                    <tbody>
+                                    <tr>
+                                        <th style="border-radius:6px 0 0 6px ;">基本信息</th>
+                                        <th>投递职位</th>
+                                        <th>联系电话</th>
+                                        <th>状态</th>
+                                        <th>查看简历</th>
+                                        <th style="border-radius:0 6px 6px 0 ;" width="212">操作</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="newcom_user_info">
+                                            <span class="newcom_user_infoheckb">
+                                                <input type="checkbox" name="delid" value="1"
+                                                       class="newcom_user_infoheck" lay-skin="primary"><div
+                                                    class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                                    class="layui-icon layui-icon-ok"></i></div>
+                                            </span>
+                                                <div class="newcom_user_pic"><img src=""></div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="newcom_user_name">老王</a>
+                                                    <span class="hr_yyy">已邀约</span></div>
+                                                <div class="newcom_user_infop">
+                                                    男 · 4年以上经验 · 本科学历 · 25岁
+                                                </div>
+                                                <div>期望薪资：5000-6000元</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                投递了<a href="" target="_blank"
+                                                         class="newcom_user_td">Java开发工程师</a>
+                                            </div>
+                                            <div class="com_received_tdtime">投递时间 今天 14:33</div>
+                                        </td>
+
+                                        <td align="center">
+                                            <div>
+                                                <a class="newcom_user_tel" href="javascript:void(0);">查看联系方式</a>
+                                            </div>
+                                        </td>
+
+                                        <td align="center">
+                                            <div>
+
+                                                <span class="com_received_zt com_received_zt_yck"><i
+                                                        class="com_received_zt_icon"></i>已查看</span>
+                                            </div>
+
+                                        </td>
+                                        <td align="center">
+                                            <a href="javascript:void(0)" style="background: #3d7dfd; color: #fff;"
+                                               class=" com_bth cblue">查看简历</a>
+                                        </td>
+                                        <td align="center">
+                                            <div class="">
+                                                <div class="com_received_username_bjbox bj_1">
+                                                    <span class="com_received_username_bj"
+                                                          style="cursor:pointer;">标记</span>
+                                                    <div class="com_received_username_bjbox_show">
+                                                        <a href="javascript:void(0);"
+                                                           class="com_received_username_bjbox_show_a"><i
+                                                                class="com_received_username_yckicon"></i>已查看</a>
+                                                        <a href="javascript:void(0);"
+                                                           class="com_received_username_bjbox_show_a"><i
+                                                                class="com_received_username_dtzicon"></i>已面试</a>
+                                                        <a href="javascript:void(0);"
+                                                           class="com_received_username_bjbox_show_a"><i
+                                                                class="com_received_username_bhgicon"></i>不合适</a>
+                                                        <a href="javascript:void(0);"
+                                                           class="com_received_username_bjbox_show_a"><i
+                                                                class="com_received_username_wjticon"></i>已入职</a>
+                                                    </div>
+                                                </div>
+                                                <div class="com_received_username_bjbox ">
+                                                    <a href="javascript:;"
+                                                       class="com_received_username_bj cblue">备注</a>
+                                                </div>
+                                                <div class="com_received_username_bjbox ">
+                                                    <a href="javascript:void(0);"
+                                                       class="com_received_username_bj">删除</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="newcom_user_info"
+                                                 style="width: 500px; padding-left: 30px;float: left;">
+                                                <span class="newcom_user_infoheckb" style="top:5px;"><input
+                                                        type="checkbox" lay-filter="allcom" lay-skin="primary"><div
+                                                        class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                                        class="layui-icon layui-icon-ok"></i></div></span>
+                                                全选
+                                                <input class="c_btn_02" type="button" name="subdel" value="批量删除">
+                                                <input class="c_btn_02" type="button" name="subdel" value="批量标记"
+                                                       style="margin-left: 10px;">
+                                            </div>
+                                            <div class="diggg"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="clear"></div>
+
+                            <div class="infoboxp22" id="remarkbox" style="display:none; ">
+                                <div>
+                                    <form action="" method="post" id="formstatus2" target="supportiframe"
+                                          class="layui-form">
+                                        <input name="uid" value="0" type="hidden">
+                                        <input name="eid" value="0" type="hidden">
+                                        <div class="newbz_list">
+                                            <span class="newbz_list_name">当前状态：</span>
+                                            <div class="layui-input-inline">
+                                                <select name="status" id="status" lay-filter="status">
+                                                    <option value="171">无意向</option>
+                                                    <option value="172">初试</option>
+                                                    <option value="173">复试</option>
+                                                    <option value="174">淘汰</option>
+                                                    <option value="175">爽约</option>
+                                                    <option value="176">其他</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title">
+                                                        <input type="text" placeholder="请选择"
+                                                               value="无意向" readonly=""
+                                                               class="layui-input layui-unselect">
+                                                        <i class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="171" class="layui-this">无意向</dd>
+                                                        <dd lay-value="172" class="">初试</dd>
+                                                        <dd lay-value="173" class="">复试</dd>
+                                                        <dd lay-value="174" class="">淘汰</dd>
+                                                        <dd lay-value="175" class="">爽约</dd>
+                                                        <dd lay-value="176" class="">其他</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="newbz_list"><span class="newbz_list_name">备注说明：</span>
+                                            <div class="newbz_textarea">
+                                                <textarea id="remark" name="remark" cols="30" rows="9"
+                                                          class="hr_textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="newbz_list">
+                                            <div class="newbz_bthbox">
+                                                <button type="submit" name="submit" value="1" class="newbz_bth">确认
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=footer>
+        <div class=w900>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

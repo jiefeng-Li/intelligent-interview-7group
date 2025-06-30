@@ -1,0 +1,33 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: service-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/iidb
+    username: root
+    password: 3121
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      table-prefix: qlm_
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+jwt:
+  secretKey: 123456
+
+logging:
+  level:
+    root: debug

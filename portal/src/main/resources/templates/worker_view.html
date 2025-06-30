@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/index.css}" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" th:href="@{/styles/css.css}" type="text/css"/>
+    <link th:href="@{/styles/microresume.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <title>普工招聘-PHPYUN人才招聘系统</title>
+</head>
+<body class="once_bg">
+<div class="yun_new_top" th:insert="~{/commons/top}"></div>
+<div class="yunheader_60" th:insert="~{/commons/header}"></div>
+<div class="yun_content">
+
+    <div class="current_Location png">
+        您当前的位置：<a href="">首页</a> > <a href="">普工简历</a> > 成都门卫
+    </div>
+
+    <!--left-->
+    <div class="tiny_show_left">
+        <div class="tiny_show_left_box">
+            <h1 class="tiny_show_left_jobname">成都门卫</h1>
+            <div class="tiny_show_left_r">
+                被浏览 21 次
+                <span class="tiny_show_left_r_n">更新于  </span>
+            </div>
+            <div class="tiny_show_left_fx_box">
+                <div class="tiny_show_left_fx">
+                    <img src="" width="150" height="150"/>
+                </div>
+                <div class="tiny_show_left_fx_box_p">分享到朋友圈</div>
+            </div>
+
+            <div class="tiny_show_left_info">
+                <div class="tiny_show_left_info_p">
+                    <i class="tiny_show_left_info_icon tiny_show_left_info_icon1"></i>姓名：老谭
+                </div>
+                <div class="tiny_show_left_info_p">
+                    <i class="tiny_show_left_info_icon tiny_show_left_info_icon2"></i>性别：男
+                </div>
+                <div class="tiny_show_left_info_p">
+                    <i class="tiny_show_left_info_icon tiny_show_left_info_icon3"></i>经验：
+                </div>
+                <div class="tiny_show_left_info_p">
+                    <i class="tiny_show_left_info_icon tiny_show_left_info_icon5"></i>地区：北京-北京-北京
+                </div>
+                <div class="tiny_show_left_info_p">
+                    <i class="tiny_show_left_info_icon tiny_show_left_info_icon4"></i>
+                    联系电话：<span class="tiny_show_left_info_tel">15980123456</span>
+                </div>
+                <div class="tiny_show_left_info_js">
+                    <div class="tiny_show_left_info_js_h1">自我介绍</div>
+                    <div class="tiny_show_left_info_js_p">
+                        有丰富的门户经验
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tiny_show_left_box mt20">
+            <div class="tiny_show_tit">你可能感兴趣的普工</div>
+
+            <div class="tiny_show_xq_list">
+                <div class="tiny_show_xq_list_box">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tiny_show_right">
+        <div class="tiny_show_right_box">
+            <div class="tiny_show_right_h1">简历发布者操作</div>
+            <div class="tiny_show_right_p">
+                说明：刷新，修改，删除只有信息发布者可以操作，每刷新一次求职信息就会自动排在最前面
+            </div>
+
+            <div class="tiny_show_right_cz">
+                <a href="javascript:;" class=" tiny_show_right_cz_sz">刷新</a>
+                <a href="javascript:;" class="tiny_show_right_cz_xg">修改</a>
+                <a href="javascript:;" class="tiny_show_right_cz_xg">删除</a>
+            </div>
+        </div>
+        <div class="tiny_show_right_fbbox mt20">
+            <div class="tiny_show_right_h1">我也要发布简历</div>
+            <div class="tiny_show_right_p">用简短的文字介绍自己的优势，针对性的找到自己满意的工作！</div>
+
+            <div class="tiny_show_right_cz">
+                <a href='' title="发布普工简历" class="tiny_show_right_cz_sz tiny_show_right_cz_pg">发布普工简历</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hp_foot fl" th:insert="~{/commons/footer}"></div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link th:href="@{/styles/index.css}" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" th:href="@{/styles/css.css}" type="text/css" />
+    <link th:href="@{/styles/microresume.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function(){
+            $("#uploadImg").click(function (){
+                let files = $('#file').prop('files');
+                let data = new FormData();
+                data.append('file', files[0]);
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success:function(r){
+                        console.log(r)
+                    }
+                });
+            })
+        })
+    </script>
+    <title>店铺招聘 - 人才招聘系统</title>
+</head>
+<body class="once_bg">
+<div class="yun_new_top" th:insert="~{/commons/top}"></div>
+<div class="yunheader_60" th:insert="~{/commons/header}"></div>
+<div class="yun_content">
+    <div class="current_Location png"> 您当前的位置：
+        <a href="">首页</a> >
+        <a href="">店铺招聘</a> > 发布店铺招聘
+    </div>
+
+    <form id="subform" action="" target="supportiframefast" method="post" autocomplete="off" class="layui-form">
+        <div class="once_add_box">
+            <div class="once_title">快速发布招聘信息</div>
+            <div class="once_add_cont">
+                <div class="once_title_p"><i class="once_title_p_icon once_title_p_icon_zw"></i>职位信息</div>
+
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>我想招聘</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input" type="text" id="title" maxlength="15" name="title" value=""/>
+                    </div>
+                </div>
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>工资</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input" type="text" id="salary" maxlength="15" name="salary" value=""/>
+                    </div>
+                </div>
+                <div class="once_add_list onceAddListAll">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>招聘时长</span>
+                    <div class="once_add_list_text onceAddListOne">
+                        <div class="oncepricegear" data-id="6" data-price="0.01">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>1 天</span>/<span>0.01 元</span>
+                            </div>
+
+                        </div>
+                        <div class="oncepricegear" data-id="8" data-price="50.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>5 天</span>/<span>50.00 元</span>
+                            </div>
+
+                        </div>
+                        <div class="oncepricegear" data-id="1" data-price="7.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>7 天</span>/<span>7.00 元</span>
+                            </div>
+                        </div>
+                        <div class="oncepricegear" data-id="2" data-price="20.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>30 天</span>/<span>20.00 元</span>
+                            </div>
+                        </div>
+                        <div class="oncepricegear" data-id="9" data-price="0.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>55 天</span>/<span>0.00 元</span>
+                            </div>
+
+                        </div>
+                        <div class="oncepricegear" data-id="3" data-price="45.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>60 天</span>/<span>45.00 元</span>
+                            </div>
+
+                        </div>
+                        <div class="oncepricegear" data-id="4" data-price="60.00">
+                            <div class="yuqnaudn">
+                                <p></p>
+                            </div>
+                            <div class="shuzishi">
+                                <span>90 天</span>/<span>60.00 元</span>
+                            </div>
+
+                        </div>
+                        <input type="hidden" id="oncepricegear" name="oncepricegear"/>
+                    </div>
+                </div>
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>工作地区</span>
+                    <div class="once_add_list_text">
+                        <div class="layui-input-inline">
+                            <select id="provinceid" lay-filter="citys" name="provinceid">
+
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select id="cityid" lay-filter="citys" name="cityid">
+                                <option value=''>请选择</option>
+                            </select></div>
+                        <div class="layui-input-inline">
+                            <select id="three_cityid" name="three_cityid">
+                                <option value=''>请选择</option>
+                            </select></div>
+                    </div>
+                </div>
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>工作地点</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input" type="text" id="address" maxlength="15" name="address" value="" />
+                    </div>
+                </div>
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>招聘要求</span>
+                    <div class="once_add_list_text">
+                        <textarea rows='6' class="once_tck_box_job_simplew_textarea" id="require" onfocus="if(this.value=='请填写招聘的具体要求，如：性别，学历，年龄，工作经验，工资待遇等相关信息') this.value=''" onblur="this.value=this.value==''?'请填写招聘的具体要求，如：性别，学历，年龄，工作经验，工资待遇等相关信息':this.value" name="require"> </textarea>
+                    </div>
+                </div>
+
+                <div class="once_title_p"><i class="once_title_p_icon once_title_p_icon_dp"></i>店铺信息</div>
+
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>店铺名称</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input" type="text" id="companyname" maxlength="15" name="companyname"  value=""  />
+                    </div>
+                </div>
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>联系电话</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input" type="phone" id="phone" onkeyup="this.value=this.value.replace(/[^0-9-]/g,'')" maxlength="13" name="phone" value=""  />
+                    </div>
+                </div>
+
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">*</i>联系人</span>
+                    <div class="once_add_list_text">
+                        <input class="once_add_list_input"type="text" id="linkman" maxlength="15" name="linkman"  value="" />
+                    </div>
+                </div>
+
+
+                <div class="once_add_list">
+                    <span class="once_add_list_name"><i class="once_add_list_name_bt">&nbsp;</i>店铺形象</span>
+                    <div class="once_add_list_text" style="position:relative">
+                        <input type="file" id="file" class="yun_bth_pic lay-uploads upload-file">
+                        <input type="hidden" name="pic" value=""/>
+                        <input type="button" value="上传图片" class="once_add_list_bth" id="uploadImg"/>
+                        <div style="width:100px; position:absolute;left:130px;top:-10px;">
+                            <img id="imgicon" src="" width="100" height="60" class="none">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="once_add_list"><span class="once_add_list_name">&nbsp;</span>
+                    <input id="botton" class="once_add_list_bth" type="submit" value="发布信息"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="hp_foot fl" th:insert="~{/commons/footer}"></div>
+</body>
+</html>

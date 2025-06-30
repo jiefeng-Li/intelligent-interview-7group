@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-注册</title>
+    <link rel="stylesheet" th:href="@{/styles/m_css.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/tips.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/js/layui/css/layui.css}" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+<body>
+<div class="user_header" th:insert="~{/commons/resume_header}"></div>
+<div class="clear"></div>
+<div class="sPopupDiv none" id="jobdiv" style="float:left;"></div>
+<div class="sPopupDiv none" id="citydiv"></div>
+<div class="sPopupDiv none" id="industrydiv"></div>
+
+<form action="" id="resumeForm" name="MyForm" method="post" target="expectiframe" autocomplete="off" class="layui-form">
+    <div class="news_expect_body">
+        <div class="news_expect">
+            <div class="news_expect_cont_h1">
+                <div class="news_expect_cont_h1_box">
+                    <span class="news_expect_cont_h1_s">您正在创建简历</span>
+                    <div class="news_expect_cont_h1_p">简历是求职第一步，优质的简历才能更快找到满意工作！</div>
+                </div>
+                <div class="fill_in_process" style="width:710px;">
+                    <span class="fill_add_color"><i>1</i>求职意向<em>……</em></span>
+                    <span id="worktype"><i>2</i>工作经历<em>……</em></span> <span
+                        id="edutype"><i>3</i>教育经历<em>……</em></span> <span><i class="fill_add_color_cg"></i>填写成功</span>
+                </div>
+            </div>
+            <div class="news_expect_cont">
+                <div class="news_expect_content" id="expect" style="display: block">
+                    <div class="news_expect_tit"><span class="news_expect_tit_s"><i class="news_expect_tit_yx_icon"></i>求职意向</span>
+                    </div>
+                    <div class="news_expect_n_box">
+                        <div class="news_expect_new_left">
+                            <div class="news_expect_list">
+                                <span class="news_expect_list_span"><i class="news_expectfont">*</i>期望职位：</span>
+                                <div class="news_expect_list_rbox">
+                                    <input type="text" value="" name="name" id="name" class="news_expect_text_t1"
+                                           placeholder="具体岗位 如：销售主管"/>
+                                    <span class="resume_tip"
+                                          style="position:absolute;left: 340px;top: 10px;width: 150px;"><span
+                                            class="none" id="hidname"></span></span>
+                                </div>
+                            </div>
+
+                            <div class="news_expect_list">
+                                <span class="news_expect_list_span "><i class="news_expectfont">*</i>期望城市：</span>
+                                <div class="news_expect_text_new  news_expect_text_re10" style="width:330px;">
+                                    <input name='city_class' id='city_class' value="" type='hidden'/>
+                                    <select id="cityclass_search" name="cityclass_search" xm-select-type="cityclass"
+                                            xm-select="cityclass_search" xm-select-search="" xm-select-max="5"
+                                            xm-select-skin="default" xm-select-direction="down">
+                                        <option value="">输入搜索，最多选5项</option>
+                                    </select>
+                                    <div onclick="index_city_new(5,'#cityadds_job','#city_class','left:100px;top:100px; position:absolute;')"
+                                         class="news_expect_text_new_nth" title="选择城市"></div>
+                                    <div class="resume_tip"
+                                         style="position:absolute;left: 340px;top: 10px;width: 150px;"><span
+                                            class="none" id="hidcity_class"></span></div>
+                                </div>
+                            </div>
+
+
+                            <div class="news_expect_list">
+                                <span class="news_expect_list_span"><i class="news_expectfont">*</i>到岗时间：</span>
+                                <div class="news_expect_text_big  ">
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-inline" style="width:330px;">
+                                            <select name="report" lay-filter="" id="reportid">
+                                                <option value="45">随时到岗</option>
+                                                <option value="46">1周以内</option>
+                                                <option value="47">3周以内</option>
+                                                <option value="48">1个月之内</option>
+                                                <option value="50">3个月之内</option>
+                                                <option value="51">不确定</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="resume_tip"
+                                         style="position:absolute;left: 340px;top: 10px;width: 150px;"><span
+                                            class="none" id="hidreportid"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news_expect_new_right">
+
+                            <div class="news_expect_list" style="position: relative; z-index: 22;">
+                                <span class="news_expect_list_span news_expect_list_spanw160"><i
+                                        class="news_expectfont">*</i>期望薪资：</span>
+                                <div class="news_expect_list_rbox">
+                                    <div class="news_expect_xztext_box">
+                                        <!--<input type="text" id="minsalary" name="minsalary" size="5" value="" onkeyup="checkmoney(this)" class="news_expect_xztext " onBlur="checkonblur('minsalary');" placeholder="最低薪资" />-->
+                                        <!--<span class="job_expectxz_dw">元/月</span>-->
+                                        <select name="minsalary" id="minsalary" lay-filter="minsalary">
+                                        </select>
+                                    </div>
+                                    <span class="news_expect_text_xzline">-</span>
+                                    <div class="news_expect_xztext_box">
+                                        <!--<input type="text" id="maxsalary" name="maxsalary" size="5" placeholder="最高薪资" value="" onkeyup="checkmoney(this)" class="news_expect_xztext" />-->
+                                        <!--<span class="job_expectxz_dw">元/月</span>-->
+                                        <select name="maxsalary" id="maxsalary">
+                                        </select>
+                                    </div>
+                                    <div class="resume_tip"><span class="none" id="hidminsalary"></span></div>
+                                </div>
+                            </div>
+
+                            <div class="news_expect_list">
+                                <span class="news_expect_list_span news_expect_list_spanw160">从事行业：</span>
+                                <div class="news_expect_text_big  ">
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-inline" style="width:330px;">
+                                            <select name="hy" lay-filter="" id="hyid">
+                                                <option value="0">不限</option>
+                                                <option value="35">计算机/互联网</option>
+                                                <option value="835">贸易/百货</option>
+                                                <option value="837">机械/设备/技工</option>
+                                                <option value="45">公务员/翻译/其他</option>
+                                                <option value="836">化工/能源</option>
+                                                <option value="36">销售/客服/技术支持</option>
+                                                <option value="37">会计/金融/银行/保险</option>
+                                                <option value="38">生产/营运/采购/物流</option>
+                                                <option value="39">生物/制药/医疗/护理</option>
+                                                <option value="40">广告/市场/媒体/艺术</option>
+                                                <option value="41">建筑/房地产</option>
+                                                <option value="42">人事/行政/高级管理</option>
+                                                <option value="43">咨询/法律/教育/科研</option>
+                                                <option value="44">服务业</option>
+                                                <option value="839">通信/电子</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="resume_tip"><span class="none" id="hidhyid"></span></div>
+                                </div>
+                            </div>
+
+
+                            <div class="news_expect_list">
+                                <span class="news_expect_list_span news_expect_list_spanw160"><i
+                                        class="news_expectfont">*</i>求职状态：</span>
+                                <div class="news_expect_text_big  ">
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-inline" style="width:330px;">
+                                            <select name="jobstatus" lay-filter="" id="statusid">
+                                                <option value="114">已离职，寻求新工作</option>
+                                                <option value="115">在职，考虑更好职位</option>
+                                                <option value="116">其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="resume_tip"><span class="none" id="hidstatusid"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news_expect_tit"><span class="news_expect_tit_s"><i class="news_expect_tit_s_icon"></i>基本信息</span>
+                    </div>
+                    <div class="news_expect_n_box" style="display: flex; flex-wrap: wrap;">
+
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+                            <div class="news_expect_list_rbox">
+                                <input type="text" value="" name="uname" id="uname" class="news_expect_text_t1"
+                                       onBlur="checkonblur('uname');"/>
+
+                                <div class="resume_tip"><span class="none" id="hiduname"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list" style="height:38px;">
+                            <span class="news_expect_list_span news_expect_list_spanw160"><i
+                                    class="news_expectfont">*</i>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+                            <div class="news_expect_list_rbox">
+                                <input type="hidden" id="sex" name="sex" value=""/>
+                                <span class="news_expect_sex_t news_expect_sex " id="1sex" onclick="checksex('1')"><i
+                                        class="news_expect_icon_sex news_expect_icon_sex1"></i>男</span>
+                                <span class="news_expect_sex_t news_expect_sex " id="2sex" onclick="checksex('2')"><i
+                                        class="news_expect_icon_sex news_expect_icon_sex2"></i>女</span>
+                                <div class="resume_tip"><span class="none" id="hidsex"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>出生年月：</span>
+                            <div class="news_expect_text_big_box ">
+                                <input name="birthday" id="birthday" type="text" value="" class="news_expect_text_time"
+                                       readonly/>
+
+                                <div class="resume_tip"><span class="none" id="hidbirthday"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span news_expect_list_spanw160"><i
+                                    class="news_expectfont">*</i>现居住地：</span>
+                            <div class="news_expect_list_rbox">
+                                <input type="text" value="" name="living" class="news_expect_text_t1" id="living"/>
+                                <div class="resume_tip"><span class="none" id="hidliving"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>最高学历：</span>
+                            <div class="news_expect_text_big ">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline" style="width:330px;">
+                                        <select name="edu" lay-filter="edu" id="educid">
+                                            <option value="">请选择最高学历</option>
+                                            <option value="9">高中以下</option>
+                                            <option value="12">高中</option>
+                                            <option value="13">中专</option>
+                                            <option value="14">大专</option>
+                                            <option value="15">本科</option>
+                                            <option value="16">硕士</option>
+                                            <option value="17">博士</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="resume_tip"><span class="none" id="hideducid"></span></div>
+                            </div>
+                        </div>
+
+
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span news_expect_list_spanw160"><i
+                                    class="news_expectfont">*</i>手机号码：</span>
+                            <div class="news_expect_list_rbox">
+                                <input name="telphone" id="telphone" type="text" value=""
+                                       onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')"
+                                       class="news_expect_text_t1" onBlur="checkonblur('telphone');"/>
+                                <span id="by_telphone" style="display:none">请正确填写手机号码</span>
+                                <div class="resume_tip"><span class="none" id="hidtelphone"></span></div>
+                            </div>
+                        </div>
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>工作经验：</span>
+                            <div class="news_expect_text_big   news_expect_text_re1">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline" style="width:330px;">
+                                        <select name="exp" lay-filter="exp" id="expid">
+                                            <option value="">请选择工作经验</option>
+                                            <option value="18">应届毕业生</option>
+                                            <option value="19">1年以上</option>
+                                            <option value="20">2年以上</option>
+                                            <option value="21">3年以上</option>
+                                            <option value="100">4年以上</option>
+                                            <option value="22">5年以上</option>
+                                            <option value="101">6年以上</option>
+                                            <option value="23">8年以上</option>
+                                            <option value="24">10年以上</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="resume_tip"><span class="none" id="hidexpid"></span></div>
+                            </div>
+                        </div>
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span news_expect_list_spanw160">联系邮箱：</span>
+                            <div class="news_expect_list_rbox"><input name="email" id="email" type="text" size="30"
+                                                                      value="" class="news_expect_text_t1"
+                                                                      onBlur="checkonblur('email');"/>
+                                <span id="by_email" class="errordisplay">邮件格式错误</span>
+                                <div class="resume_tip"><span class="none" id="hidemail"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news_expect_fotbox">
+                        <div class="news_expect_nbth">
+                            <input type="button" class="news_expect_list_sub" value="下一步" id="nextbtn" name="submit">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="clear"></div>
+<div class=foot th:insert="~{commons/resume_footer}">
+</div>
+<script>
+    layui.use(['layer', 'form', 'laydate'], function () {
+        var layer = layui.layer,
+            form = layui.form,
+            formSelects = layui.formSelects,
+            laydate = layui.laydate,
+            $ = layui.$;
+
+        var birthObj = new Date(),
+            birthYear = birthObj.getFullYear(),
+            birthYearMax = parseInt(birthYear) - 16;
+        laydate.render({
+            elem: '#birthday',
+            max: birthYearMax + '-12-31',
+            type: 'month',
+            value: '1990-01',
+            btns: ['clear', 'confirm']
+        });
+    })
+
+    $(function () {
+        $("#nextbtn").click(() => {
+            location.href = "/resume/add2"
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-注册</title>
+    <link rel="stylesheet" th:href="@{/styles/m_css.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/js/layui/css/layui.css}" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/resume_header}"></div>
+<form action="" method="post">
+    <div class="news_expect">
+        <div class="news_expect_cont">
+            <div class="news_expect_ok">恭喜您，简历创建成功</div>
+            <div class="news_expect_ok_jf">成功创建简历获得<span class="news_expect_ok_jf_n">+10</span>积分
+                <a th:href="@{/resume/view}" target="_blank" class="news_expect_ok_yl">简历预览 </a></div>
+            <div class="news_expect_ok_p">完善简历可以获得更好的工作机会哦~</div>
+            <div class="news_expect_ok_bth">
+                <a href="javascript:void(0)" class="news_expect_ok_a">完善培训经历 </a>
+                <a href="javascript:void(0)" class="news_expect_ok_a">完善职业技能 </a>
+                <a href="javascript:void(0)" class="news_expect_ok_a">完善项目经历 </a>
+                <a href="javascript:void(0)" class="news_expect_ok_a">其他信息 </a>
+                <a href="javascript:void(0)" class="news_expect_ok_a">自我评价 </a>
+            </div>
+            <div class="clear"></div>
+            <div class="news_expect_ok_likejob_box">
+                <div style="padding-left:40px; padding-right:45px; position:relative">
+                    <div class="news_expect_ok_likejob">你可能感兴趣的职位</div>
+                    <a href="" style="position:absolute;right:45px;top:30px;color:#09F">都不满意？查看更多职位></a>
+                </div>
+                <div class="news_expect_ok_like">
+                    <ul>
+                        <li>
+                            <div class="news_expect_ok_likejobname"><a href="">软件测试工程师 </a></div>
+                            <div class="news_expect_ok_likejobxz"><span
+                                    class="news_expect_ok_likejobxz_n">5000-7000元</span> <span
+                                    class="news_expect_ok_likejobline">|</span> 不限经验<span
+                                    class="news_expect_ok_likejobline">|</span> 不限学历
+                            </div>
+                            <div class="news_expect_ok_likecomname">成都蜗牛创想职业技能培训学校有限公司</div>
+                            <a href="" class="news_expect_ok_likesq">申请</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="clear"></div>
+<div class=foot>
+    <div class=foot th:insert="~{commons/resume_footer}"></div>
+</div>
+</body>
+</html>

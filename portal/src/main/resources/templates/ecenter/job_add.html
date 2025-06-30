@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<head>
+    <title>企业用户后台管理系统 - 人才招聘系统</title>
+    <meta http-equiv=Content-Type content="text/span; charset=utf-8"/>
+    <link th:href="@{/styles/two_style.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/m_style.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/formSelects-v4.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/ueditor/ueditor.config.js}"></script>
+    <script th:src="@{/js/ueditor/ueditor.all.min.js}"></script>
+    <script th:src="@{/js/job.cache.js}"></script>
+    <script th:src="@{/js/jobparent.cache.js}"></script>
+    <script th:src="@{/js/newclass.public.js}"></script>
+</head>
+
+<body>
+<div class="body_box">
+    <header>
+        <div class="header headerFlexd headerFlexBlue" th:insert="~{/commons/ecenter_header}">
+        </div>
+    </header>
+    <div class="w1000">
+        <div class="admin_mainbody">
+            <div class="sidebar sidebaBlueDome" th:insert="~{/commons/ecenter_menu}"></div>
+            <div class="right_box" style="">
+                <div class="newmember_screenbox">
+                    <div class="newmember_screen">
+                        <div class="newmember_screenname"><a href="" class="newcom_fh">返回 </a><span
+                                class="newcom_fh_line">|</span>新增职位
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="admincont_box" style="">
+                    <div class="com_body" style="">
+                        <div class="com_new_tip">
+                            <span class="com_new_tip_h">温馨小提示</span>
+                            您当前是 <span class="com_new_tip_v">免费会员 </span>， 您共可上架：3个职位。超出后发布的职位需要手动上架&nbsp;&nbsp;&nbsp;
+                            <span class="add_tit_bz">（注 带 <i class="ff0">*</i> 号为必填项）</span>
+                        </div>
+                        <form name="MyForm" id="myform" target="supportiframejob" method="post" action=""
+                              class="layui-form" style="">
+                            <div class="com_release_box" id="comjob" style="">
+                                <ul style="">
+                                    <li>
+                                        <div class="com_release_name"><i class="ff0">*</i> 职位名称：</div>
+                                        <div class="com_release_cont">
+                                            <div class="com_release_cont_text">
+                                                <input type="text" size="45" lay-verify="required" name="name" id="name"
+                                                       value="" class="layui-input"
+                                                       placeholder="请填写职位名称信息，可填写职位属性，如：货运司机包吃住">
+                                            </div>
+                                            <span id="by_name" class="errordisplay">职位名不能为空</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name"><i class="ff0">*</i> 职位类别：</div>
+                                        <div class="com_release_cont com_release_cont_xlyc">
+                                            <div class="com_release_cont_text" style="position:relative">
+                                                <select id="jobclass_search" xm-select-type="jobclass"
+                                                        xm-select="jobclass_search" xm-select-search=""
+                                                        xm-select-radio="" xm-select-skin="default"
+                                                        xm-select-direction="down" lay-ignore="" _name="jobclass_search"
+                                                        style="display: inline-block;">
+                                                    <option value="">输入职位类别</option>
+                                                </select>
+                                                <div class="xm-select-parent" fs_id="jobclass_search">
+                                                    <div class="xm-form-select" xm-select-skin="default"
+                                                         xm-select-search-type="0">
+                                                        <input class="xm-hide-input" value="" name="jobclass_search"
+                                                               lay-verify="undefined" lay-vertype="undefined"
+                                                               type="text"
+                                                               style="position: absolute;bottom: 0; z-index: -1;width: 100%; height: 100%; border: none; opacity: 0;">
+                                                        <div class="xm-select-title " style="height: 34px;">
+                                                            <div class="xm-input xm-select" title="">
+                                                                <div class="xm-select-label" style="left: 0px;"><input
+                                                                        type="text" fsw=""
+                                                                        class="xm-input xm-select-input"
+                                                                        autocomplete="off" debounce="0"></div>
+                                                                <i class="xm-select-sj"></i>
+                                                            </div>
+                                                            <div class="xm-select--suffix">
+                                                                <input type="text" autocomplete="off"
+                                                                       placeholder="输入职位类别" readonly="readonly"
+                                                                       unselectable="on" class="xm-input">
+                                                            </div>
+                                                        </div>
+                                                        <dl xid="jobclass_search" class="xm-select-dl xm-select-radio"
+                                                            style="top: 39px; bottom: auto;">
+                                                            <dd lay-value="" class="xm-select-tips">输入职位类别</dd>
+                                                            <dt style="display:none;"></dt>
+                                                            <dd class="xm-select-tips xm-select-none xm-select-empty">
+                                                                没有选项
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div onclick="index_job_new(1,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','1');"
+                                                     class="news_expect_text_new_sxzw" title="选择职位类别">类别筛选
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name"><i class="ff0">*</i> 薪资待遇：</div>
+                                        <div class="com_release_cont">
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <input type="text" size="5" id="minsalary" name="minsalary"
+                                                       onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                       class="layui-input" placeholder="最低薪资">
+                                                <span class="com_release_cont_dw">元/月</span>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <input type="text" size="5" id="maxsalary" name="maxsalary"
+                                                       onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                       class="layui-input" placeholder="最高薪资">
+                                                <span class="com_release_cont_dw">元/月</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name"><i class="ff0">*</i> 招聘人数：</div>
+                                        <div class="com_release_cont">
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <input name="zp_num" id="zp_num" type="text"
+                                                       onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                       class="layui-input">
+                                                <span class="com_release_cont_dw">人</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name"> 招聘要求：</div>
+                                        <div class="com_release_cont">
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <select name="edu" lay-filter="edu">
+                                                    <option value="65" selected="">学历不限</option>
+                                                    <option value="66">高中</option>
+                                                    <option value="67">中专</option>
+                                                    <option value="68">大专</option>
+                                                    <option value="69">本科</option>
+                                                    <option value="70">硕士</option>
+                                                    <option value="71">博士</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="学历不限" readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="65" class="layui-this">学历不限</dd>
+                                                        <dd lay-value="66" class="">高中</dd>
+                                                        <dd lay-value="67" class="">中专</dd>
+                                                        <dd lay-value="68" class="">大专</dd>
+                                                        <dd lay-value="69" class="">本科</dd>
+                                                        <dd lay-value="70" class="">硕士</dd>
+                                                        <dd lay-value="71" class="">博士</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <select name="exp" lay-filter="exp">
+                                                    <option value="127" selected="">经验不限</option>
+                                                    <option value="12">应届毕业生</option>
+                                                    <option value="13">1年以上</option>
+                                                    <option value="14">2年以上</option>
+                                                    <option value="15">3年以上</option>
+                                                    <option value="16">5年以上</option>
+                                                    <option value="17">8年以上</option>
+                                                    <option value="18">10年以上</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="经验不限" readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="127" class="layui-this">经验不限</dd>
+                                                        <dd lay-value="12" class="">应届毕业生</dd>
+                                                        <dd lay-value="13" class="">1年以上</dd>
+                                                        <dd lay-value="14" class="">2年以上</dd>
+                                                        <dd lay-value="15" class="">3年以上</dd>
+                                                        <dd lay-value="16" class="">5年以上</dd>
+                                                        <dd lay-value="17" class="">8年以上</dd>
+                                                        <dd lay-value="18" class="">10年以上</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            &nbsp;&nbsp;
+                                            <input name="is_graduate" type="checkbox" value="1" title="可接受应届生"
+                                                   lay-skin="primary">
+                                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>可接受应届生</span><i
+                                                    class="layui-icon layui-icon-ok"></i></div>
+                                        </div>
+                                    </li>
+                                    <li style="">
+                                        <div class="com_release_name"><i class="ff0">*</i> 职位描述：</div>
+                                        <div class="com_release_cont" style="">
+                                            <div class="Description" style="display:none;">
+                                                <div class="Description_icon">
+                                                    <i class="Description_icon_i"></i>
+                                                    <div class="Description_box" style="display:none;">
+                                                        <i class="Description_icon_i_j"></i>
+                                                        点击职位链接，为你推荐的职位要求模板复制到编辑区域内！<br>您也可以编辑，直至完美！
+                                                    </div>
+                                                </div>
+                                                <div class="Description_box_mb">样本：<span
+                                                        id="JobRequInfoTemplate"></span>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div style="width: 500px;" id="description" class="edui-default">
+                                                <div id="edui1" class="edui-editor  edui-default"
+                                                     style="width: 500px; z-index: 1;">
+                                                    <div id="edui1_toolbarbox"
+                                                         class="edui-editor-toolbarbox edui-default" style="">
+                                                        <div id="edui1_toolbarboxouter"
+                                                             class="edui-editor-toolbarboxouter edui-default">
+                                                            <div class="edui-editor-toolbarboxinner edui-default">
+                                                                <div id="edui2" class="edui-toolbar   edui-default"
+                                                                     onselectstart="return false;"
+                                                                     onmousedown="return $EDITORUI[&quot;edui2&quot;]._onMouseDown(event, this);"
+                                                                     style="user-select: none;">
+                                                                    <div id="edui3"
+                                                                         class="edui-box edui-button edui-for-source edui-default">
+                                                                        <div id="edui3_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui3&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui3&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui3&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui3&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui3_body" unselectable="on"
+                                                                                     title="源代码"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui3&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui3&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui4"
+                                                                         class="edui-box edui-separator  edui-default"></div>
+                                                                    <div id="edui5"
+                                                                         class="edui-box edui-button edui-for-undo edui-default">
+                                                                        <div id="edui5_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui5&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui5&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui5&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui5&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui5_body" unselectable="on"
+                                                                                     title="撤销"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui5&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui5&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui6"
+                                                                         class="edui-box edui-button edui-for-redo edui-default">
+                                                                        <div id="edui6_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui6&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui6&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui6&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui6&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui6_body" unselectable="on"
+                                                                                     title="重做"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui6&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui6&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui7"
+                                                                         class="edui-box edui-button edui-for-bold edui-default">
+                                                                        <div id="edui7_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui7&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui7&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui7&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui7&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui7_body" unselectable="on"
+                                                                                     title="加粗"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui7&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui7&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui8"
+                                                                         class="edui-box edui-button edui-for-italic edui-default">
+                                                                        <div id="edui8_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui8&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui8&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui8&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui8&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui8_body" unselectable="on"
+                                                                                     title="斜体"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui8&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui8&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui9"
+                                                                         class="edui-box edui-button edui-for-underline edui-default">
+                                                                        <div id="edui9_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui9&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui9_body" unselectable="on"
+                                                                                     title="下划线"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui9&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui9&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui10"
+                                                                         class="edui-box edui-button edui-for-fontborder edui-default">
+                                                                        <div id="edui10_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui10&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui10&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui10&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui10&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui10_body" unselectable="on"
+                                                                                     title="字符边框"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui10&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui10&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui11"
+                                                                         class="edui-box edui-button edui-for-strikethrough edui-default">
+                                                                        <div id="edui11_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui11&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui11&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui11&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui11&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui11_body" unselectable="on"
+                                                                                     title="删除线"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui11&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui11&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui12"
+                                                                         class="edui-box edui-combox edui-for-fontfamily edui-default">
+                                                                        <div title="字体" id="edui12_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui12&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui12&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui12&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui12&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-combox-body edui-default">
+                                                                                <div id="edui12_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui12&quot;]._onButtonClick(event, this);">
+                                                                                    字体
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui12&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui25"
+                                                                         class="edui-box edui-combox edui-for-fontsize edui-default">
+                                                                        <div title="字号" id="edui25_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui25&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui25&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui25&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui25&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-combox-body edui-default">
+                                                                                <div id="edui25_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui25&quot;]._onButtonClick(event, this);">
+                                                                                    字号
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui25&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui36"
+                                                                         class="edui-box edui-splitbutton edui-for-forecolor edui-default edui-colorbutton">
+                                                                        <div title="字体颜色" id="edui36_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui36&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui36&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui36&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui36&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-splitbutton-body edui-default">
+                                                                                <div id="edui36_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui36&quot;]._onButtonClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div id="edui36_colorlump"
+                                                                                         class="edui-colorlump"></div>
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui36&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui39"
+                                                                         class="edui-box edui-splitbutton edui-for-backcolor edui-default edui-colorbutton">
+                                                                        <div title="背景色" id="edui39_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui39&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui39&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui39&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui39&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-splitbutton-body edui-default">
+                                                                                <div id="edui39_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui39&quot;]._onButtonClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div id="edui39_colorlump"
+                                                                                         class="edui-colorlump"></div>
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui39&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui42"
+                                                                         class="edui-box edui-button edui-for-removeformat edui-default">
+                                                                        <div id="edui42_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui42&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui42&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui42&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui42&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui42_body" unselectable="on"
+                                                                                     title="清除格式"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui42&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui42&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui43"
+                                                                         class="edui-box edui-splitbutton edui-for-autotypeset edui-default">
+                                                                        <div title="自动排版" id="edui43_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui43&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui43&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui43&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui43&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-splitbutton-body edui-default">
+                                                                                <div id="edui43_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui43&quot;]._onButtonClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui43&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui46"
+                                                                         class="edui-box edui-button edui-for-pasteplain edui-default">
+                                                                        <div id="edui46_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui46&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui46&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui46&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui46&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui46_body" unselectable="on"
+                                                                                     title="纯文本粘贴模式"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui46&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui46&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui47"
+                                                                         class="edui-box edui-separator  edui-default"></div>
+                                                                    <div id="edui48"
+                                                                         class="edui-box edui-menubutton edui-for-insertorderedlist edui-default">
+                                                                        <div title="有序列表" id="edui48_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui48&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui48&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui48&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui48&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-menubutton-body edui-default">
+                                                                                <div id="edui48_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui48&quot;]._onButtonClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui48&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui61"
+                                                                         class="edui-box edui-menubutton edui-for-insertunorderedlist edui-default">
+                                                                        <div title="无序列表" id="edui61_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui61&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui61&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui61&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui61&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-menubutton-body edui-default">
+                                                                                <div id="edui61_button_body"
+                                                                                     class="edui-box edui-button-body edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui61&quot;]._onButtonClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                                <div class="edui-box edui-splitborder edui-default"></div>
+                                                                                <div class="edui-box edui-arrow edui-default"
+                                                                                     onclick="$EDITORUI[&quot;edui61&quot;]._onArrowClick();"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui68"
+                                                                         class="edui-box edui-button edui-for-selectall edui-default">
+                                                                        <div id="edui68_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui68&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui68&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui68&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui68&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui68_body" unselectable="on"
+                                                                                     title="全选"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui68&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui68&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui69"
+                                                                         class="edui-box edui-button edui-for-cleardoc edui-default">
+                                                                        <div id="edui69_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui69&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui69&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui69&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui69&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui69_body" unselectable="on"
+                                                                                     title="清空文档"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui69&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui69&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div class="edui-box edui-label edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui70"
+                                                                         class="edui-box edui-separator  edui-default"></div>
+                                                                    <div id="edui71"
+                                                                         class="edui-box edui-button edui-for-simpleupload edui-default">
+                                                                        <div id="edui71_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui71&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui71&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui71&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui71&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui71_body" unselectable="on"
+                                                                                     title="单图上传"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui71&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui71&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default">
+                                                                                        <iframe style="display: block; width: 20px; height: 20px; overflow: hidden; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; opacity: 0; cursor: pointer;"></iframe>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui72"
+                                                                         class="edui-box edui-separator  edui-default"></div>
+                                                                    <div id="edui73"
+                                                                         class="edui-box edui-button edui-for-indent edui-default">
+                                                                        <div id="edui73_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui73&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui73&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui73&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui73&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui73_body" unselectable="on"
+                                                                                     title="首行缩进"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui73&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui73&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui74"
+                                                                         class="edui-box edui-separator  edui-default"></div>
+                                                                    <div id="edui75"
+                                                                         class="edui-box edui-button edui-for-justifyleft edui-default">
+                                                                        <div id="edui75_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui75&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui75&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui75&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui75&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui75_body" unselectable="on"
+                                                                                     title="居左对齐"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui75&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui75&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div class="edui-box edui-label edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui76"
+                                                                         class="edui-box edui-button edui-for-justifycenter edui-default">
+                                                                        <div id="edui76_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui76&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui76&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui76&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui76&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui76_body" unselectable="on"
+                                                                                     title="居中对齐"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui76&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui76&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div class="edui-box edui-label edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui77"
+                                                                         class="edui-box edui-button edui-for-justifyright edui-default">
+                                                                        <div id="edui77_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui77&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui77&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui77&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui77&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui77_body" unselectable="on"
+                                                                                     title="居右对齐"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui77&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui77&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div class="edui-box edui-label edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="edui78"
+                                                                         class="edui-box edui-button edui-for-justifyjustify edui-default">
+                                                                        <div id="edui78_state"
+                                                                             onmousedown="$EDITORUI[&quot;edui78&quot;].Stateful_onMouseDown(event, this);"
+                                                                             onmouseup="$EDITORUI[&quot;edui78&quot;].Stateful_onMouseUp(event, this);"
+                                                                             onmouseover="$EDITORUI[&quot;edui78&quot;].Stateful_onMouseOver(event, this);"
+                                                                             onmouseout="$EDITORUI[&quot;edui78&quot;].Stateful_onMouseOut(event, this);"
+                                                                             class="edui-default">
+                                                                            <div class="edui-button-wrap edui-default">
+                                                                                <div id="edui78_body" unselectable="on"
+                                                                                     title="两端对齐"
+                                                                                     class="edui-button-body edui-default"
+                                                                                     onmousedown="return $EDITORUI[&quot;edui78&quot;]._onMouseDown(event, this);"
+                                                                                     onclick="return $EDITORUI[&quot;edui78&quot;]._onClick(event, this);">
+                                                                                    <div class="edui-box edui-icon edui-default"></div>
+                                                                                    <div class="edui-box edui-label edui-default"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="edui1_toolbarmsg"
+                                                             class="edui-editor-toolbarmsg edui-default"
+                                                             style="display:none;">
+                                                            <div id="edui1_upload_dialog"
+                                                                 class="edui-editor-toolbarmsg-upload edui-default"
+                                                                 onclick="$EDITORUI[&quot;edui1&quot;].showWordImageDialog();">
+                                                                点击上传
+                                                            </div>
+                                                            <div class="edui-editor-toolbarmsg-close edui-default"
+                                                                 onclick="$EDITORUI[&quot;edui1&quot;].hideToolbarMsg();">
+                                                                x
+                                                            </div>
+                                                            <div id="edui1_toolbarmsg_label"
+                                                                 class="edui-editor-toolbarmsg-label edui-default"></div>
+                                                            <div style="height:0;overflow:hidden;clear:both;"
+                                                                 class="edui-default"></div>
+                                                        </div>
+                                                        <div id="edui1_message_holder"
+                                                             class="edui-editor-messageholder edui-default"
+                                                             style="top: 58px; z-index: 2;"></div>
+                                                    </div>
+                                                    <div id="edui1_iframeholder"
+                                                         class="edui-editor-iframeholder edui-default"
+                                                         style="width: 500px; height: 200px; z-index: 1; overflow: hidden;">
+                                                        <iframe id="ueditor_0" width="100%" height="100%"
+                                                                frameborder="0"
+                                                                src="javascript:void(function(){document.open();document.write(&quot;<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml' class='view' ><head><style type='text/css'>.view{padding:0;word-wrap:break-word;cursor:text;height:90%;}
+body{margin:8px;font-family:sans-serif;font-size:16px;}img{max-width:100%;}p{margin:5px 0;}pre{white-space: pre-wrap;word-wrap: break-word;}</style><link rel='stylesheet' type='text/css' href='http://localhost/phpyun/js/ueditor/themes/iframe.css'/></head><body class='view' ></body><script type='text/javascript'  id='_initialScript'>setTimeout(function(){editor = window.parent.UE.instants['ueditorInstant0'];editor._setup(document);},0);var _tmpScript = document.getElementById('_initialScript');_tmpScript.parentNode.removeChild(_tmpScript);</script></html>&quot;);document.close();}())"></iframe>
+                                                    </div>
+                                                    <div id="edui1_bottombar"
+                                                         class="edui-editor-bottomContainer edui-default">
+                                                        <table class="edui-default">
+                                                            <tbody class="edui-default">
+                                                            <tr class="edui-default">
+                                                                <td id="edui1_elementpath"
+                                                                    class="edui-editor-bottombar edui-default"
+                                                                    style="display: none;"></td>
+                                                                <td id="edui1_wordcount"
+                                                                    class="edui-editor-wordcount edui-default"
+                                                                    style="display: none;"></td>
+                                                                <td id="edui1_scale"
+                                                                    class="edui-editor-scale edui-default"
+                                                                    style="display: none;">
+                                                                    <div class="edui-editor-icon edui-default"></div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div id="edui1_scalelayer" class="edui-default"></div>
+                                                </div>
+                                            </div>
+                                            <span id="by_description" class="errordisplay">不能为空</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name"><i class="ff0">*</i> 工作地址：</div>
+                                        <div class="com_release_cont" style="height:38px;">
+                                            <div class="layui-input-inline" style="width:675px; float: left;">
+                                                <select name="link_id" lay-filter="link_id" id="link_id">
+                                                    <option id="link_id_-1" data-provinceid="25" data-cityid="321"
+                                                            data-three_cityid="2703" data-address="解放街2号" data-x=""
+                                                            data-y="" data-link_man="张经理"
+                                                            data-link_moblie="15980123456" data-link_phone="5982352914"
+                                                            data-email="84091835@qq.com" value="-1">张经理 - 15980123456
+                                                        - 上海上海长宁区 - 解放街2号 （默认企业地址）
+                                                    </option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="张经理 - 15980123456 - 上海上海长宁区 - 解放街2号 （默认企业地址）"
+                                                                                           readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="-1" class="layui-this">张经理 - 15980123456 -
+                                                            上海上海长宁区 - 解放街2号 （默认企业地址）
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <a id="editAddr" href="javascript:;" data-id="-1"
+                                               class="add_icon   newAddressBtn" data-link="2" data-provinceid="25"
+                                               data-cityid="321" data-three_cityid="2703" data-address="解放街2号"
+                                               data-x="" data-y="" data-link_man="张经理" data-link_moblie="15980123456"
+                                               data-link_phone="5982352914" data-email="84091835@qq.com"
+                                               style="display: none;"><span class="add_xg"></span>修改 </a>
+
+                                            <a href="javascript:;" class="add_icon add_xj  newAddressBtn" data-link="2"
+                                               data-provinceid="25" data-cityid="321" data-three_cityid="2703"
+                                               data-address="解放街2号" data-x="" data-y=""><span class="add_xg"></span>新建
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="com_release_name">其他要求：</div>
+                                        <div class="com_release_cont">
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <select name="sex" lay-filter="sex">
+                                                    <option value="3">性别不限</option>
+                                                    <option value="2">女</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="性别不限" readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="3" class="layui-this">性别不限</dd>
+                                                        <dd lay-value="2" class="">女</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <select name="marriage" lay-filter="marriage">
+                                                    <option value="72" selected="">婚况不限</option>
+                                                    <option value="73">已婚</option>
+                                                    <option value="112">未婚</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="婚况不限" readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="72" class="layui-this">婚况不限</dd>
+                                                        <dd lay-value="73" class="">已婚</dd>
+                                                        <dd lay-value="112" class="">未婚</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <select name="report" lay-filter="report">
+                                                    <option value="54" selected="">到岗时间不限</option>
+                                                    <option value="57">1周以内</option>
+                                                    <option value="58">2周以内</option>
+                                                    <option value="59">3周以内</option>
+                                                    <option value="60">1个月之内</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="到岗时间不限"
+                                                                                           readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="54" class="layui-this">到岗时间不限</dd>
+                                                        <dd lay-value="57" class="">1周以内</dd>
+                                                        <dd lay-value="58" class="">2周以内</dd>
+                                                        <dd lay-value="59" class="">3周以内</dd>
+                                                        <dd lay-value="60" class="">1个月之内</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <input type="text" size="2" id="zp_minage" name="zp_minage"
+                                                       placeholder="最小年龄"
+                                                       onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                       maxlength="2" class="layui-input">
+                                                <span class="com_release_cont_dw">岁</span>
+                                            </div>
+                                            <div class="layui-input-inline com_release_selectw145">
+                                                <input type="text" size="2" id="zp_maxage" name="zp_maxage"
+                                                       placeholder="最大年龄"
+                                                       onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                       maxlength="2" class="layui-input">
+                                                <span class="com_release_cont_dw">岁</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="com_release_name">从事行业：</div>
+                                        <div class="com_release_cont">
+                                            <div class="layui-input-inline" style="width:500px;">
+                                                <select name="hy" lay-filter="hy">
+                                                    <option value="">请选择</option>
+                                                    <option value="35" selected="">计算机/互联网</option>
+                                                    <option value="835">贸易/百货</option>
+                                                    <option value="837">机械/设备/技工</option>
+                                                    <option value="45">公务员/翻译/其他</option>
+                                                    <option value="836">化工/能源</option>
+                                                    <option value="36">销售/客服/技术支持</option>
+                                                    <option value="37">会计/金融/银行/保险</option>
+                                                    <option value="38">生产/营运/采购/物流</option>
+                                                    <option value="39">生物/制药/医疗/护理</option>
+                                                    <option value="40">广告/市场/媒体/艺术</option>
+                                                    <option value="41">建筑/房地产</option>
+                                                    <option value="42">人事/行政/高级管理</option>
+                                                    <option value="43">咨询/法律/教育/科研</option>
+                                                    <option value="44">服务业</option>
+                                                    <option value="839">通信/电子</option>
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title"><input type="text"
+                                                                                           placeholder="请选择"
+                                                                                           value="计算机/互联网"
+                                                                                           readonly=""
+                                                                                           class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i></div>
+                                                    <dl class="layui-anim layui-anim-upbit">
+                                                        <dd lay-value="" class="layui-select-tips">请选择</dd>
+                                                        <dd lay-value="35" class="layui-this">计算机/互联网</dd>
+                                                        <dd lay-value="835" class="">贸易/百货</dd>
+                                                        <dd lay-value="837" class="">机械/设备/技工</dd>
+                                                        <dd lay-value="45" class="">公务员/翻译/其他</dd>
+                                                        <dd lay-value="836" class="">化工/能源</dd>
+                                                        <dd lay-value="36" class="">销售/客服/技术支持</dd>
+                                                        <dd lay-value="37" class="">会计/金融/银行/保险</dd>
+                                                        <dd lay-value="38" class="">生产/营运/采购/物流</dd>
+                                                        <dd lay-value="39" class="">生物/制药/医疗/护理</dd>
+                                                        <dd lay-value="40" class="">广告/市场/媒体/艺术</dd>
+                                                        <dd lay-value="41" class="">建筑/房地产</dd>
+                                                        <dd lay-value="42" class="">人事/行政/高级管理</dd>
+                                                        <dd lay-value="43" class="">咨询/法律/教育/科研</dd>
+                                                        <dd lay-value="44" class="">服务业</dd>
+                                                        <dd lay-value="839" class="">通信/电子</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="jobadd_list_fl">
+                                        <div class="com_release_name">福利待遇：</div>
+                                        <div class="layui-form-item" style=" margin-bottom: 0px;;">
+                                            <div class="layui-input-block">
+                                            <span class="" id="addwelfarelist">
+                                                                                            </span>
+                                                <input name="welfare[]" id="welfare三险一金" value="三险一金"
+                                                       type="checkbox" title="三险一金" data-tag="三险一金"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>三险一金</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare五险一金" value="五险一金"
+                                                       type="checkbox" title="五险一金" data-tag="五险一金"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>五险一金</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare包吃住" value="包吃住"
+                                                       type="checkbox" title="包吃住" data-tag="包吃住"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>包吃住</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare综合补贴" value="综合补贴"
+                                                       type="checkbox" title="综合补贴" data-tag="综合补贴"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>综合补贴</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare年终奖金" value="年终奖金"
+                                                       type="checkbox" title="年终奖金" data-tag="年终奖金"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>年终奖金</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare奖励计划" value="奖励计划"
+                                                       type="checkbox" title="奖励计划" data-tag="奖励计划"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>奖励计划</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare销售奖金" value="销售奖金"
+                                                       type="checkbox" title="销售奖金" data-tag="销售奖金"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>销售奖金</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare休假制度" value="休假制度"
+                                                       type="checkbox" title="休假制度" data-tag="休假制度"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>休假制度</span><i class="layui-icon layui-icon-ok"></i></div>
+                                                <input name="welfare[]" id="welfare法定节假日" value="法定节假日"
+                                                       type="checkbox" title="法定节假日" data-tag="法定节假日"
+                                                       class="changewelfare" lay-skin="primary">
+                                                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
+                                                    <span>法定节假日</span><i class="layui-icon layui-icon-ok"></i>
+                                                </div>
+                                                <div class="">
+                                                    <div class="addwelfare_b">
+                                                        <input class="addwelfare_text" type="text" tabindex="1000"
+                                                               placeholder="自定义" id="addwelfare"><a
+                                                            class="addwelfarebox">添加福利</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="admin_submit">
+                                <div class="admin_job_js_list_ft  fl"><span style="width:100%;">&nbsp;</span></div>
+                                <div class="sub_btn">
+                                    <input type="hidden" id="r_status" name="r_status" value="0">
+                                    <input class="btn_01" id="submitBtn" type="button" name="submitBtn" value=" 提 交 ">
+                                    <input id="save" name="save" value="" type="hidden">
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="job_tck_box" id="addjob" style="display:none;">
+        <div style="width:710px; background:#fff;">
+            <div class="yun_prompt_writingicon"><i class="yun_prompt_writingicon_right"></i></div>
+            <div class="yun_prompt_writing">职位发布成功！</div>
+            <div class="yun_prompt_writing_tip">管理员审核通过后才可展示职位信息，您可进行以下操作</div>
+            <div class="yun_prompt_writing_operation">
+                <a href="javascript:void(0)"
+                   class="yun_prompt_jobtgbth">再发一条</a>
+                <a id="jobshow" href="javascript:;" s class="yun_prompt_jobtgbth">查看信息</a>
+                <a href="" class="yun_prompt_jobtgbth">管理我的信息</a>
+            </div>
+
+            <div class="yun_prompt_jobtg_box">
+                <div class="yun_prompt_jobtg">开启职位推广提升招聘效果</div>
+                <ul class="yun_prompt_jobtglist">
+                    <li>
+                        <span class="">职位推荐</span>
+                        <em class="">展示在列表右侧黄金位置，带来精确的投递、高质的效果</em>
+                        <a id="jobrec" href="javascript:void(0);"
+                           onclick="jobPromote('','', 2)">开启</a>
+                    </li>
+                    <li>
+                        <span class="">职位紧急</span>
+                        <em class="">紧急招聘，强烈提升职位曝光度</em>
+                        <a id="joburgent" href="javascript:void(0)"
+                           onclick="jobPromote('','', 3)">开启</a>
+                    </li>
+                    <li>
+                        <span class="">职位置顶</span>
+                        <em class="">将职位信息固定排在页面第一页，不会被其他信息挤下去</em>
+                        <a id="jobtop" href="javascript:void(0)"
+                           onclick="jobPromote('','', 1);">开启</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class=footer>
+        <div class=w900>
+
+        </div>
+    </div>
+</div>
+<script th:inline="none">
+    layui.use(['form', 'layer', 'laydate'], function () {
+
+    });
+    var editor = UE.getEditor('description', {
+        toolbars: [['Source', '|', 'Undo', 'Redo', 'Bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'fontfamily', 'fontsize', 'forecolor', 'backcolor', 'removeformat', 'autotypeset', 'pasteplain', '|', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|', 'indent', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify']],
+        wordCount: false,
+        elementPathEnabled: false,
+        initialFrameHeight: 200
+    });
+    // UE.getEditor('description').addEventListener('contentChange', function (e) {
+    //     var desc = editor.getContent()
+    //     if ($.trim(desc) === '') {
+    //         $('#bx').show();
+    //         $('#yh').hide();
+    //     } else {
+    //         $('#bx').hide();
+    //         $('#yh').show();
+    //     }
+    // })
+</script>
+</body>
+</html>

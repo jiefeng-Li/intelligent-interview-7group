@@ -1,0 +1,66 @@
+<div class="w1200">
+    <div class="yunheader_60logo fl">
+        <a href="" title="人才招聘系统最新招聘求职信息"><img
+            th:src="@{/images/logo.png}" alt="人才招聘系统"/></a>
+    </div>
+    <div class="hp_head_search fl">
+        <div class="hp_head_searchbor">
+            <form action=""
+                  method="get" id="index_search_form">
+                <div class="hp_head_search_job fl">
+                    <span class="hp_head_search_job_b" id="search_name">职位</span>
+                    <div class="index_header_seach_find_list yunHeaderSearch_list_box none">
+                        <a href="javascript:void(0)">找工作</a>
+                        <a href="javascript:void(0)">找人才</a>
+                        <a href="javascript:void(0)">找企业</a>
+                    </div>
+                </div>
+                <input class="hp_head_search_text fl" type="text" name="keyword" value=""
+                       placeholder="请输入要搜索的关键字，如 Java开发工程师,仓管,设计师等">
+                <input class="hp_head_search_sr fl" type="submit" value="搜索" style=" float:right"/>
+            </form>
+        </div>
+        <div class="clear"></div>
+        <div class="hp_head_search_bom">
+            <div class="hp_head_search_bom_left">
+                <span style="color: #a4a1a1;">热搜职位：Java</span>
+            </div>
+            <div class="yun_new_header_search_more moreOptions">
+                <div class="">
+                    <a href="">职位遍历</a>
+                    <a href="">地图搜索</a>
+                    <a href="">高级搜索</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="yunheader_60wx ">
+        <div class="yunheader_60wx_box "><img src="">
+        </div>
+    </div>
+    <div class="yunheader_60nav">
+        <ul>
+            <li class="nav_list_hover">
+                <a th:href="@{/}" class="png"> 首页 </a>
+                <i class="yun_new_headernav_list_line"></i>
+            </li>
+            <li class="">
+                <a th:href="@{/job}" class="png"> 找工作 </a>
+                <i class="yun_new_headernav_list_line"></i>
+            </li>
+            <li class="">
+                <a href="" class="png"> 找人才 </a>
+                <i class="yun_new_headernav_list_line"></i>
+            </li>
+            <li class="">
+                <a href="" class="png"> 找企业 </a>
+                <i class="yun_new_headernav_list_line"></i>
+            </li>
+            <li class="">
+                <a th:href="@{/simulate}" class="png"> 模拟面试 </a>
+                <i class="yun_new_headernav_list_line"></i>
+            </li>
+        </ul>
+    </div>
+</div>

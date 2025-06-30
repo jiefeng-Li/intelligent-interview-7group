@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-注册</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/login.css}" type="text/css"/>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+</head>
+
+<body class="register_bg">
+<div class="register_header">
+    <div class="reg_w980">
+        <div class="reg_logo">
+            <a th:href="@{/}"><img th:src="@{/images/logo.png}" class="png"></a>
+        </div>
+        <div class="reg_msg">欢迎注册</div>
+        <a th:href="@{/}" class="reg_fh yun_text_color fr">返回首页</a>
+    </div>
+</div>
+<div class="clear"></div>
+<!--content  start-->
+<div class="reg_content">
+    <div class="reg_stepbox">
+        <ul class="reg_stepbox_list">
+            <li class="reg_stepcur"><span class="reg_stepbox_n">1</span><em class="reg_stepbox_name">创建账户</em></li>
+            <li class="reg_stepcur"><span class="reg_stepbox_line"></span></li>
+            <li><span class="reg_stepbox_n">2</span><em class="reg_stepbox_name">设置身份信息</em></li>
+            <li><span class="reg_stepbox_line"></span></li>
+            <li><span class="reg_stepbox_n"><i class="reg_stepbox_cgicon"></i></span><em
+                    class="reg_stepbox_name">注册成功</em></li>
+        </ul>
+    </div>
+    <div class="logoin_cont fl">
+        <div class="register_left">
+
+            <div class="reg_newtit_box">
+                <ul class="reg_newtit">
+                    <li>
+                        <a class="reg_h1_icon" href=""><i class="reg_newtit_icon"></i>用户名注册</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="register_Switching_box" id="regtype1" style="display:block;">
+                <ul class="register_list">
+                    <li class="mt30"><em><font color="#FF0000">*</font> 账 号：</em>
+                        <input type="text" id="account" class="logoin_text tips_class"
+                               placeholder="请输入用户名作为账号"/>
+                        <span class="reg_tips reg_tips_red none" id="ajax_username1"></span>
+                        <div class="mmset mmsetpd">用户名要求长度6-20位,必须包含数字字母</div>
+                    </li>
+                    <li class="mt30"><em><font color="#FF0000">*</font> 验证码：</em>
+                        <div class="reg_textbox">
+                            <input id="CheckCode" type="text" class="logoin_textw150 tips_class"
+                                   maxlength="6" placeholder="请输入图片验证码"
+                                   autocomplete="off"/>
+                            <a href="javascript:void(0);" class="registe_yzm">
+                                <img id="vcode_imgs" class="authcode"
+                                     src="" /></a>
+                        </div>
+                        <span class="reg_tips reg_tips_red none" id="ajax_CheckCode"></span></li>
+                    <li class="mt30"><em><font color="#FF0000">*</font> 密&nbsp;&nbsp;码：</em>
+                        <span id="pass1"><input type="password" id="password"
+                                                class="logoin_text tips_class"
+                                                value="" placeholder="请输入6-20位（字母、数字、符号）"/></span>
+                        <span class="reg_tips reg_tips_red none" id="ajax_password"></span>
+                    </li>
+                    <li class="mt20"><em><font color="#FF0000">*</font> 确认密码：</em>
+                        <span id="pass1"><input type="password" id="passconfirm"
+                                                class="logoin_text tips_class" value="" placeholder="请确认您输入的密码"//></span>
+                        <span class="reg_tips reg_tips_red none" id="ajax_passconfirm"></span>
+                    </li>
+                    <li class="mt30"><em>&nbsp;</em>
+                        <input type="button" class="register_submit" id="subreg" value="立即注册"/>
+                    </li>
+                    <li class="m10">
+                        <em>&nbsp;</em>
+                        <div class="reg_xy">
+                            <input type="checkbox" id="xieyi1" class="logoin_check" value="1" checked="checked"/>我已同意
+                            <a href="" target="_blank"
+                               class="reg_yhxy">《用户协议》</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="register_right">
+            <div class="register_right_icon"></div>
+            <div class="register_right_c">
+                已有账号? <a th:href="@{/login}">直接登录></a>
+            </div>
+            <div class="register_right_c">其他方式登录</div>
+            <div class="box_third">
+                <a href=""><i class="l-icon weixin-icon"></i></a>
+                <a href=""><i class="l-icon qq-icon"></i></a>
+                <a href=""><i class="l-icon sina-icon"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="reg_footer">如果您有任何疑问或在注册过程中遇到任何困难，您都可以通过以下方式与我们联系
+    <div class="">电话： 400-880-XXXX <span class="reg_footer_yz">客服QQ：84091835</span></div>
+</div>
+<script>
+    let uuid;
+
+    function createCaptcha() {
+        $.ajax({
+            url: "http://localhost:10005/base/captcha",
+            type: "POST",
+            // contentType:"application/json",
+            // data:JSON.stringify(data),
+            dataType: "json",
+            success: function (r) {
+                // console.log(r.data[1])
+                if (r.code === 200) {
+                    uuid = r.data[0]
+
+                    $("#vcode_imgs").attr("src", "data:image/jpg;base64," + r.data[1])
+                }
+            }
+        })
+    }
+
+    $(function () {
+        createCaptcha()
+
+        $("#vcode_imgs").click(function () {
+            createCaptcha()
+        })
+
+
+        $("#subreg").click(function () {
+            $.ajax({
+                url: "http://localhost:10005/base/checkcaptcha",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    "code": $("#CheckCode").val(),
+                    "uuid": uuid
+                }),
+                dataType: "json",
+                success: function (r) {
+                    console.log(r)
+                    if (r.code === 200) {
+                        $.ajax({
+                            url: "http://localhost:10005/user/reg",
+                            type: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify({
+                                    "account": $("#account").val(),
+                                    "password": $("#password").val()
+                                }
+                            ),
+                            dataType: "json",
+                            success: function (r) {
+                                console.log(r)
+                                if (r.code === 200) {
+                                    location.href = "login"
+                                }
+                            }
+                        });
+                    } else {
+                        alert("验证码不正确")
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

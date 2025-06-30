@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-注册</title>
+    <link rel="stylesheet" th:href="@{/styles/m_css.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/tips.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/js/layui/css/layui.css}" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/resume_header}"></div>
+<form action="" id="resumeForm" name="MyForm" method="post" target="expectiframe"
+      autocomplete="off" class="layui-form">
+    <div class="news_expect_body">
+        <div class="news_expect">
+            <div class="news_expect_cont_h1">
+                <div class="news_expect_cont_h1_box">
+                    <span class="news_expect_cont_h1_s">您正在创建简历</span>
+                    <div class="news_expect_cont_h1_p">简历是求职第一步，优质的简历才能更快找到满意工作！</div>
+                </div>
+                <div class="fill_in_process" style="width:710px;">
+                    <span><i>1</i>求职意向<em>……</em></span>
+                    <span class="fill_add_color" id="worktype"><i>2</i>工作经历<em>……</em></span>
+                    <span id="edutype"><i>3</i>教育经历<em>……</em></span>
+                    <span><i class="fill_add_color_cg"></i>填写成功</span>
+                </div>
+            </div>
+            <!---工作经历start---->
+            <div class="news_expect_content" id="work">
+                <div class="news_expect_tit">
+                    <span class="news_expect_tit_s"><i class="news_expect_tit_yx_icon"></i>工作经历</span>
+                </div>
+                <div id="addwork">
+                    <div class="news_expect_n_box">
+                        <div class="news_expect_list">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>公司名称：</span>
+                            <div class="news_expect_list_rbox">
+                                <input type="text" value="" name="workname" id="workname" class="news_expect_text_t1"
+                                       placeholder="请填写公司名称"/>
+                                <span class="news_expect_name"></span>
+                                <div class="resume_tip"><span class="none" id="hidworkname"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list news_expect_w1000">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>担任职位：</span>
+                            <div class="news_expect_list_rbox">
+                                <input type="text" value="" name="worktitle" id="worktitle"
+                                       class="news_expect_text_t1" placeholder="请填写担任职位"/>
+                                <span class="news_expect_name"></span>
+                                <div class="resume_tip"><span class="none" id="hidworktitle"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_list news_expect_listw100">
+                            <span class="news_expect_list_span"><i class="news_expectfont">*</i>在职时间：</span>
+                            <div class="news_expect_list_rbox">
+                                <input name="worksdate" id="worksdate" type="text" value=""
+                                       placeholder="请选择入职时间"
+                                       class="news_expectadd_text" style="width:105px">
+                                <span class="news_expect_text_xzline">-</span>
+                                <input name="workedate" id="workedate" type="text" value=""
+                                       class="news_expectadd_text"
+                                       placeholder="请选择离职时间" style="width:105px">
+                                <div class="news_expect_listtody">
+                                    <input type="checkbox" value='1' data-random='' id="stopdate" name="stopdate"
+                                           lay-filter="stopdate" title="至今" lay-skin="primary">
+                                    <input type="hidden" id="totoday" name="totoday" value='0'/>
+                                </div>
+                                <script>
+                                    layui.use(['laydate'], function () {
+                                        var laydate = layui.laydate;
+                                        monthclick(laydate, '#worksdate');
+                                        monthclick(laydate, '#workedate');
+                                    });
+                                </script>
+                                <span class="news_expect_name"></span>
+                                <div class="resume_tip"><span class="none" id="hidworksdate"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="news_expect_textarea">
+                            <span class="news_expect_list_span">工作内容：</span>
+                            <div class="news_expect_list_rbox">
+                                <div class="news_expect_textarea_box">
+                                    <textarea rows="5" cols="50" name="workcontent[]" id="workcontent"
+                                              class="news_expect_n_boxtextarea "
+                                              placeholder="请简述一下岗位职责和工作业绩，让用人单位对更多了解你！"></textarea>
+                                </div>
+                                <span class="news_expect_name"></span>
+                                <div class="resume_tip"><span class="none" id="hidworkcontent"></span></div>
+                            </div>
+                        </div>
+                        <div class="wsexpect_tip"> 80%的企业通过工作经历来了解您的真实情况，您可添加多个工作经历~
+                            <div class="wsexpect_tip_bth"><a href="javascript:;" onclick="addWork();"
+                                                             class="wsexpect_tip_tj">+ 添加工作经历</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_expect_fotbox">
+                    <div class="news_expect_nbth">
+                        <input type="button" class="news_expect_list_sub" value="下一步" id="nextbtn" name="submit">
+                        <input type="button" class="layui-btn layui-btn-primary" value="返回上一步" name="submit"
+                               style="margin-left:20px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class=foot th:insert="~{commons/resume_footer}">
+</div>
+<script>
+    layui.use(['layer', 'form', 'laydate'], function () {
+
+    })
+
+    $(function (){
+        $("#nextbtn").click(()=>{
+            location.href="/resume/add3"
+        })
+    })
+
+    function addWork(){
+        $("#addwork").append(function(){
+            var randnum='w'+parseInt(Math.random()*1000);
+            var html="";
+
+            html+="<div class='news_expect_n_box' id='"+randnum+"'><div class='news_expect_list news_expect_listtj'>";
+            html+="		<span class='news_expect_list_span'><i class='news_expectfont'>*</i>公司名称：</span>";
+            html+="		<div class='news_expect_list_rbox'><input type='text' value='' name='workname[]' id='workname"+randnum+"' class='news_expect_text_t1' onBlur=\"checkonblur('workname"+randnum+"','rand');\" placeholder='请填写公司名称'/><span class='news_expect_name'></span><div class='resume_tip'><span class='none' id='hidworkname"+randnum+"'></span></div></div><i class='yun_resume_popup_del showedunum news_expect_listqx' id='"+randnum+"' onclick=\"deletebox('"+randnum+"')\">删除</i></div>";
+            html+="		<div class='news_expect_list news_expect_w1000'><span class='news_expect_list_span'><i class='news_expectfont'>*</i>担任职位：</span><div class='news_expect_list_rbox'><input type='text' value='' name='worktitle[]' id='worktitle"+randnum+"' class='news_expect_text_t1' onBlur=\"checkonblur('worktitle"+randnum+"','rand');\" placeholder='请填写担任职位'/><span class='news_expect_name'></span><div class='resume_tip'><span class='none' id='hidworktitle"+randnum+"'></span></div></div></div>";
+            html+="		<div class='news_expect_list news_expect_listw100'><span class='news_expect_list_span'><i class='news_expectfont'>*</i>在职时间：</span><div class='news_expect_list_rbox'><input name='worksdate[]' id='worksdate"+randnum+"' type='text' onfocus=\"showblurmsg('worksdate"+randnum+"',1,'')\" value=''placeholder='请选择入职时间'  class='news_expectadd_text' style='width:105px'><span class='news_expect_text_xzline'>-</span><input name='workedate' id='workedate"+randnum+"' type='text' value=''placeholder='请选择离职时间' class='news_expectadd_text' style='width:105px'><div class='news_expect_listtody'><input type='checkbox' value='1' id='stopdate"+randnum+"' data-random='"+randnum+"' name='stopdate[]' lay-filter='stopdate' title='至今' lay-skin='primary'><input type='hidden' id='totoday"+randnum+"' name='totoday[]' value='0' /></div><script>layui.use(['laydate'], function(){var laydate = layui.laydate;monthclick(laydate,'#worksdate"+randnum+"');monthclick(laydate,'#workedate"+randnum+"');});<\/script><span class='news_expect_name'></span><div class='resume_tip'><span class='none' id='hidworksdate"+randnum+"'></span></div></div></div>"	;
+            html+="		<div class='news_expect_textarea'><span class='news_expect_list_span'>工作内容：</span><div class='news_expect_list_rbox'><div class='news_expect_textarea_box'><textarea rows='5' cols='50' name='workcontent[]' id='workcontent"+randnum+"' class='news_expect_n_boxtextarea 'placeholder='请简述一下岗位职责和工作业绩，让用人单位对更多了解你！'></textarea></div><span class='news_expect_name'></span><div class='resume_tip'><span class='none' id='hidworkcontent"+randnum+"'></span></div></div></div></div>";
+            return html;
+        });
+
+        layui.use(['form'], function(){
+            layui.form.render();
+        });
+    }
+    function deletebox(id,type){
+        $("#"+id).remove();
+    }
+</script>
+</body>
+</html>

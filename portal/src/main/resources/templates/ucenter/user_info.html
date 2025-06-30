@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/layui/layui.js}"></script>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/ucenter_header}"></div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}"></div>
+    <div class="yun_m_rightbox fltR mt20 re">
+        <form id="infoform" name="MyForm" method="post" action="" target="supportiframe" enctype="multipart/form-data" class="layui-form">
+            <div class="member_right_index_h1 fltL">
+                <span class="member_right_h1_span fltL">账号设置</span>
+                <i class="member_right_h1_icon user_bg"></i>
+            </div>
+            <div class="clear"></div>
+            <div class="job_list_tit">
+                <ul class="">
+                    <li class="job_list_tit_cur">
+                        <a href="">基本信息</a><i class="left_sidebar_leftmune_icon"></i></li>
+                    <li><a href="">账号安全</a></li>
+                    <li><a href="">绑定授权</a></li>
+                    <li><a href="">上传照片 </a></li>
+                </ul>
+            </div>
+
+            <div class="resume_Prompt_box">
+                <div class="resume_Prompt"><i class="resume_Prompt_icon"></i>安全提醒：招聘企业无权收取任何费用，求职中请加强自我保护，避免上当受骗！</div>
+            </div>
+            <div class="resume_box_list" style="margin-top:0px;">
+                <div class="yun_m_info">
+                    <ul>
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"><b>*</b> 姓 名</div>
+                            <div class="yun_m_info_text">
+                                <div class="yun_m_info_text_name_box">
+                                    <input name="name" id="name" type="text" maxlength="50"   value="老王" class="yun_m_info_text_name_box_t yun_m_info_text_name_box_notext" />
+                                </div>
+                            </div>
+                        </li>
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"><b>*</b> 性 别</div>
+                            <div class="yun_m_info_text">
+                                <div class="layui-input-inline">
+                                    <input type="radio" id="sex" name="sex" value="1" checked="checked" title="男" />
+                                    <input type="radio" id="sex" name="sex" value="2"  title="女" />
+                                </div>
+                            </div>
+                            <span id="by_sex" class="errordisplay">请选择性别</span>
+                        </li>
+
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"> <b>*</b> 出生年月</div>
+                            <div class="yun_m_info_text">
+                                <div class="layui-input-inline">
+                                    <input name="birthday" id="birthday" type="text" maxlength="50" value="1990-01" readonly class="yun_m_info_birthday" />
+                                </div>
+                            </div>
+                            <span id="by_birthday" class="errordisplay">请正确填写出生年月</span>
+                        </li>
+
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"><b>*</b> 最高学历</div>
+                            <div class="yun_m_info_text">
+                                <div class="layui-input-inline yun_m_info_w250">
+                                    <select name="edu" lay-filter="" id="educid">
+                                        <option value="">请选择最高学历</option>
+                                        <option value="9" >初中</option>
+                                        <option value="13" >中专</option>
+                                        <option value="12" selected="selected">高中</option>
+                                        <option value="14" >大专</option>
+                                        <option value="15" >本科</option>
+                                        <option value="16" >硕士</option>
+                                        <option value="17" >博士</option>
+                                    </select>
+                                </div>
+                                <span id="by_educid" class="errordisplay">请选择最高学历</span>
+                            </div>
+                        </li>
+
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"> <b>*</b> 工作经验</div>
+                            <div class="yun_m_info_text">
+                                <div class="layui-input-inline yun_m_info_w250">
+                                    <select name="exp" lay-filter="" id="expid">
+                                        <option value="">请选择工作经验</option>
+                                        <option value="324" >无</option>
+                                        <option value="18" >应届生</option>
+                                        <option value="19" >1年以上</option>
+                                        <option value="20" >2年以上</option>
+                                        <option value="21" >3年以上</option>
+                                        <option value="100" >4年以上</option>
+                                        <option value="22" selected="selected">5年以上</option>
+                                        <option value="101" >6年以上</option>
+                                        <option value="23" >8年以上</option>
+                                        <option value="24" >10年以上</option>
+                                    </select>
+                                </div>
+                                <span id="by_expid" class="errordisplay">请选择工作经验</span>
+                            </div>
+                        </li>
+
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"><b>*</b> 手机</div>
+                            <div class="yun_m_info_text">
+                                <div class="yun_m_info_text_box yun_m_info_text_box_re">
+                                    <input id="telphone" name="telphone" type="text" value="13534276543" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" class="yun_m_info_text_input" />
+                                    <i class="yun_m_info_telphone"></i>
+                                    <span id="by_telphone" class="errordisplay">请正确填写手机号</span>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name"> <b>*</b> 现居住地</div>
+                            <div class="yun_m_info_text">
+                                <div class="yun_m_info_text_box ">
+                                    <input class="yun_m_info_fill" type="text" value="成都" size="30" id="living" name="living">
+                                    <span id="by_living" class="errordisplay">请填写现居住地</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="yun_m_info_list">
+                            <div class="yun_m_info_name">&nbsp;</div>
+                            <div class="yun_m_info_text">
+                                <input type="button" value="保存信息" class="layui-btn layui-btn-normal yun_m_info_textbth" />
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="operatebox03 mt10"><span> </span> </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    layui.use(['layer', 'form','laydate'], function(){
+
+    });
+</script>
+<div class="clear"></div>
+<div class=foot>
+
+</div>
+</body>
+</html>

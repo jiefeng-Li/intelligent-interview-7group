@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/index.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/css.css}" type="text/css"/>
+    <link th:href="@{/styles/microresume.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <title>店铺招聘 - 人才招聘系统</title>
+</head>
+
+<body class="once_bg">
+<div class="yun_new_top" th:insert="~{/commons/top}"></div>
+<div class="yunheader_60" th:insert="~{/commons/header}"></div>
+<div class="clear"></div>
+<div class="tiny_banner" style="background:#b8daf6">
+    <div class="tiny_banner_cont">
+        <div class="tiny_banner_cur">您当前的位置：
+            <a href="">首页</a> >
+            <a href="">店铺招聘</a>
+        </div>
+        <div class="once_banner_cont_b"><img th:src="@{/images/once_bg.jpg}" width="1200" height="220"/></div>
+        <div class="tiny_banner_bg"></div>
+        <div class="tiny_banner_fb">
+            <div class="tiny_banner_fb_h1">发布店铺招聘</div>
+            <div class="tiny_banner_fb_p">快速发布招聘信息，这里也能找到满意人才！</div>
+            <div class="tiny_banner_fb_fb">
+                <a th:href="@{/shop/addjob}" class="recruit_user_public">发布店铺招聘</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="yun_content">
+    <div class="tiny_search">
+        <form action="" method="get">
+            <div class="tiny_search_list">
+                <span class="tiny_search_name">筛选条件：</span>
+                <div class="tiny_search_choice">
+                    <input type="button" value="时间范围" id="add_times" class="tiny_search_but">
+                    <div class="tiny_search_select none" id="res_menu">
+                        <ul class="">
+                            <li>
+                                <a href=""> 不限</a>
+                            </li>
+                            <li>
+                                <a href=""> 一周以内</a>
+                            </li>
+                            <li>
+                                <a href=""> 半个月</a>
+                            </li>
+                            <li>
+                                <a href=""> 一个月</a>
+                            </li>
+                            <li>
+                                <a href=""> 两个月</a>
+                            </li>
+                            <li>
+                                <a href=""> 半年</a>
+                            </li>
+                            <li>
+                                <a href=""> 一年</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="tiny_search_text">
+                    <input id="key_word" class="tiny_search_t" type="text" value="请输入关键字" name="keyword"
+                           placeholder="请输入关键字" /></div>
+                <input type="submit" value="搜索" id="search_button" class="tiny_search_bth yun_bg_color"/>
+            </div>
+            <!--   city-->
+            <div class="Search_citybox">
+                <div class="Search_cityboxname">按&nbsp;地&nbsp; 区：</div>
+                <div class="Search_citybox_right">
+                    <div class="Search_cityall none">
+                        <a href="" class="city_name">全部</a>
+                        <a href=""
+                           class="city_name ">北京</a>
+                        <a href=""
+                           class="city_name ">天津</a>
+                        <a href=""
+                           class="city_name ">上海</a>
+                        <a href=""
+                           class="city_name ">重庆</a>
+                        <a href=""
+                           class="city_name ">江苏</a>
+                        <a href=""
+                           class="city_name ">安徽</a>
+                        <a href=""
+                           class="city_name ">广东</a>
+                        <a href=""
+                           class="city_name ">浙江</a>
+                        <a href=""
+                           class="city_name ">福建</a>
+                    </div>
+                    <div class="Search_cityboxright">
+                        <a href="javascript:;"
+                           class="search_city_list_cur search_city_active  none  acity_two"
+                           style="text-decoration:none;cursor:pointer;">
+                            <span class="search_city_p"></span>
+                            <i class="search_city_p_jt"></i>
+                            <i class="search_city_list_line"></i>
+                        </a>
+                        <a href="javascript:;" class="search_city_list_cur  none acity_three"
+                           style="text-decoration:none;cursor:pointer;">
+							<span class="search_city_p">
+								不限							</span>
+                            <i class="search_city_list_line"></i>
+                        </a>
+                        <a href=""
+                           class="search_city_list_all city_name_active">全部</a>
+                        <div class="search_city_list">
+                            <a href="" class="city_name">北京</a>
+                            <a href="" class="city_name">天津</a>
+                            <a href="" class="city_name">上海</a>
+                        </div>
+                        <a href="javascript:;" class="search_city_list_more" id="acity">更多</a>
+                    </div>
+                    <div class="Search_cityboxclose none" id="acity_two">
+                        <a href="" class="city_name ">不限</a>
+
+                    </div>
+                    <div class="Search_cityboxclose none" id="acity_three">
+                        <a href="" class="city_name ">不限</a>
+                    </div>
+                </div>
+            </div>
+            <!--   city end-->
+        </form>
+        <div class="tiny_search_want"><span class="tiny_search_name">关&nbsp;键&nbsp; 字：</span>
+        </div>
+    </div>
+
+    <div class="once_list_left">
+        <div class="once_list_tit"> 共为您找到 <span class="tiny_list_tit_n" id="totalshow"> 0 </span> 条店铺信息</div>
+        <div class="once_list_left_box">
+            <div class="once_list">
+                <div class="once_list_pic"><img src="" width="200" height="130" alt="111"/></div>
+                <div class="once_list_info">
+                    <div class="once_list_name">
+                        <a href="" target="_blank" class="once_list_name_a" title="111">111</a> <span
+                            class="once_list_gx">  <span style="color:red;">刚刚</span> 更新</span>
+                    </div>
+                    <div class="once_list_dpname">222 地区：北京-北京</div>
+                    <div class="once_list_p">要求： 111<a href="" class="once_list_p_a">详情</a></div>
+                    <span class="once_list_xz">￥22</span>
+                    <div class="once_list_tel">15982352917<span class="once_list_tel_man">111</span></div>
+                    <div class="once_list_tel_bg"></div>
+                    <div class="once_list_add">联系地址：111</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="hp_foot fl">
+</div>
+</body>
+</html>

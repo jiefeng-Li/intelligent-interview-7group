@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台 -人才招聘系统</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/ucenter_header}"></div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}"></div>
+    <div class="yun_m_rightsidebar">
+        <div class="user_new_tit">
+            <span class="user_new_tit_n">申请的职位</span><span class="user_new_tit_r">您已申请 <span
+                style="color:red;">1</span> 条职位,请耐心等待企业回复！</span>
+            <div class="job_td_list_box">
+                <div class="job_td_list">
+                    投递反馈：
+                    <a href="" class="job_td_list_cur">不限</a>
+                    <a href="" class="job_td_list_a">未查看</a>
+                    <a href="" class="job_td_list_a">已面试</a>
+                    <a href="" class="job_td_list_a">不合适</a>
+                    <a href="" class="job_td_list_a">已入职</a>
+                </div>
+                <div class="job_td_list ">
+                    投递时间：
+                    <a href="" class="job_td_list_cur">不限</a>
+                    <a href="" class="job_td_list_a">今天</a>
+                    <a href="" class="job_td_list_a">最近三天</a>
+                    <a href="" class="job_td_list_a">最近七天</a>
+                    <a href="" class="job_td_list_a">最近半月</a>
+                    <a href="" class="job_td_list_a">最近一个月</a>
+                </div>
+            </div>
+        </div>
+        <div class="yun_m_rightbox fltR mt20 re">
+            <div class="clear"></div>
+            <div class="resume_box_list">
+                <div id="gms_showclew"></div>
+                <form action="index.php" method="get" target="supportiframe" id='myform'>
+                    <div class="user_new_listtit">
+                        <div class=" user_new_job" style="width:260px;">岗位</div>
+                        <div class=" user_new_time">投递时间</div>
+                        <div class=" user_new_tdzt">状态</div>
+                        <div class=" user_new_yqh">招聘状态</div>
+                        <div class=" user_new_cz">操作</div>
+                    </div>
+
+                    <div class="jobnotice_list">
+                        <div class=" user_new_job" style="width:260px;">
+                            <div class="">
+                                <a href="" target="_blank" title="架构师" class="user_new_jobname">架构师</a>
+                            </div>
+                            <div class="user_new_jobxz">面议</div>
+                            <div class="user_new_comname">
+                                <a href="" target="_blank" title="小蛙科技" class="">小蛙科技 </a>
+                            </div>
+                        </div>
+                        <div class="user_new_time"><span class="msg_zt_s">2025-06-12</span></div>
+                        <div class="user_new_tdzt">
+                            <span class="td_zt"><i class="td_zt_xz"></i>已投递<i class="td_zt_q"></i><i
+                                    class="td_zt_q2"></i><i class="td_zt_q3"></i><i class="td_zt_q4"></i></span>
+                            <span class="td_zt td_ztmy"><i class="td_zt_w"></i>已查看<i class="td_zt_q"></i><i
+                                    class="td_zt_q2"></i><i class="td_zt_q3"></i><i class="td_zt_q4"></i></span>
+                            <span class="td_zt td_ztmy"><i class="td_zt_w"></i>已面试<i class="td_zt_q"></i><i
+                                    class="td_zt_q2"></i><i class="td_zt_q3"></i><i class="td_zt_q4"></i></span>
+                            <span class="td_zt "><i class="td_zt_w"></i>已入职</span>
+                        </div>
+                        <div class=" user_new_yqh">
+                            <span class="">招聘中</span>
+                        </div>
+                        <div class=" user_new_cz">
+
+                            <a href="javascript:void(0)" class="user_new_yqh_ch">撤回</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </form>
+                <div class="diggg" style="margin-top:10px; float:right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+<div class="clear"></div>
+
+<div class=foot>
+    <div class="footernav">
+        <div class="footer_bot_p">Copyright © 20092014 All Rights Reserved 版权所有
+            宿迁鑫潮信息技术有限公司1苏ICP备12049413号-3
+        </div>
+        <div class="footer_bot_p">地址:高新技术开发区A栋17层 电话(Tel):400-880-XXXX8 EMAIL:admin@admin.com</div>
+        <div class="footer_bot_p">Powered by <a target="_blank" href="http://www.phpyun.com">PHPYun.</a></div>
+    </div>
+</div>
+
+</body>
+</html>
+

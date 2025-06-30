@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统招聘信息</title>
+    <link th:href="@{/styles/index.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+            let token = localStorage.getItem("token");
+            if (!token) {
+                $("#nologindiv").show()
+                $("#logindiv").hide()
+                $(".login_ok").hide()
+                $(".login_no_ok").show()
+            } else {
+                $.ajax({
+                    url: "http://localhost:10005/user/getuserinfo",
+                    type: "POST",
+                    headers: {
+                        "token": token
+                    },
+                    dataType: "json",
+                    success: function (r) {
+                        if (r.code === 200) {
+                            console.log(r.data)
+                            $("#nologindiv").hide()
+                            $("#logindiv").show()
+                            $("#top_account").text(r.data.account)
+                            $(".login_ok").show()
+                            $(".login_no_ok").hide()
+                            $("#index_account").text(r.data.account)
+                            $("#login_ok_user_photo_img").attr("src", r.data.avatar)
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+</head>
+<body class="body_bg">
+<div class="yun_new_top" th:insert="~{/commons/top}"></div>
+<div class="yunheader_60" th:insert="~{/commons/header}"></div>
+<div class="clear"></div>
+<div class="w1200">
+    <div class="first_floor ">
+        <div class="first_floor_top">
+            <!-- 职位类别-->
+            <div class="yunheader_60zwlb">
+                <div class="leftNav ">
+                    <div id="menuLst" class="menuLst">
+                        <ul>
+                            <li class="lst0 " onmouseover="show_job(0,'1');" onmouseout="hide_job(0);"><b></b>
+                                <a class="link" href=""
+                                   title="生产制造">生产制造</a><i></i>
+                                <div class="lstCon">
+                                    <div class="lstConClass">
+                                        <dl>
+                                            <dt>
+                                                <a href="">生产营运</a>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯 公告-->
+            <div class="index_frist_box">
+                <div class="index_huandeng" id="ban">
+                    <div class="layui-carousel" id="test1" lay-filter="test1">
+                        <div carousel-item="">
+                            <a href="" target="_blank" rel="nofollow" class="layui-this">
+                                <img th:src="@{/images/14970247553.JPG}">
+                            </a>
+                            <a href="" target="_blank" rel="nofollow" class="">
+                                <img th:src="@{/images/14992057095.PNG}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 登录-->
+            <div class="fastloginbox ">
+                <div class="hp_login">
+                    <div class="hp_login">
+                        <div class="login_ok">
+                            <div class="login_ok_user">
+                                <div class="login_ok_user_photo">
+                                    <img id="login_ok_user_photo_img" width="60" height="60" src="">
+                                </div>
+                                <div class="login_ok_username">hi , <span id="index_account"></span></div>
+                                <div class="login_ok_hi">欢迎回来</div>
+                            </div>
+                            <div class="login_ok_n_list"><a href=""><span class="login_ok_n">0</span>
+                                <div class="login_ok_name">面试通知</div>
+                            </a></div>
+                            <div class="login_ok_n_list"><a href=""><span class="login_ok_n">0</span>
+                                <div class="login_ok_name">收藏记录</div>
+                            </a></div>
+                            <div class="login_ok_n_list"><a href=""><span class="login_ok_n">0 </span>
+                                <div class="login_ok_name">企业看过</div>
+                            </a></div>
+                            <div class="login_ok_mune">
+                                <div class="login_ok_mune">
+                                    <div class="login_ok_mune_list">
+                                        <a href=""><i class="login_ok_mune_icon"></i>我的简历</a>
+                                    </div>
+                                    <div class="login_ok_mune_list">
+                                        <a href=""><i class="login_ok_mune_icon login_ok_mune_icon_cj"></i>创建简历</a>
+                                    </div>
+                                    <div class="login_ok_mune_list"><a href=""><i
+                                            class="login_ok_mune_icon login_ok_mune_icon_gz"></i>关注记录</a></div>
+                                    <div class="login_ok_member"><a th:href="@{/ucenter}" class="login_ok_member_bth">进入管理中心</a>
+                                        <a href="javascript:void(0);" onclick=""
+                                           class="login_ok_member_bthtc">退出登录</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--登录-->
+                        </div>
+                        <div class="login_no_ok">
+                            <div class="hp_login_tit">
+                                <input type="hidden" name="act" id="ajaxact_login" value="0">
+                                <ul class="login_box_h_list">
+                                    <li id="ajaxacount_login" class="login_box_h_list_cur"><i></i>账号登录</li>
+                                </ul>
+                            </div>
+                            <div id="login_normal">
+                                <div class="login_normal_box" id="ajaxlogin_normal_box">
+                                    <div class="hp_login_hy"><i class="hp_login_hy_icon fl"></i><i
+                                            class="hp_login_line"></i>
+                                        <input class="hp_login_hy_but fl" type="text" id="ajaxusername"
+                                               name="ajaxusername"
+                                               value="邮箱/手机号/用户名" placeholder="邮箱/手机号/用户名"
+                                               autocomplete="off">
+                                        <div class="index_logoin_msg none" id="ajaxshow_name">
+                                            <div class="index_logoin_msg_tx">请填写用户名</div>
+                                            <div class="index_logoin_msg_icon"></div>
+                                        </div>
+                                    </div>
+                                    <div class="hp_login_hy">
+                                        <i class="hp_login_mm_icon fl"></i> <i class="hp_login_line"></i>
+                                        <input type="text" id="password2" value="请输入密码" class="hp_login_hy_but fl">
+                                        <input type="password" id="ajaxpassword" name="ajaxpassword"
+                                               class="hp_login_hy_but fl none" value="" placeholder="请输入密码">
+                                        <div class="index_logoin_msg none" id="ajaxshow_pass">
+                                            <div class="index_logoin_msg_tx">请填写密码</div>
+                                            <div class="index_logoin_msg_icon"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hp_login_lg">
+                                    <input class="hp_login_lg_but" type="button" value="立即登录">
+                                </div>
+                                <div class="clear"></div>
+                                <div class="hp_login_rg fl">
+                                    <a href="" class="hp_login_rg_r fl">忘记密码</a>
+                                    <span class="hp_login_rg_l fr"><a th:href="@{/reg}">注册账号</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="index_frame_right">
+        <div class="yunheader_60_tit">
+            <a href="" target="_blank" class="yunheader_60_tit_a">
+                <i class="yunheader_60_tit_line"></i>名企招聘
+                <i class="yunheader_60_tit_rline"></i>
+            </a>
+        </div>
+        <div class="index_mq_box">
+            <div class="index_mq_box_cont">
+                <div class="tlogo">
+                    <ul>
+                        <li onmouseover="showDiv2(this)" onmouseout="showDiv2(this)">
+                            <div class="index_mq_box_pic">
+                                <a href="" target="_blank" class="tlogo_p_a" title="某科技有限公司1">
+                                    <img class="on lazy" th:src="@{/images/14906489056.png}" alt="某科技有限公司1">
+                                </a>
+                            </div>
+                            <div class="index_mq_box_name nowrap">某科技有限公司1</div>
+                            <div class="index_mq_box_info">10-50人<i class="index_newjob_info_line">|</i>计算机/互联网
+                            </div>
+                            <div class="index_mq_box_hot"><span class="index_mq_box_hot_n">1</span>个热招职位</div>
+                            <div class="index_mq_box_cont_showall">
+                                <div class="index_mq_box_cont_showall_c">
+                                    <div class="index_mq_box_cont_bg"></div>
+                                    <div class="index_mq_box_cont_showjob">
+                                        <div class="index_mq_box_cont_showjob_c">
+                                            <div class="index_mq_box_cont_showcomname">
+                                                <a href="" target="_blank" title="某科技有限公司1">某科技有限公司1</a>
+                                            </div>
+                                            <div class="index_mq_box_cont_showcomname_linebox">
+                                                <i class="index_mq_box_cont_showcomname_line"></i>
+                                            </div>
+                                            <div class="index_mq_box_cont_showjoblist"><a href="">Java开发工程</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="yunheader_60lookmore">
+            <a href="">查看更多</a>
+        </div>
+    </div>
+
+    <div class="index_zl_box">
+        <div class="yunheader_60_tit">
+            <a href="" target="_blank" class="yunheader_60_tit_a">
+                <i class="yunheader_60_tit_line"></i>最新职位
+                <i class="yunheader_60_tit_rline"></i>
+            </a>
+        </div>
+
+        <!-- 最新职位 -->
+        <div class="index_newjobbox index_zw_item">
+            <ul>
+                <li>
+                    <div class="index_newjobname">
+                        <a th:href="@{/job/view}"
+                           title="软件测试工程师">软件测试工程师</a>
+                        <span class="index_newjob_info_xz">5000-7000元</span>
+                    </div>
+                    <div class="index_newjob_info nowrap">
+                        成都
+                        <i class="index_newjob_info_line">|</i>不限经验
+                        <i class="index_newjob_info_line">|</i> 不限学历
+                    </div>
+                    <div class="index_newjob_com nowrap">
+                        <img src="images/14906489056.PNG"
+                             class="index_newjob_com_tx"/>
+                        <div class="index_newjob_comname"><a
+                                href=""
+                                title="成都蜗牛创想职业技能培训学校有限公司">成都蜗牛创想职业技能培训学校有限公司</a>
+                        </div>
+                        <div class="index_newjob_cominfo">计算机/互联网<i class="index_newjob_info_line">|</i>
+                            50-200人
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="yunheader_60lookmore"><a href="">查看更多</a></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+</div>
+<div class="hp_foot fl" th:insert="~{/commons/footer}"></div>
+<script>
+    layui.use(['carousel', 'flow'], function () { //layui 轮播  test1 test2
+        var carousel = layui.carousel;
+        var flow = layui.flow;
+        flow.lazyimg();
+        carousel.render({
+            elem: '#test1',
+            width: '675px',
+            height: '315px'
+        });
+
+        carousel.render({
+            elem: '#test2',
+            width: '290px',
+            height: '190px',
+            indicator: 'none' //指示器属性；隐藏：none，容器内部：inside，容器外部：outside；
+        });
+    });
+
+    function showDiv2(obj) {
+        if ($(obj).attr("class") === "current1") {
+            $(obj).removeClass();
+        } else {
+            $(obj).addClass("current1");
+            $(obj).find(".shade").height($(obj).find(".area").height() + 60)
+        }
+    }
+
+
+</script>
+</body>
+</html>

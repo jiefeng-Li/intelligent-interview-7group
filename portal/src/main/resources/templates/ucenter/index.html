@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/layui/layui.js}"></script>
+</head>
+<body>
+<div class="user_header" th:insert="~{/commons/ucenter_header}"></div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}"></div>
+    <div class="yun_m_rightsidebar">
+        <div class="yun_m_index_date_box">
+            <div class="yun_m_index_date_box_c">
+                <div class="yun_m_index_date_list">
+                    <a href="">
+                        <i class="yun_m_index_date_icon1"></i>
+                        <div class="yun_m_index_datename">面试通知</div>
+                        <div class="yun_m_index_date_n">
+                            <span class="yun_m_index_d_c">0</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="yun_m_index_date_list">
+                    <a href="">
+                        <i class="yun_m_index_date_icon2"></i>
+                        <div class="yun_m_index_datename">申请记录</div>
+                        <div class="yun_m_index_date_n"> 0</div>
+                    </a>
+                </div>
+                <div class="yun_m_index_date_list">
+                    <a href="">
+                        <i class="yun_m_index_date_icon3"></i>
+                        <div class="yun_m_index_datename">收藏记录</div>
+                        <div class="yun_m_index_date_n"> 0</div>
+                    </a>
+                </div>
+                <div class="yun_m_index_date_list yun_m_index_date_list_end">
+                    <a href="">
+                        <i class="yun_m_index_date_icon4"></i>
+                        <div class="yun_m_index_datename">我的关注</div>
+                        <div class="yun_m_index_date_n"> 0</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="yun_m_index_resume">
+                <div class="yun_m_index_resume_tit">
+                    <div class="yun_m_index_resume_span">我的简历</div>
+                    <div class="user_resume_box">
+                        <div class="user_resume_photo">
+                            <a href="">
+                                <img src="" border="0"/>
+                            </a>
+                        </div>
+                        <div class="user_resume_info">
+                            <div class="user_resume_name">老谭<span class="user_resume_job">软件测试</span></div>
+                            <div class="user_resume_p">
+                                35岁<span class="user_resume_line">|</span> 6年以上经验<span
+                                    class="user_resume_line">|</span> 本科学历
+                            </div>
+                            <div class="user_resume_p2">
+                                已离职，寻求新工作-1周以内
+                            </div>
+                        </div>
+                        <div class="user_resume_c">
+                            <div class="user_resume_wzd">
+                                <span class="user_resume_wzd_name">简历完整度：</span>
+                                <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75%"></span>
+                                </div>
+                                <span class="user_resume_wzd_r">75%</span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="user_resume_p user_resume_pd">更新日期：2025-06-11 12:36:44</div>
+                            <div class="user_resume_p">被浏览：0</div>
+                        </div>
+                        <div class="user_resume_cz">
+                            <div class="user_resume_cz_p">
+                                <a href="" class="user_resume_cz_a user_resume_cz_icon2">刷新简历</a>
+                            </div>
+                            <div class="user_resume_cz_p">
+                                <a href="" class="user_resume_cz_a user_resume_cz_icon4">预览简历</a>
+                            </div>
+                            <div class="user_resume_cz_p">
+                                <a href="" class="user_resume_cz_a user_resume_cz_icon3">修改简历</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_resume_boxtip">
+                        <div class="user_resume_boxtip_c">
+                            <div class="user_resume_boxtip_h1">你的简历缺少项目经历，会极大影响求职成功率哦！</div>
+                            <div class="user_resume_boxtip_p">完善项目经历，可以有效提高求职成功率</div>
+                            <a href="" class="user_resume_boxtip_bth">完善项目经历 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="member_right_box_banner fltL" style="width:100%; overflow:hidden"></div>
+        <div class="yun_m_index_job mt20 fltL">
+            <div class="yun_m_index_job_tit"><span class="yun_m_index_job_tit_s">最新岗位</span></div>
+            <div id="joblist" class="member_right_job_box">
+                <ul>
+                    <li class="yun_index_joblist">
+                        <div class="yun_index_joblist_jobname"><a
+                                href=""
+                                class="member_right_job_box_name cblue" target="_blank">软件测试工程师</a></div>
+                        <div class="yun_index_joblist_comname"><a
+                                href="" target="_blank">成都蜗牛创想职业技能</a>
+                        </div>
+                        <div class="yun_index_joblist_xz"><span class="member_right_job_xz">5000-7000元</span></div>
+                        <div class="yun_index_joblist_yq nowrap">成都 | 不限 | 不限经验</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--fristtck start-->
+<div class="index_no_resume_box" id="yindao" style="display:block;">
+    <div class="yun_prompt_writingicon" style="padding-top:0px"><i class="yun_prompt_writingicon_cj"></i></div>
+    <div class="yun_prompt_writing">亲，您还没有简历</div>
+    <div class="yun_prompt_writing_obtain">简历是求职第一步，优质的简历助您找到满意工作！</div>
+    <div class="yun_prompt_writing_tip">创建简历请认真填写</div>
+    <div class="yun_prompt_writing_operation">
+        <a href="" class="yun_prompt_writing_operation_bth">立即创建简历</a>
+        <a class="close_yd" href="javascript:void(0)">暂不创建</a>
+    </div>
+</div>
+<!--fristtck end-->
+<div class="clear"></div>
+<div class=foot>
+
+</div>
+</body>
+</html>

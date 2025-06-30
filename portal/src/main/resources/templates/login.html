@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-登录</title>
+    <link rel="stylesheet" href="styles/css.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/login.css" type="text/css"/>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+            $("#sublogin").click(function () {
+                let data = {
+                    "account": $("#account").val(),
+                    "password": $("#password").val()
+                }
+                $.ajax({
+                    url: "http://localhost:10005/user/login",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function (r, d, xhr) {
+                        console.log(r)
+                        console.log(xhr)
+                        console.log(xhr.getResponseHeader("token"))
+                        if (r.code === 200) {
+                            //获取响应头中的令牌并存储在客户端
+                            let token= xhr.getResponseHeader("token")
+                            localStorage.setItem("token",token)
+                            //跳转页面
+                            if(!r.data){
+                                location.href="ident"
+                            }else{
+                                if(r.data==1){
+                                    location.href="/ucenter"
+                                }else{
+                                    location.href="/ecenter"
+                                }
+                            }
+
+                        }else if(r.code===201){
+
+                        }else{
+
+                        }
+                    }
+                })
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="login_cont">
+    <div class="login_w960">
+        <div class="login_header ">
+            <div class="logo fl" style="position:relative">
+                <a th:href="@{/}"><img th:src="@{/images/logo.png}" class="png"></a>
+            </div>
+            <a th:href="@{/}" class="logo_fh fr">返回网站首页>></a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="logoin_cont_box">
+        <div class="login_left ">
+            <div class="login_box_cont">
+                <div class="login_box_h1_d">
+                    <input type="hidden" name="act" id="act_login" value=""/>
+                    <ul class="login_box_h_list">
+                        <li id="acount_login" class="login_box_h_list_cur">账号登录<i class="login_box_h_icon"></i></li>
+                    </ul>
+                </div>
+                <div class="login_t_box">
+                    <div class="login_box_cot" id="login_normal">
+                        <div class="login_normal_box" id="login_normal_box">
+                            <div class="login_box_list">
+                                <i class="login_box_icon login_box_username"></i>
+                                <input type="text" class="login_box_bth placeholder loginname" placeholder="用户名"
+                                       name="username" id="account" autocomplete="off"/>
+                                <div class="logoin_msg none" id="show_name">
+                                    <div class="logoin_msg_tx">请填写用户名</div>
+                                    <div class="logoin_msg_icon"></div>
+                                </div>
+
+                            </div>
+                            <div class="login_box_list">
+                                <i class="login_box_icon loginpwd"></i>
+                                <input type="text" id="password" class="login_box_bth placeholder loginname "
+                                       placeholder="密码" autocomplete="off"/>
+                                <div class="logoin_msg none" id="show_pass">
+                                    <div class="logoin_msg_tx">请填写密码</div>
+                                    <div class="logoin_msg_icon"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="login_box_list">
+                            <i class="login_box_icon loginpyz"></i>
+                            <input id="txt_CheckCode" type="text" class="login_box_bth_yz loginname " value="验证码"
+                                   maxlength="6" name="authcode" autocomplete="off"/>
+                            <div class="login_box_list_yzm">
+                                <img id="vcode_imgs" src=""/>
+                            </div>
+                            <div class="logoin_msg none" id="show_code">
+                                <div class="logoin_msg_tx">请输入验证码</div>
+                                <div class="logoin_msg_icon"></div>
+                            </div>
+                        </div>
+                        <!--登录-->
+                        <div class="clear"></div>
+                        <div class="login_box_cz">
+                            <input type="button" value="登 录" id='sublogin' class="login_box_bth2"/>
+                        </div>
+                        <div class="login_box_fw">
+                            <span class="fl">没有账号？ <a th:href="@{/reg}" class="">注册账号</a></span>
+                            <a th:href="@{/findpwd}" class="fr">忘记密码？</a>
+                        </div>
+                    </div>
+                    <!--其他登录方式-->
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--banner-->
+    <div class="logoin_banner">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background: url('images/login_bg.jpg') 50% 0 no-repeat;">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="reg_footer">如果您有任何疑问或在登录过程中遇到任何困难，您都可以通过以下方式与我们联系
+        <div class="">电话： 400-880-XXXX <span class="reg_footer_yz">客服QQ：84091835</span></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>人才招聘系统-注册</title>
+    <link rel="stylesheet" th:href="@{/styles/css.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/login.css}" type="text/css"/>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+            $("#u_div").click(function () {
+                setUserType("1")
+            })
+            $("#e_div").click(function () {
+                setUserType("2")
+            })
+        })
+
+        function setUserType(type) {
+            $.ajax({
+                url: "http://localhost:10005/user/setusertype/" + type,
+                type: "post",
+                headers:{
+                    "token":localStorage.getItem("token")
+                },
+                dataType: "json",
+                success: function (r) {
+                    if (r.code === 200) {
+                        if (type == 1) {
+                            location.href = "ucenter"
+                        } else {
+                            location.href = "ecenter"
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="register_header">
+    <div class="reg_w980">
+        <div class="reg_logo">
+            <a th:href="@{/}"><img th:src="@{/images/logo.png}" class="png"></a>
+        </div>
+        <div class="reg_msg">欢迎注册</div>
+        <a th:href="@{/}" class="reg_fh yun_text_color fr">返回首页</a>
+    </div>
+</div>
+<div class="clear"></div>
+<!--content  start-->
+<div class="reg_content">
+    <div class="reg_stepbox">
+        <ul class="reg_stepbox_list">
+            <li class="reg_stepcur"><span class="reg_stepbox_n">1</span><em class="reg_stepbox_name">创建账户</em></li>
+            <li class="reg_stepcur"><span class="reg_stepbox_line"></span></li>
+            <li class="reg_stepcur"><span class="reg_stepbox_n">2</span><em class="reg_stepbox_name">设置身份信息</em>
+            </li>
+            <li class="reg_stepcur"><span class="reg_stepbox_line"></span></li>
+            <li><span class="reg_stepbox_n"><i class="reg_stepbox_cgicon"></i></span><em
+                    class="reg_stepbox_name">注册成功</em></li>
+        </ul>
+    </div>
+
+    <div class="logoin_cont fl">
+        <div class="reg_content_tit">请从下方选择您的角色类型，享受专属功能</div>
+
+        <ul class="reg_role">
+            <li>
+                <a href="javascript:void(0)" id="u_div">
+                    <div class="regok_box_icon"><span class="regok_box_user_icon"><i class="regok_box_user_icon_gr"></i></span>
+                    </div>
+                    <div class="regok_box_user">我要找工作</div>
+                    <div class="regok_box_user_p">免费发布简历，海量职位随意挑</div>
+                    <div class="reg_role_bth">进入用户中心<i class="reg_role_bth_line"></i></div>
+                </a></li>
+            <li>
+                <a href="javascript:void(0)" id="e_div">
+                    <div class="regok_box_icon"><span class="regok_box_user_icon"><i class="regok_box_user_icon_qy"></i></span>
+                    </div>
+                    <div class="regok_box_user">我要招人</div>
+                    <div class="regok_box_user_p">发布招聘信息，收取简历投递</div>
+                    <div class="reg_role_bth">进入用户中心<i class="reg_role_bth_line"></i></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="reg_footer">如果您有任何疑问或在注册过程中遇到任何困难，您都可以通过以下方式与我们联系
+        <div class="">电话： 400-880-XXXX <span class="reg_footer_yz">客服QQ：84091835</span></div>
+    </div>
+</div>
+
+</body>
+</html>

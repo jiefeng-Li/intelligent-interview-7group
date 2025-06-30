@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/index.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/microresume.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/layui/layui.js}"></script>
+    <title>店铺招聘 - 人才招聘系统</title>
+</head>
+
+<body class="once_bg">
+<div class="yun_new_top" th:insert="~{/commons/top}"></div>
+<div class="yunheader_60" th:insert="~{/commons/header}"></div>
+<div class="clear"></div>
+<div class="tiny_banner">
+    <div class="tiny_banner_cont">
+        <div class="tiny_banner_cur">您当前的位置：<a href="">首页</a> > <a href="">普工专区</a></div>
+        <div class="once_banner_cont_b"><img th:src="@{/images/resume_banner.jpg}"/></div>
+        <div class="tiny_banner_bg"></div>
+        <div class="tiny_banner_fb">
+            <div class="tiny_banner_fb_h1"> 我要发布简历</div>
+            <div class="tiny_banner_fb_p">用简短的文字介绍自己的优势，针对性的找到自己满意的工作！</div>
+            <div class="tiny_banner_fb_fb">
+                <a th:href="@{/worker/add}" class="recruit_user_public">发布普工简历</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="micro_resume_bg">
+    <div class="micro_resume">
+        <form action=""   method="get">
+            <div class="tiny_search">
+            <div class="tiny_search_list"><span class="tiny_search_name">筛选条件：</span>
+                <div class="tiny_search_choice">
+                    <input type="button" value="时间范围" id="add_times" class="tiny_search_but">
+                    <div class="tiny_search_select none" id="tiny_time">
+                        <ul>
+                            <li><a href=""> 不限</a></li>
+                            <li><a href=""> 一周以内</a></li>
+                            <li><a href=""> 半个月</a></li>
+                            <li><a href=""> 一个月</a></li>
+                            <li><a href=""> 两个月</a></li>
+                            <li><a href=""> 半年</a></li>
+                            <li><a href=""> 一年</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tiny_search_choice">
+                    <input type="button" value="性别要求" id="add_sexs" class="tiny_search_but">
+                    <div class="tiny_search_select none"  id="tiny_sex">
+                        <ul>
+                            <li><a href=""> 男</a></li>
+                            <li><a href=""> 女</a></li>
+                        </ul></div>
+                </div>
+                <div class="tiny_search_choice">
+                    <input type="button" value="工作经验" id="add_exps" class="tiny_search_but">
+                    <div class="tiny_search_select none"  id="tiny_exp">
+                        <ul>
+                            <li><a href=""> 应届毕业生</a></li>
+                            <li><a href=""> 1年以上</a></li>
+                            <li><a href=""> 2年以上</a></li>
+                            <li><a href=""> 3年以上</a></li>
+                            <li><a href=""> 4年以上</a></li>
+                            <li><a href=""> 5年以上</a></li>
+                            <li><a href=""> 6年以上</a></li>
+                            <li><a href=""> 8年以上</a></li>
+                            <li><a href=""> 10年以上</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tiny_search_text">
+                    <input id="key_word" class="tiny_search_t" type="text" value="请输入普工简历的关键字"  name="keyword" placeholder="请输入普工简历的关键字"/>
+                </div>
+                <input type="submit"  value="搜索" id="search_button" class="tiny_search_bth"/>
+            </div>
+        </form>
+
+        <!--   city-->
+        <div class="Search_citybox">
+            <div class="Search_cityboxname">按&nbsp;地&nbsp; 区：</div>
+            <div class="Search_citybox_right">
+                <div class="Search_cityall none">
+                    <a href="" class="city_name">全部</a>
+                </div>
+                <div class="Search_cityboxright">
+                    <a href="javascript:;" class="search_city_list_cur search_city_active  none  acity_two" style="text-decoration:none;cursor:pointer;">
+                        <span class="search_city_p"></span>
+                        <i class="search_city_p_jt"></i>
+                        <i class="search_city_list_line"></i>
+                    </a>
+                    <a href="javascript:;"  class="search_city_list_cur  none acity_three" style="text-decoration:none;cursor:pointer;">
+							<span class="search_city_p">
+								不限							</span>
+                        <i class="search_city_list_line"></i>
+                    </a>
+                    <a href="http://localhost/phpyun/index.php?page=1&m=tiny" class="search_city_list_all city_name_active">全部</a>
+                    <div class="search_city_list">
+                        <a href="" class="city_name  ">北京</a>
+                     </div>
+                    <a href="javascript:;" class="search_city_list_more" id="acity">更多</a>
+                </div>
+                <div class="Search_cityboxclose none" id="acity_two">
+                    <a href="" class="city_name ">不限</a>
+                </div>
+                <div class="Search_cityboxclose none" id="acity_three">
+                    <a href="" class="city_name ">不限</a>
+                </div>
+            </div>
+        </div>
+        <!--   city end-->
+        <div class="tiny_search_want"><span class="tiny_search_name">关&nbsp;键&nbsp; 字：</span> </div>
+    </div>
+    <div class="micro_resume_cont">
+        <div class="tiny_list_box">
+            <div class="tiny_list_tit"> 共为您找到 <span class="tiny_list_tit_n" id="totalshow"> 0 </span> 条普工信息</div>
+            <div class="tiny_list_box_c">
+                <div class="tiny_list">
+                    <div class="tiny_list_name"><a th:href="@{/worker/view}" title="成都门卫"> 成都门卫</a></div>
+                    <span class="tiny_list_time">  2025-01-01  更新</span>
+                    <div class="tiny_list_info">老谭 <i>|</i>男<i>|</i> 经验</div>
+                    <div class="tiny_list_info_tel">
+                        <span class="tiny_tel">联系电话：15980123456</span>
+                    </div>
+                </div>
+                <div class="tiny_list">
+                    <div class="tiny_list_name"><a href="" title="成都门卫"> 成都门卫</a></div>
+                    <span class="tiny_list_time">  2025-01-01  更新</span>
+                    <div class="tiny_list_info">老谭 <i>|</i>男<i>|</i> 经验</div>
+                    <div class="tiny_list_info_tel">
+                        <span class="tiny_tel">联系电话：15980123456</span>
+                    </div>
+                </div>
+                <div class="tiny_list">
+                    <div class="tiny_list_name"><a href="" title="成都门卫"> 成都门卫</a></div>
+                    <span class="tiny_list_time">  2025-01-01  更新</span>
+                    <div class="tiny_list_info">老谭 <i>|</i>男<i>|</i> 经验</div>
+                    <div class="tiny_list_info_tel">
+                        <span class="tiny_tel">联系电话：15980123456</span>
+                    </div>
+                </div>
+                <div class="tiny_list">
+                    <div class="tiny_list_name"><a href="" title="成都门卫"> 成都门卫</a></div>
+                    <span class="tiny_list_time">  2025-01-01  更新</span>
+                    <div class="tiny_list_info">老谭 <i>|</i>男<i>|</i> 经验</div>
+                    <div class="tiny_list_info_tel">
+                        <span class="tiny_tel">联系电话：15980123456</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+            <div class="pages"></div>
+        </div>
+    </div>
+</div>
+
+<div class="hp_foot fl" th:insert="~{/commons/footer}"></div>
+
+</body>
+</html>

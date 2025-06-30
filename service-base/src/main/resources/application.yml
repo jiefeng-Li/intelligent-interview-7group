@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: service-base
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_base
+    username: root
+    password: 3121
+  cloud:
+    compatibility-verifier:
+      enabled: false
+server:
+  port: 10002
+
+logging:
+  level:
+    root: debug

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>个人用户管理平台 - 人才招聘系统</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
+    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="user_header" th:insert="~{/commons/ucenter_header}">
+</div>
+<div class="clear"></div>
+<div class="yun_w1200">
+    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}">
+    </div>
+    <div class="yun_m_rightsidebar">
+        <div class="user_new_tit"><span class="user_new_tit_n">我的简历</span>
+            <a href="" class="user_cjbth" style="float: right; margin-top:7px; margin-right: 10px;">创建简历</a>
+            <div class="user_czbth_r" style="float: right; background-color: #fff; padding-top: 8px;">
+                <a href="" class="user_czbth_ys user_czbth_line">隐私设置 </a>
+                <a href="" class="user_czbth_pp user_czbth_line" resumeid="2"
+                   type='pipei'>职位速配</a>
+                <a href="javascript:void(0)"
+                   title="直接粘贴已有的个人简历" class="user_czbth_zt">在线粘贴简历</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="yun_m_rightbox fltR mt20 re">
+        <div class="user_resume_list">
+            <div class="yun_m_index_resume_tit"><span class="yun_m_index_resume_span ">我的简历</span></div>
+            <div class="">
+                <div class="clear"></div>
+
+                <div class="user_resume_box">
+                    <div class="user_resume_photo">
+                        <a href="">
+                            <img src="" border="0"/>
+                        </a>
+                    </div>
+                    <div class="user_resume_info">
+                        <div class="user_resume_name">老谭<span class="user_resume_job">软件测试</span><span
+                                class="user_resume_mr">默认</span></div>
+                        <div class="user_resume_p">
+                            35岁<span class="user_resume_line">|</span> 6年以上经验<span
+                                class="user_resume_line">|</span> 本科学历
+                        </div>
+                        <div class="user_resume_p2">
+                            已离职，寻求新工作 - 1周以内
+                        </div>
+                    </div>
+                    <div class="user_resume_c">
+                        <div class="user_resume_wzd " id="tipid" rid="2">
+                            <span class="user_resume_wzd_name">简历完整度：</span>
+                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75% "></span>
+                            </div>
+                            <span class="user_resume_wzd_r">75% </span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="user_resume_p user_resume_pd">更新日期：2025-06-12 09:23:43</div>
+                        <div class="user_resume_p">被浏览：1</div>
+                    </div>
+                    <div class="user_resume_cz">
+                        <div class="user_resume_cz_p">
+                            <a href="javascript:void(0)"
+                               class="user_resume_cz_a user_resume_cz_icon5"> 删除简历</a>
+                        </div>
+                        <div class="user_resume_cz_p">
+                            <a href="" class="user_resume_cz_a user_resume_cz_icon3">修改简历</a>
+                        </div>
+                        <div class="user_resume_cz_p">
+                            <a href="" target="_blank"
+                               class="user_resume_cz_a user_resume_cz_icon4">预览简历</a>
+                        </div>
+                        <div class="user_resume_cz_p">
+                            <a
+                                    href="javascript:void(0)" class="user_resume_cz_a user_resume_cz_icon2">刷新简历</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="user_resume_boxtip">
+                    <div class="user_resume_boxtip_c">
+                        <div class="user_resume_boxtip_h1">
+                            你的简历缺少项目经历，会极大影响求职成功率哦！
+                        </div>
+                        <div class="user_resume_boxtip_p">
+                            完善项目经历，可以有效提高求职成功率
+                        </div>
+                        <a href="" class="user_resume_boxtip_bth">完善项目经历 </a>
+                    </div>
+                </div>
+
+                <!--  备用简历-->
+                <div class="myresume mt20" style="margin-left: 0px;">
+                    <span class="myresume_by">备用</span>
+                    <div class="myresume_left ">
+                        <div class="myresume_name">
+                            <a href="">Java开发</a>
+                        </div>
+                        <div class="user_resume_wzd " id="tipid" rid="1044751">
+                            <span class="user_resume_wzd_name">简历完整度：</span>
+                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75%"></span>
+                            </div>
+                            <span class="user_resume_wzd_r">75% </span>
+                        </div>
+
+                        <div class="myresume_type">
+                            <span class="myresume_type_s">类型：标准简历</span>
+                            <span class="myresume_type_s">更新时间：2025-06-12 09:30:19</span>
+                            <span class="myresume_type_s">被浏览：0</span>
+                            <span class="myresume_type_s">
+                                    状态：                                    <span
+                                    class="myresume_state_ysh">已审核</span>                                </span>
+                        </div>
+                    </div>
+                    <div class="myresume_right ">
+                        <a href="javascript:void(0);" class="myresume_right_cz_fmr_a">设为默认</a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="" class="myresume_right_cz_fmr_a">修改简历 </a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="" target="_blank"
+                           class="myresume_right_cz_fmr_a">预览简历</a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="javascript:void(0)"
+                           class="myresume_right_cz_fmr_a">删除简历 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class=foot>
+
+</div>
+</body>
+</html>
+
