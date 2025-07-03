@@ -1,14 +1,17 @@
 package com.groupseven.serviceresume.controller;
 
 
-import com.groupseven.serviceresume.Service.ResumeService;
+
 import com.groupseven.serviceresume.pojo.DTO.EduDTO;
 import com.groupseven.serviceresume.pojo.DTO.QueryDTO;
 import com.groupseven.serviceresume.pojo.DTO.ResumeDTO;
 import com.groupseven.serviceresume.pojo.DTO.WorkDTO;
 import com.groupseven.serviceresume.pojo.VO.ResumeListVO;
 import com.groupseven.serviceresume.pojo.VO.ResumeViewVO;
+import com.groupseven.pojo.dto.ResumeDto;
+
 import com.groupseven.serviceresume.pojo.entity.Resume;
+import com.groupseven.serviceresume.service.ResumeService;
 import lombok.extern.slf4j.Slf4j;
 import com.groupseven.common.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * 用户简历控制类
+ */
 @Slf4j
 @RestController
-@RequestMapping("resume")
 public class ResumeController {
     @Autowired
     private ResumeService resumeService;
@@ -29,6 +33,7 @@ public class ResumeController {
         log.debug("resume:{}", resume);
         return Result.success();
     }
+
     @PostMapping("del")
     public Result del(@RequestHeader("id") String userid, @RequestBody  QueryDTO queryDTO ) {
         try {
@@ -99,5 +104,24 @@ public class ResumeController {
         return Result.success();
     }
 
+    @PostMapping("getResumeByJobSends")
+    public Result<List<ResumeDto>> getResumeByJobSends(@RequestBody List<Integer> resumeIds) {
+        return Result.success(resumeService.getResumeByJobSends(resumeIds));
+    }
 
+    @GetMapping("/getResumeByUserId")
+    public Result<List<ResumeDto>> getResumeByUserId(@RequestParam Integer id) {
+        System.out.println("\n\n\nuser id is : " + id + " _________________________\n\n\n");
+        return Result.success(resumeService.getResumeByUserId(id));
+    }
+
+    @GetMapping("/getResumeById")
+    public Result<ResumeDto> getResumeById(@RequestParam Integer resumeId) {
+        return Result.success(resumeService.getResumeById(resumeId));
+    }
+
+    @GetMapping("/health")
+    public String health() {
+        return "service-resume is ok";
+    }
 }

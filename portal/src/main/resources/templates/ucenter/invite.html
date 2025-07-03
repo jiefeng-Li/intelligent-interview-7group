@@ -5,7 +5,8 @@
     <meta http-equiv=Content-Type content="text/html;charset=utf-8" />
     <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet" />
     <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
-
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/http.js}"></script>
    <!-- <link href="http://localhost/phpyun/js/layui/css/layui.css?v=4274" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://localhost/phpyun/js/layui/layui.js?v=4274"></script>
     <script type="text/javascript" src="http://localhost/phpyun/js/layui/phpyun_layer.js?v=4274"></script>
@@ -127,7 +128,7 @@
     </div>
     <script>
         function getcont(id) {
-            $.post("index.php?c=invite&act=ajax", {
+            postAjax("", {
                 id: id
             }, function(data) {
                 var data = eval('(' + data + ')');

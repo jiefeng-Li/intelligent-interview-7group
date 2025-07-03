@@ -24,14 +24,18 @@ public class Resume {
     private String telphone;
     private Integer workDuration;
     private String email;
+
     private Integer arriveDate;
     private String hunterStatus;
     private Integer industry;
     private LocalDateTime createdTime;
     private LocalDateTime refreshTime;
+
     private Integer viewNum;
     private Integer favorNum;
     private String def;
     private String  status;
     private String isDeleted;
 }
+
+

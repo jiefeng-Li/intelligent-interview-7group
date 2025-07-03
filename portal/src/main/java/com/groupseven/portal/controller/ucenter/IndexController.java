@@ -20,6 +20,11 @@ public class IndexController {
     @GetMapping("resume")
     public String resume(){
         return "ucenter/resume";
+
+
+    @GetMapping("invite")
+    public String invite(){
+        return "/ucenter/invite";
     }
 }
 

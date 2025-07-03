@@ -12,4 +12,19 @@ public class IndexController {
     public String index(){
         return "ecenter/index";
     }
+
+    @GetMapping("resume")
+    public String resume(){
+        return "ecenter/resume";
+    }
+
+    @GetMapping("info")
+    public String info(){
+        return "ecenter/info";
+    }
+
+    @GetMapping("interview")
+    public String interview(){
+        return "ecenter/interview";
+    }
 }

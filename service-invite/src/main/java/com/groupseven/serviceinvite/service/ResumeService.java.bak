@@ -1,0 +1,16 @@
+package com.groupseven.serviceinvite.service;
+
+import com.groupseven.common.Result;
+import com.groupseven.serviceinvite.pojo.entity.Resume;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+
+
+// 使用FeignClient注解，指定要调用的服务名为service-resume
+@FeignClient("service-resume")
+public interface ResumeService {
+
+
+    @PostMapping("/inviteResume")
+    Result<Resume> invite();
+}

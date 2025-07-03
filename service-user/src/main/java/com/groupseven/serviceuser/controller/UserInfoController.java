@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.groupseven.common.Result;
 import com.groupseven.pojo.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -36,5 +33,11 @@ public class UserInfoController {
     public Result<Void> setUserType(@RequestHeader int id, @PathVariable String type) {
         userService.setUserType(id, type);
         return Result.success();
+    }
+
+
+    @GetMapping("/health")
+    public String health() {
+        return "ok";
     }
 }
