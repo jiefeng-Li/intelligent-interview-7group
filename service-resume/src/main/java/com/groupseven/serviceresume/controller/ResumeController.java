@@ -9,7 +9,7 @@ import com.groupseven.serviceresume.pojo.DTO.WorkDTO;
 import com.groupseven.serviceresume.pojo.VO.ResumeListVO;
 import com.groupseven.serviceresume.pojo.VO.ResumeViewVO;
 import com.groupseven.pojo.dto.ResumeDto;
-
+import com.groupseven.serviceresume.Service.ResumeService;
 import com.groupseven.serviceresume.pojo.entity.Resume;
 import com.groupseven.serviceresume.service.ResumeService;
 import lombok.extern.slf4j.Slf4j;
