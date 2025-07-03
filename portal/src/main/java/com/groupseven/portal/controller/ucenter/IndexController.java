@@ -17,5 +17,10 @@ public class IndexController {
     public String avatar(){
         return "ucenter/upload_avatar";
     }
+
+    @GetMapping("invite")
+    public String invite(){
+        return "/ucenter/invite";
+    }
 }
 

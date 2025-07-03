@@ -1,0 +1,91 @@
+<div class="w1200">
+    <div class="user_headerlogo ">
+        <a th:href="@{/}" target="_blank" title='返回网站首页'>
+            <img alt="人才招聘系统" th:src="@{/images/logo.png}">
+        </a>
+    </div>
+    <div class="user_headerright ">
+        <a th:href="@{/}" target="_blank" title='返回网站首页' class="user_m_fanh">返回首页</a>
+        <div class="yun_m_headermsg" onMouseOver="tzmsgNumShow('show')" onMouseOut="tzmsgNumShow('hide')">
+            <i class="yun_m_headermsg_icon"></i>通知中心<span class="yun_m_headermsg_n" id="msgNum"
+                                                              style="display:block">0</span>
+            <div class="yun_m_headermsg_box" style="display:none">
+                <div class="yun_m_headermsg_list">
+                    <a href="">面试通知 <em
+                            class="yun_m_headermsg_list_n" id="userid_msgNum"></em></a>
+                </div>
+                <div class="yun_m_headermsg_list">
+                    <a href="">系统消息 <em
+                            class="yun_m_headermsg_list_n" id="sysmsgNum"></em></a>
+                </div>
+                <div class="yun_m_headermsg_list">
+                    <a href="">企业回复咨询 <em
+                            class="yun_m_headermsg_list_n" id="usermsgNum"></em></a>
+                </div>
+            </div>
+        </div>
+        <div class="header_m_navright">
+            <div class="header_m_navright_tip" style="display:none;">
+                <div class="header_m_navright_tip_box">7 项资料未完善, <a href="" class="cblue">立即完善</a><a
+                        href="###" class="header_m_navright_tip_close"></a></div>
+            </div>
+            <div class="yun_m_headertx">
+                <a href="" class="yun_m_headertxa">
+                    <img src="" border="0" height="30"
+                         width="30"/>
+                </a>
+                <div class="yun_m_headertx_hi">老谭</div>
+                <div class="yun_m_header_info" style="display:none;">
+                    <div class="user_tc_tit">我的积分</div>
+                    <div class="user_t_jf">
+                        <span class="yun_m_index_pay_n">19</span>
+                        个积分
+                        <a href="" class="yun_m_index_pay_a">充值</a>
+                        <a href="" class="yun_m_index_pay_a" target="_blank">兑换礼品</a>
+                        <a href="" class="yun_m_index_pay_a">赚积分</a>
+                    </div>
+                    <div class="user_tc_tit">我的认证</div>
+                    <div class="yun_m_indexinfo_user_bding">
+                        <div class="yun_m_indexinfo_user_bding_p">
+                            <a href="">
+                                <span class="yun_user_rz_box yun_user_rz_sj"><i class="yun_user_rz_no_icon"></i><em
+                                        class="yun_user_rz_no">手机未认证</em></span>
+                            </a>
+                        </div>
+                        <div class="yun_m_indexinfo_user_bding_p">
+                            <a href="">
+                                <span class="yun_user_rz_box yun_user_rz_sf"><i class="yun_user_rz_no_icon"></i><em
+                                        class="yun_user_rz_no">身份未认证</em></span>
+                            </a>
+                        </div>
+                        <div class="yun_m_indexinfo_user_bding_p">
+                            <a href="">
+                                <span class="yun_user_rz_box yun_user_rz_yx"><i class="yun_user_rz_no_icon"></i><em
+                                        class="yun_user_rz_no">邮箱未认证</em></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="user_tc_tit">其他设置</div>
+                    <div class="user_tc_tset">
+                        <a th:href="@{/ucenter/info}" class="user_set_bth"><i class="user_set_icon user_set_icon1"></i>账户设置</a>
+                        <a href="" target="_blank" class="user_set_bth"><i
+                                class="user_set_icon user_set_icon2"></i>账户分离</a>
+                        <a href="" class="user_set_bth"><i class="user_set_icon user_set_icon4"></i>账户注销</a>
+                    </div>
+                    <div class="user_tcdl">
+                        <a href="javascript:void(0)" onClick="logout('index.php?act=logout')" title="退出登录"
+                           class="user_tcdlbth" style="border:none;">退出登录</a>
+                    </div>
+                </div>
+            </div>
+            <span class="user_headertel">求职咨询电话：<span class="user_headertel_n">400-880-XXXX</span></span>
+        </div>
+    </div>
+</div>
+<script>
+    $(function (){
+        $(".yun_m_headertx_hi").hover(function (){
+            $(".yun_m_header_info").show()
+        })
+    })
+</script>

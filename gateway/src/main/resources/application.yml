@@ -44,6 +44,18 @@ spring:
                 - Path=/resume/**
               filters:
                 - StripPrefix=1
+            - id: service-invite
+              uri: lb://service-invite
+              predicates:
+                - Path=/invite/**
+              filters:
+                - StripPrefix=1
+            - id: service-job
+              uri: lb://service-job
+              predicates:
+                - Path=/job/**
+              filters:
+                - StripPrefix=1
 logging:
   level:
     root: debug

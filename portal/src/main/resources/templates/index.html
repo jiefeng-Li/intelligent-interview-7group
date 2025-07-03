@@ -8,8 +8,33 @@
     <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
     <script th:src="@{/js/layui/layui.js}"></script>
     <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/template.js}"></script>
     <script>
+        function getJobs() {
+            let data = [{
+                id: 1,
+                name: "Java开发工程师",
+                entId: 20,
+                entName: "蜗牛学苑1"
+            }, {
+                id: 2,
+                name: "Python开发工程师",
+                entId: 21,
+                entName: "京东"
+            }, {
+                id: 5,
+                name: "云运维工程师",
+                entId: 23,
+                entName: "阿里"
+            }]
+
+            let html = template("jobTemplate", {"jobList": data});
+            console.log(html)
+            $("#newest_job_list").append(html)
+        }
+
         $(function () {
+            getJobs()
             let token = localStorage.getItem("token");
             if (!token) {
                 $("#nologindiv").show()
@@ -33,7 +58,6 @@
                             $(".login_ok").show()
                             $(".login_no_ok").hide()
                             $("#index_account").text(r.data.account)
-                            $("#login_ok_user_photo_img").attr("src", r.data.avatar)
                         }
                     }
                 })
@@ -42,6 +66,34 @@
     </script>
 </head>
 <body class="body_bg">
+<script id="jobTemplate" type="text/html">
+    {{each jobList as job}}
+    <li>
+        <div class="index_newjobname">
+            <a href="/job/view?id={{job.id}}"
+               title="{{job.name}}">{{job.name}}</a>
+            <span class="index_newjob_info_xz">5000-7000元</span>
+        </div>
+        <div class="index_newjob_info nowrap">
+            成都
+            <i class="index_newjob_info_line">|</i>不限经验
+            <i class="index_newjob_info_line">|</i> 不限学历
+        </div>
+        <div class="index_newjob_com nowrap">
+            <img src="images/14906489056.PNG"
+                 class="index_newjob_com_tx"/>
+            <div class="index_newjob_comname"><a
+                    href="/ent/view?id={{job.entId}}"
+                    title="{{job.entName}}">{{job.entName}}</a>
+            </div>
+            <div class="index_newjob_cominfo">计算机/互联网<i class="index_newjob_info_line">|</i>
+                50-200人
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+
 <div class="yun_new_top" th:insert="~{/commons/top}"></div>
 <div class="yunheader_60" th:insert="~{/commons/header}"></div>
 <div class="clear"></div>
@@ -95,7 +147,7 @@
                         <div class="login_ok">
                             <div class="login_ok_user">
                                 <div class="login_ok_user_photo">
-                                    <img id="login_ok_user_photo_img" width="60" height="60" src="">
+                                    <img width="60" height="60" src="">
                                 </div>
                                 <div class="login_ok_username">hi , <span id="index_account"></span></div>
                                 <div class="login_ok_hi">欢迎回来</div>
@@ -232,30 +284,8 @@
 
         <!-- 最新职位 -->
         <div class="index_newjobbox index_zw_item">
-            <ul>
-                <li>
-                    <div class="index_newjobname">
-                        <a th:href="@{/job/view}"
-                           title="软件测试工程师">软件测试工程师</a>
-                        <span class="index_newjob_info_xz">5000-7000元</span>
-                    </div>
-                    <div class="index_newjob_info nowrap">
-                        成都
-                        <i class="index_newjob_info_line">|</i>不限经验
-                        <i class="index_newjob_info_line">|</i> 不限学历
-                    </div>
-                    <div class="index_newjob_com nowrap">
-                        <img src="images/14906489056.PNG"
-                             class="index_newjob_com_tx"/>
-                        <div class="index_newjob_comname"><a
-                                href=""
-                                title="成都蜗牛创想职业技能培训学校有限公司">成都蜗牛创想职业技能培训学校有限公司</a>
-                        </div>
-                        <div class="index_newjob_cominfo">计算机/互联网<i class="index_newjob_info_line">|</i>
-                            50-200人
-                        </div>
-                    </div>
-                </li>
+            <ul id="newest_job_list">
+
             </ul>
         </div>
         <div class="yunheader_60lookmore"><a href="">查看更多</a></div>

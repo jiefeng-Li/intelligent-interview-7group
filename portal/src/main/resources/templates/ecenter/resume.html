@@ -7,6 +7,61 @@
     <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/js/layui/css/layui.css}" rel="stylesheet" type="text/css"/>
     <script th:src="@{/js/layui/layui.js}"></script>
+    <script th:src="@{/js/http.js}"></script>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        function getDegreeText(degreeCode) {
+            const degrees = {1: '高中以下', 2: '高中', 3: '中专',4:'大专',5:'本科',6:'硕士',7:'博士' };
+            return degrees[degreeCode] ;
+        }
+        function calculateAge(birthdate) {
+            if (!birthdate) return 45;
+            const birthYear = new Date(birthdate).getFullYear();
+            return new Date().getFullYear() - birthYear;
+        }
+
+        $(function () {
+            // 使用postAjax请求获取简历数据
+             postAjax({url: 'invite/getResumeByEnt', data: null}, function(res) {
+                // 请求成功后的处理逻辑可以在这里添加
+                console.log('简历数据获取成功', res);
+                // 获取表格元素和tbody
+                const table = document.querySelector('.com_table');
+                const tbody = table.querySelector('tbody');
+
+                // 获取表头行、数据行模板和表尾行
+                const headerRow = tbody.querySelector('tr:first-child');
+                const dataRowTemplate = tbody.querySelector('tr:nth-child(2)'); // 第二个tr作为数据行模板
+                const footerRow = tbody.querySelector('tr:last-child');
+
+                // 移除现有数据行（保留表头和表尾）
+                const rows = tbody.querySelectorAll('tr');
+                for (let i = 1; i < rows.length - 1; i++) {
+                    rows[i].remove();
+                }
+                // 根据数据长度循环渲染数据行
+                if (res.data && res.data.length > 0) {
+                    res.data.forEach(item => {
+                        // 复制数据行模板并插入到表尾前
+                        const newRow = dataRowTemplate.cloneNode(true);
+                        newRow.querySelector('.newcom_user_pic').querySelector('img').src = item.avatar;
+                        // 设置姓名
+                        newRow.querySelector('.newcom_user_name').innerText = item.resumeDto.name;
+                        newRow.querySelector('.hr_yyy').innerText = item.inviteDto == null ? '未处理' : '已邀约';
+                        newRow.querySelector('.com_received_tdtime').innerText = '投递时间 ' + item.jobSendDto.sendTime;
+                        newRow.querySelector('.newcom_user_infop').innerText =
+                            (item.resumeDto.gender == 1 ? '男' : '女') + ' · '
+                            + (item.resumeDto.workDuration == 0 ? '应届毕业生' : item.resumeDto.workDuration + '年工作经验')
+                            + ' · ' + getDegreeText(item.resumeDto.highestDegree) + '学历 · ' + calculateAge(item.resumeDto.birthdate) + '岁'
+                        newRow.querySelector('.salary').innerText = '期望薪资：' + item.resumeDto.minWage + '-' + item.resumeDto.maxWage +'元'
+                        newRow.querySelector('.newcom_user_td').innerText = item.jobDto.name;
+                        newRow.querySelector('.newcom_user_tel').innerText = item.resumeDto.telphone;
+                        footerRow.before(newRow);
+                    });
+                }
+            });
+        })
+    </script>
 </head>
 <body>
 <div class="body_box">
@@ -100,7 +155,7 @@
                                                 <div class="newcom_user_infop">
                                                     男 · 4年以上经验 · 本科学历 · 25岁
                                                 </div>
-                                                <div>期望薪资：5000-6000元</div>
+                                                <div class="salary">期望薪资：5000-6000元</div>
                                             </div>
                                         </td>
                                         <td>
@@ -160,8 +215,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
-
                                     <tr>
                                         <td colspan="6">
                                             <div class="newcom_user_info"
