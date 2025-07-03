@@ -57,30 +57,19 @@
                         <div class="news_expect_list news_expect_listw100">
                             <span class="news_expect_list_span"><i class="news_expectfont">*</i>在职时间：</span>
                             <div class="news_expect_list_rbox">
-                                <input name="worksdate" id="worksdate" type="text" value=""
-                                       placeholder="请选择入职时间"
-                                       class="news_expectadd_text" style="width:105px">
+                                <!-- 入职时间 -->
+                                <input name="worksdate" id="worksdate" type="date" value=""
+                                       class="news_expectadd_text date-input" placeholder="入职时间">
+
                                 <span class="news_expect_text_xzline">-</span>
-                                <input name="workedate" id="workedate" type="text" value=""
-                                       class="news_expectadd_text"
-                                       placeholder="请选择离职时间" style="width:105px">
-                                <div class="news_expect_listtody">
-                                    <input type="checkbox" value='1' data-random='' id="stopdate" name="stopdate"
-                                           lay-filter="stopdate" title="至今" lay-skin="primary">
-                                    <input type="hidden" id="totoday" name="totoday" value='0'/>
-                                </div>
-                                <script>
-                                    layui.use(['laydate'], function () {
-                                        var laydate = layui.laydate;
-                                        monthclick(laydate, '#worksdate');
-                                        monthclick(laydate, '#workedate');
-                                    });
-                                </script>
-                                <span class="news_expect_name"></span>
+
+                                <!-- 离职时间 -->
+                                <input name="workedate" id="workedate" type="date" value=""
+                                       class="news_expectadd_text date-input" placeholder="离职时间">
+
                                 <div class="resume_tip"><span class="none" id="hidworksdate"></span></div>
                             </div>
                         </div>
-
                         <div class="news_expect_textarea">
                             <span class="news_expect_list_span">工作内容：</span>
                             <div class="news_expect_list_rbox">
@@ -102,7 +91,7 @@
                 <div class="news_expect_fotbox">
                     <div class="news_expect_nbth">
                         <input type="button" class="news_expect_list_sub" value="下一步" id="nextbtn" name="submit">
-                        <input type="button" class="layui-btn layui-btn-primary" value="返回上一步" name="submit"
+                        <input type="button" class="layui-btn layui-btn-primary" value="返回上一步" id="lastbnt" name="submit"
                                style="margin-left:20px">
                     </div>
                 </div>
@@ -119,10 +108,17 @@
 
     $(function (){
         $("#nextbtn").click(()=>{
+
+            let b = collectAndValidateWorkExperience();
+
+            if(b)
             location.href="/resume/add3"
         })
-    })
+        $("#lastbnt").click(()=>{
+            location.href="/resume/add1"}
+        )
 
+    })
     function addWork(){
         $("#addwork").append(function(){
             var randnum='w'+parseInt(Math.random()*1000);
@@ -144,6 +140,65 @@
     function deletebox(id,type){
         $("#"+id).remove();
     }
+
+    // 工作经历表单校验函数
+    function validateWorkExperience(formData) {
+        // 1. 非空校验
+        const requiredFields = [
+            'entName', 'position', 'hireDate','leaveDate'
+        ];
+
+        for (const field of requiredFields) {
+            if (!formData[field]) {
+                showError(field, '此项为必填项');
+                return false;
+            }
+        }
+
+        // // 2. 日期校验
+        const startDate = formData.hireDate
+        const endDate =formData.leaveDate
+        if (endDate && startDate > endDate) {
+            showError('', '离职日期不能早于入职日期');
+            return false;
+        }
+
+        return true;
+    }
+    function showError(fieldId, message) {
+        alert(fieldId+message)
+    }
+
+    // 收集工作经历数据并校验
+    function collectAndValidateWorkExperience() {
+        // 只获取第一个工作经历区块
+        const $firstBox = $('.news_expect_n_box').first();
+
+        if ($firstBox.length === 0) {
+            showError('workname', '请添加工作经历');
+            return false;
+        }
+
+        const formData = {
+            entName: $firstBox.find('input[name^="workname"]').val().trim(),
+            position: $firstBox.find('input[name^="worktitle"]').val().trim(),
+            hireDate: $firstBox.find('input[name^="worksdate"]').val().trim(),
+            leaveDate: $firstBox.find('input[name^="workedate"]').val().trim(),
+            content: $firstBox.find('textarea[name^="workcontent"]').val().trim()
+        };
+
+        // 校验工作经历
+        if (!validateWorkExperience(formData)) {
+            return false;
+        }
+
+        console.log(formData);
+        // 存储到本地
+        localStorage.setItem("WorkDTO", JSON.stringify(formData));
+        return true;
+    }
+
+
 </script>
 </body>
 </html>

@@ -17,5 +17,9 @@ public class IndexController {
     public String avatar(){
         return "ucenter/upload_avatar";
     }
+    @GetMapping("resume")
+    public String resume(){
+        return "ucenter/resume";
+    }
 }
 

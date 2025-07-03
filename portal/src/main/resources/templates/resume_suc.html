@@ -14,7 +14,7 @@
         <div class="news_expect_cont">
             <div class="news_expect_ok">恭喜您，简历创建成功</div>
             <div class="news_expect_ok_jf">成功创建简历获得<span class="news_expect_ok_jf_n">+10</span>积分
-                <a th:href="@{/resume/view}" target="_blank" class="news_expect_ok_yl">简历预览 </a></div>
+                <a target="_blank" class="news_expect_ok_yl" onclick="resumeview()">简历预览 </a></div>
             <div class="news_expect_ok_p">完善简历可以获得更好的工作机会哦~</div>
             <div class="news_expect_ok_bth">
                 <a href="javascript:void(0)" class="news_expect_ok_a">完善培训经历 </a>
@@ -51,5 +51,13 @@
 <div class=foot>
     <div class=foot th:insert="~{commons/resume_footer}"></div>
 </div>
+<script>
+    function resumeview() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const resumeId = urlParams.get('id');
+        console.log(resumeId)
+        location.href = "/resume/view?id=" + resumeId;
+    }
+</script>
 </body>
 </html>

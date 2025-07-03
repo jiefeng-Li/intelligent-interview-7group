@@ -1,11 +1,25 @@
 server:
   port: 10006
+
 spring:
   application:
     name: service-resume
   cloud:
     compatibility-verifier:
       enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_resume?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 147258369fb.
 logging:
   level:
     com.com.groupseven.resume: debug
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: qlm_
+      id-type: auto
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

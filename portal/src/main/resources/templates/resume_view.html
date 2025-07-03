@@ -50,7 +50,7 @@
         <div class="yun_newedition_resume_info" style="">
             <div class="yun_newedition_resume_info_c">
                 <div class="yun_newedition_resume_info_pic">
-                    <img src="" width="140" height="140"/>
+                    <img src="" width="140" height="140" id="userimg"/>
                     <i class="resume_list_xb resume_list_xb "></i>
                 </div>
                 <div>
@@ -116,11 +116,6 @@
                                 class="yun_newedition_job_zw">担任职位：Java讲师</span></div>
                         <div class="">工作时间：2021.06- 至今 <span style="color: red;">【4年2个月】</span></div>
                     </li>
-                    <li><i class="yun_newedition_icon"></i>
-                        <div class="yun_newedition_jobname">成都蜗牛创想职业技能培训学校有限公司<span
-                                class="yun_newedition_job_zw">担任职位：Java讲师</span></div>
-                        <div class="">工作时间：2021.06- 至今 <span style="color: red;">【4年2个月】</span></div>
-                    </li>
                 </ul>
             </div>
             <!--教育经历-->
@@ -170,6 +165,290 @@
 </div>
 
 <div class="hp_foot fl" th:insert="~{/commons/footer}"></div>
+
+<script>
+    const API_BASE = 'http://localhost:10005';
+    const RESUME_ID =parseInt(new URLSearchParams(window.location.search).get('id'));
+    let citylist = [];
+    let living = '';
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!RESUME_ID) {
+            alert('缺少简历ID参数');
+            return;
+        }
+
+        // 1. 获取简历基础信息
+        fetchResumeData();
+    });
+
+    // 获取简历主数据
+    async function fetchResumeData() {
+        try {
+
+            const response = await fetch(`${API_BASE}/resume/resume/view`, { method: 'POST', body:JSON.stringify({resumeid: RESUME_ID})
+               ,headers:{'Content-Type': 'application/json', 'token':localStorage.getItem("token")}});
+            citylist = await fetchcity()
+            const res = await fetch(`${API_BASE}/user/getuserinfo`, { method: 'POST', body:null
+                ,headers:{'Content-Type': 'application/json', 'token':localStorage.getItem("token")}});
+            const userinfo=await res.json();
+            console.log(userinfo.data)
+            if (!response.ok) throw new Error('网络响应异常');
+            const { code, data, msg } = await response.json();
+            if (code !== 200) throw new Error(msg || '获取数据失败');
+            living=getNameById(data.city)
+            document.title=`${data.name}的个人简历`
+            renderBaseInfo(data,userinfo.data);
+            fetchWorkExperience(data.workexpList)
+            fetchEducation(data.edubgList)
+        } catch (error) {
+            console.error('数据加载失败:', error);
+            alert(error.message);
+        }
+    }
+
+    function getNameById(targetId) {
+        for (const item of citylist) {
+            if (item.id === targetId) {
+                return item.name;
+            }
+        }
+        return '';
+    }
+
+    // 渲染基础信息
+    function renderBaseInfo(data,userinfo) {
+        document.querySelector('#userimg').src = userinfo.avatar
+        document.querySelector('.yun_newedition_resume_username').textContent = data.name ;
+        document.querySelector('.yun_newedition_resume_basic').innerHTML = `
+        ${data.gender==1?'男':'女' }<span class="yun_newedition_resume_line">|</span>
+        ${calculateAge(data.birthdate)}岁<span class="yun_newedition_resume_line">|</span>
+        ${data.workDuration }年以上经验<span class="yun_newedition_resume_line">|</span>
+        ${getDegreeText(data.highestDegree) }<span class="yun_newedition_resume_line">|</span>
+        现居${living}
+    `;
+        const infoDataEl = document.querySelector('.yun_newedition_resume_data');
+        if (infoDataEl) {
+            const updateTime = data.refreshTime
+            // 被浏览次数
+            const viewCount = data.viewNum;
+            // 更新DOM
+            infoDataEl.innerHTML = `
+            <span class="yun_newedition_resume_data_time">更新：${updateTime}</span>
+            被浏览：${viewCount} 次
+        `;
+        }
+        document.querySelector('.tcktouch_box_p_sj').textContent = data.telphone;
+
+        const jobIntentList = document.querySelectorAll('.yun_newedition_yx_list li');
+        if (jobIntentList.length === 0) return;
+
+        // 1. 工作职能
+        if (jobIntentList[0]) {
+            jobIntentList[0].innerHTML = `
+            <span class="yun_newedition_yx_name">工作职能：</span>
+            <span class="yun_newedition_yx_job">${data.intent || '未填写'}</span>
+        `;
+        }
+
+        // 2. 意向岗位
+        if (jobIntentList[1]) {
+            jobIntentList[1].innerHTML = `
+            <span class="yun_newedition_yx_name">意向岗位：</span>
+            ${data.intent || '未填写'}
+        `;
+        }
+
+        // 3. 从事行业
+        if (jobIntentList[2]) {
+            jobIntentList[2].innerHTML = `
+            <span class="yun_newedition_yx_name">从事行业：</span>
+            ${getIndustry(data.industry)}
+        `;
+        }
+
+        // 4. 期望薪资
+        if (jobIntentList[3]) {
+            jobIntentList[3].innerHTML = `
+            <span class="yun_newedition_yx_name">期望薪资：</span>
+            ${data.minWage }元-${data.maxWage}元
+        `;
+        }
+
+        // 5. 到岗时间
+        if (jobIntentList[4]) {
+            jobIntentList[4].innerHTML = `
+            <span class="yun_newedition_yx_name">到岗时间：</span>
+            ${getAvailableTime(data.arriveDate)}
+        `;
+        }
+
+        // 6. 求职状态
+        if (jobIntentList[5]) {
+            jobIntentList[5].innerHTML = `
+            <span class="yun_newedition_yx_name">求职状态：</span>
+            ${getstatus(data.hunterStatus)}
+        `;
+        }
+
+        // 7. 工作性质
+        if (jobIntentList[6]) {
+            jobIntentList[6].innerHTML = `
+            <span class="yun_newedition_yx_name">工作性质：全职</span>
+        `;
+        }
+
+
+        if (jobIntentList[7]) {
+            jobIntentList[7].innerHTML = `
+            <span class="yun_newedition_yx_name">工作地点：不限</span>
+
+        `;
+        }
+    }
+
+    async function fetchcity() {
+        try {
+            const response = await fetch(`${API_BASE}/base/region`, { method: 'POST' ,body: null,headers:{'Content-Type': 'application/json'}});
+            const { data } = await response.json();
+            return data;
+        } catch (error) {
+            console.error('city', error);
+        }
+    }
+
+    // 获取工作经历
+     function fetchWorkExperience(data) {
+        try {
+
+            const workList = document.querySelector('.yun_newedition_joblist');
+            workList.innerHTML = data.map(item => `
+            <li>
+                <i class="yun_newedition_icon"></i>
+                <div class="yun_newedition_jobname">
+                    ${item.entName}
+                    <span class="yun_newedition_job_zw">担任职位：${item.position}</span>
+                </div>
+                <div>
+                    工作时间：${item.hireDate}-${item.leaveDate}
+                    <span style="color: red;">【${calculateDuration(item.hireDate, item.leaveDate)}】</span>
+                </div>
+                <div class="yun_newedition_job_ms">${item.jobDescription || ''}</div>
+            </li>
+        `).join('');
+        } catch (error) {
+            console.error('工作经历加载失败:', error);
+        }
+    }
+
+    // 获取教育经历
+    function fetchEducation(data) {
+        try {
+            const eduList = document.querySelectorAll('.yun_newedition_joblist')[1];
+            eduList.innerHTML = data.map(item => `
+            <li>
+                <i class="yun_newedition_icon"></i>
+                <div class="yun_newedition_jobname">
+                    ${item.school}
+                    <span class="yun_newedition_job_zw">学历学位：${getDegreeText(item.highestDegree)}</span>
+                </div>
+                <div>在校时间：${item.startDate} 到 ${item.graduateDate}</div>
+                <div class="yun_newedition_job_ms">${item.major}</div>
+            </li>
+        `).join('');
+        } catch (error) {
+            console.error('教育经历加载失败:', error);
+        }
+    }
+
+    // 辅助函数：计算年龄
+    function calculateAge(birthdate) {
+        if (!birthdate) return 0;
+        const birthYear = new Date(birthdate).getFullYear();
+        return new Date().getFullYear() - birthYear;
+    }
+
+    // 辅助函数：学历文本转换
+    function getDegreeText(degreeCode) {
+        const degrees = {1: '高中以下', 2: '高中', 3: '中专',4:'大专',5:'本科',6:'硕士',7:'博士' };
+        return degrees[degreeCode] ;
+    }
+
+    function getstatus(id) {
+        const status = {1:'已离职，寻求新工作',2:'在职，考虑更好职位',3:'其他' };
+        return status[id]
+    }
+
+    function getAvailableTime(id) {
+        const timeMap = {
+            1: '随时到岗',
+            2: '1周以内',
+            3: '3周以内',
+            4: '1个月之内',
+            5: '3个月之内',
+            6: '不确定'
+        };
+        return timeMap[id] || '未填写';
+    }
+
+    function getIndustry(id) {
+        const industryMap = {
+            0: '不限',
+            1: '计算机/互联网',
+            2: '贸易/百货',
+            3: '机械/设备/技工',
+            4: '公务员/翻译/其他',
+            5: '化工/能源',
+            6: '销售/客服/技术支持',
+            7: '会计/金融/银行/保险',
+            8: '生产/营运/采购/物流',
+            9: '生物/制药/医疗/护理',
+            10: '广告/市场/媒体/艺术',
+            11: '建筑/房地产',
+            12: '人事/行政/高级管理',
+            13: '咨询/法律/教育/科研',
+            14: '服务业',
+            15: '通信/电子'
+        };
+        return industryMap[id] || '不限';
+    }
+
+
+
+    // 辅助函数：计算工作时长
+    function calculateDuration(start, end) {
+
+        const endDate = new Date(end);
+        const startDate = new Date(start);
+
+        let years = endDate.getFullYear() - startDate.getFullYear();
+        let months = endDate.getMonth() - startDate.getMonth();
+        let days = endDate.getDate() - startDate.getDate();
+
+        if (months < 0 || (months === 0 && days < 0)) {
+            years--;
+            months += 12;
+        }
+        if (days < 0) {
+
+            const lastDayOfPrevMonth = new Date(
+                endDate.getFullYear(),
+                endDate.getMonth(),
+                0
+            ).getDate();
+
+            days += lastDayOfPrevMonth;
+            months--;
+        }
+
+        let result = '';
+        if (years > 0) result += `${years}年`;
+        if (months > 0) result += `${months}个月`;
+        if (days > 0) result += `${days}天`;
+
+        return result || '不足1天';
+    }
+</script>
 </body>
 </html>
 	

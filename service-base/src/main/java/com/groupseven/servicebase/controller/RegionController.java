@@ -6,14 +6,13 @@ import com.groupseven.servicebase.service.RegionService;
 import com.groupseven.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/region")
-@Slf4j
+
 public class RegionController {
 
     @Autowired
@@ -22,7 +21,11 @@ public class RegionController {
     @GetMapping("{id}")
     public Result getRegionById(@PathVariable Integer id) {
         Region region = regionService.getById(id);
-        log.debug("region:{}", region.getName());
         return Result.success(region);
+    }
+    @PostMapping
+    public Result Region() {
+        List<Region> list= regionService.all();
+        return Result.success(list);
     }
 }
