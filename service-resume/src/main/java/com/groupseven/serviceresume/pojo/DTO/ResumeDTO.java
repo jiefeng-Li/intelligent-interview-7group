@@ -1,16 +1,12 @@
-package com.groupseven.serviceresume.pojo.entity;
+package com.groupseven.serviceresume.pojo.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-/**
- * @author 老谭（<a href="http://www.woniuxy.com">蜗牛学苑</a>）
- */
 @Data
-public class Resume {
-    private Integer id;
+public class ResumeDTO {
     private Integer userId;
     private String name;
     private String gender;
@@ -24,18 +20,8 @@ public class Resume {
     private String telphone;
     private Integer workDuration;
     private String email;
-
     private Integer arriveDate;
     private String hunterStatus;
     private Integer industry;
-    private LocalDateTime createdTime;
-    private LocalDateTime refreshTime;
-
-    private Integer viewNum;
-    private Integer favorNum;
-    private String def;
-    private String  status;
-    private String isDeleted;
+    private LocalDate refreshTime;
 }
-
-

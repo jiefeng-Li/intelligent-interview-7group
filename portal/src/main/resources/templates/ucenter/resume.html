@@ -1,10 +1,150 @@
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <title>个人用户管理平台 - 人才招聘系统</title>-->
+<!--    <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>-->
+<!--    <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>-->
+<!--    <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>-->
+<!--    <script th:src="@{/js/http.js}"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="user_header" th:insert="~{/commons/ucenter_header}">-->
+<!--</div>-->
+<!--<div class="clear"></div>-->
+<!--<div class="yun_w1200">-->
+<!--    <div class="yun_m_leftsidebar" th:insert="~{/commons/ucenter_menu}">-->
+<!--    </div>-->
+<!--    <div class="yun_m_rightsidebar">-->
+<!--        <div class="user_new_tit"><span class="user_new_tit_n">我的简历</span>-->
+<!--            <a href="/resume/add1" class="user_cjbth" style="float: right; margin-top:7px; margin-right: 10px;">创建简历</a>-->
+<!--            <div class="user_czbth_r" style="float: right; background-color: #fff; padding-top: 8px;">-->
+<!--                <a href="" class="user_czbth_ys user_czbth_line">隐私设置 </a>-->
+<!--                <a href="" class="user_czbth_pp user_czbth_line" resumeid="2"-->
+<!--                   type='pipei'>职位速配</a>-->
+<!--                <a href="javascript:void(0)"-->
+<!--                   title="直接粘贴已有的个人简历" class="user_czbth_zt">在线粘贴简历</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="yun_m_rightbox fltR mt20 re">-->
+<!--        <div class="user_resume_list">-->
+<!--            <div class="yun_m_index_resume_tit"><span class="yun_m_index_resume_span ">我的简历</span></div>-->
+<!--            <div class="">-->
+<!--                <div class="clear"></div>-->
+
+<!--                <div class="user_resume_box">-->
+<!--                    <div class="user_resume_photo">-->
+<!--                        <a href="">-->
+<!--                            <img src="" border="0"/>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="user_resume_info">-->
+<!--                        <div class="user_resume_name">老谭<span class="user_resume_job">软件测试</span><span-->
+<!--                                class="user_resume_mr">默认</span></div>-->
+<!--                        <div class="user_resume_p">-->
+<!--                            35岁<span class="user_resume_line">|</span> 6年以上经验<span-->
+<!--                                class="user_resume_line">|</span> 本科学历-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_p2">-->
+<!--                            已离职，寻求新工作 - 1周以内-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="user_resume_c">-->
+<!--                        <div class="user_resume_wzd " id="tipid" rid="2">-->
+<!--                            <span class="user_resume_wzd_name">简历完整度：</span>-->
+<!--                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75% "></span>-->
+<!--                            </div>-->
+<!--                            <span class="user_resume_wzd_r">75% </span>-->
+<!--                        </div>-->
+<!--                        <div class="clear"></div>-->
+<!--                        <div class="user_resume_p user_resume_pd">更新日期：2025-06-12 09:23:43</div>-->
+<!--                        <div class="user_resume_p">被浏览：1</div>-->
+<!--                    </div>-->
+<!--                    <div class="user_resume_cz">-->
+<!--                        <div class="user_resume_cz_p">-->
+<!--                            <a href="javascript:void(0)"-->
+<!--                               class="user_resume_cz_a user_resume_cz_icon5"> 删除简历</a>-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_cz_p">-->
+<!--                            <a href="" class="user_resume_cz_a user_resume_cz_icon3">修改简历</a>-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_cz_p">-->
+<!--                            <a href="" target="_blank"-->
+<!--                               class="user_resume_cz_a user_resume_cz_icon4">预览简历</a>-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_cz_p">-->
+<!--                            <a-->
+<!--                                    href="javascript:void(0)" class="user_resume_cz_a user_resume_cz_icon2">刷新简历</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="user_resume_boxtip">-->
+<!--                    <div class="user_resume_boxtip_c">-->
+<!--                        <div class="user_resume_boxtip_h1">-->
+<!--                            你的简历缺少项目经历，会极大影响求职成功率哦！-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_boxtip_p">-->
+<!--                            完善项目经历，可以有效提高求职成功率-->
+<!--                        </div>-->
+<!--                        <a href="" class="user_resume_boxtip_bth">完善项目经历 </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;  备用简历&ndash;&gt;-->
+<!--                <div class="myresume mt20" style="margin-left: 0px;">-->
+<!--                    <span class="myresume_by">备用</span>-->
+<!--                    <div class="myresume_left ">-->
+<!--                        <div class="myresume_name">-->
+<!--                            <a href="">Java开发</a>-->
+<!--                        </div>-->
+<!--                        <div class="user_resume_wzd " id="tipid" rid="1044751">-->
+<!--                            <span class="user_resume_wzd_name">简历完整度：</span>-->
+<!--                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75%"></span>-->
+<!--                            </div>-->
+<!--                            <span class="user_resume_wzd_r">75% </span>-->
+<!--                        </div>-->
+
+<!--                        <div class="myresume_type">-->
+<!--                            <span class="myresume_type_s">类型：标准简历</span>-->
+<!--                            <span class="myresume_type_s">更新时间：2025-06-12 09:30:19</span>-->
+<!--                            <span class="myresume_type_s">被浏览：0</span>-->
+<!--                            <span class="myresume_type_s">-->
+<!--                                    状态：                                    <span-->
+<!--                                    class="myresume_state_ysh">已审核</span>                                </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="myresume_right ">-->
+<!--                        <a href="javascript:void(0);" class="myresume_right_cz_fmr_a">设为默认</a>-->
+<!--                        <span class="myresume_right_cz_fmr_line">|</span>-->
+<!--                        <a href="" class="myresume_right_cz_fmr_a">修改简历 </a>-->
+<!--                        <span class="myresume_right_cz_fmr_line">|</span>-->
+<!--                        <a href="" target="_blank"-->
+<!--                           class="myresume_right_cz_fmr_a">预览简历</a>-->
+<!--                        <span class="myresume_right_cz_fmr_line">|</span>-->
+<!--                        <a href="javascript:void(0)"-->
+<!--                           class="myresume_right_cz_fmr_a">删除简历 </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="clear"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="clear"></div>-->
+<!--<div class=foot>-->
+
+<!--</div>-->
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>个人用户管理平台 - 人才招聘系统</title>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
     <link th:href="@{/styles/m_css.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/styles/tips.css}" type="text/css" rel="stylesheet"/>
+    <script th:src="@{/js/http.js}"></script>
 </head>
 <body>
 
@@ -16,7 +156,7 @@
     </div>
     <div class="yun_m_rightsidebar">
         <div class="user_new_tit"><span class="user_new_tit_n">我的简历</span>
-            <a href="" class="user_cjbth" style="float: right; margin-top:7px; margin-right: 10px;">创建简历</a>
+            <a href="/resume/add1" class="user_cjbth" style="float: right; margin-top:7px; margin-right: 10px;">创建简历</a>
             <div class="user_czbth_r" style="float: right; background-color: #fff; padding-top: 8px;">
                 <a href="" class="user_czbth_ys user_czbth_line">隐私设置 </a>
                 <a href="" class="user_czbth_pp user_czbth_line" resumeid="2"
@@ -33,6 +173,7 @@
             <div class="">
                 <div class="clear"></div>
 
+                <!-- 默认简历容器 - 保留空结构等待JS填充 -->
                 <div class="user_resume_box">
                     <div class="user_resume_photo">
                         <a href="">
@@ -40,46 +181,37 @@
                         </a>
                     </div>
                     <div class="user_resume_info">
-                        <div class="user_resume_name">老谭<span class="user_resume_job">软件测试</span><span
-                                class="user_resume_mr">默认</span></div>
-                        <div class="user_resume_p">
-                            35岁<span class="user_resume_line">|</span> 6年以上经验<span
-                                class="user_resume_line">|</span> 本科学历
-                        </div>
-                        <div class="user_resume_p2">
-                            已离职，寻求新工作 - 1周以内
-                        </div>
+                        <div class="user_resume_name"></div>
+                        <div class="user_resume_p"></div>
+                        <div class="user_resume_p2"></div>
                     </div>
                     <div class="user_resume_c">
-                        <div class="user_resume_wzd " id="tipid" rid="2">
+                        <div class="user_resume_wzd" id="tipid">
                             <span class="user_resume_wzd_name">简历完整度：</span>
-                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75% "></span>
+                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c"></span>
                             </div>
-                            <span class="user_resume_wzd_r">75% </span>
+                            <span class="user_resume_wzd_r"></span>
                         </div>
                         <div class="clear"></div>
-                        <div class="user_resume_p user_resume_pd">更新日期：2025-06-12 09:23:43</div>
-                        <div class="user_resume_p">被浏览：1</div>
+                        <div class="user_resume_p user_resume_pd"></div>
+                        <div class="user_resume_p"></div>
                     </div>
                     <div class="user_resume_cz">
                         <div class="user_resume_cz_p">
-                            <a href="javascript:void(0)"
-                               class="user_resume_cz_a user_resume_cz_icon5"> 删除简历</a>
+                            <a href="javascript:void(0)" class="user_resume_cz_a user_resume_cz_icon5">删除简历</a>
                         </div>
                         <div class="user_resume_cz_p">
                             <a href="" class="user_resume_cz_a user_resume_cz_icon3">修改简历</a>
                         </div>
                         <div class="user_resume_cz_p">
-                            <a href="" target="_blank"
-                               class="user_resume_cz_a user_resume_cz_icon4">预览简历</a>
+                            <a href="" target="_blank" class="user_resume_cz_a user_resume_cz_icon4">预览简历</a>
                         </div>
                         <div class="user_resume_cz_p">
-                            <a
-                                    href="javascript:void(0)" class="user_resume_cz_a user_resume_cz_icon2">刷新简历</a>
+                            <a href="javascript:void(0)" class="user_resume_cz_a user_resume_cz_icon2">刷新简历</a>
                         </div>
                     </div>
                 </div>
-                <div class="user_resume_boxtip">
+                <div class="user_resume_boxtip" style="display:none;">
                     <div class="user_resume_boxtip_c">
                         <div class="user_resume_boxtip_h1">
                             你的简历缺少项目经历，会极大影响求职成功率哦！
@@ -91,50 +223,984 @@
                     </div>
                 </div>
 
-                <!--  备用简历-->
-                <div class="myresume mt20" style="margin-left: 0px;">
-                    <span class="myresume_by">备用</span>
-                    <div class="myresume_left ">
-                        <div class="myresume_name">
-                            <a href="">Java开发</a>
-                        </div>
-                        <div class="user_resume_wzd " id="tipid" rid="1044751">
-                            <span class="user_resume_wzd_name">简历完整度：</span>
-                            <div class="user_resume_wzd_b"><span class="user_resume_wzd_c" style="width:75%"></span>
-                            </div>
-                            <span class="user_resume_wzd_r">75% </span>
-                        </div>
-
-                        <div class="myresume_type">
-                            <span class="myresume_type_s">类型：标准简历</span>
-                            <span class="myresume_type_s">更新时间：2025-06-12 09:30:19</span>
-                            <span class="myresume_type_s">被浏览：0</span>
-                            <span class="myresume_type_s">
-                                    状态：                                    <span
-                                    class="myresume_state_ysh">已审核</span>                                </span>
-                        </div>
-                    </div>
-                    <div class="myresume_right ">
-                        <a href="javascript:void(0);" class="myresume_right_cz_fmr_a">设为默认</a>
-                        <span class="myresume_right_cz_fmr_line">|</span>
-                        <a href="" class="myresume_right_cz_fmr_a">修改简历 </a>
-                        <span class="myresume_right_cz_fmr_line">|</span>
-                        <a href="" target="_blank"
-                           class="myresume_right_cz_fmr_a">预览简历</a>
-                        <span class="myresume_right_cz_fmr_line">|</span>
-                        <a href="javascript:void(0)"
-                           class="myresume_right_cz_fmr_a">删除简历 </a>
-                    </div>
-                </div>
+                <!-- 备用简历容器 -->
+                <div id="backupResumesContainer"></div>
             </div>
         </div>
         <div class="clear"></div>
     </div>
 </div>
 <div class="clear"></div>
-<div class=foot>
+<div class=foot></div>
 
-</div>
+<script>
+    // document.addEventListener('DOMContentLoaded', async function() {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         if (!token) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         // 获取DOM元素
+    //         const defaultResumeContainer = document.querySelector('.user_resume_box').parentNode;
+    //         const backupResumesContainer = document.querySelector('.myresume').parentNode;
+    //
+    //         // 获取用户信息
+    //         const userResponse = await fetch(baseURL+'/user/getuserinfo', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //
+    //         if (userResponse.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const userData = await userResponse.json();
+    //         const userinfo = userData.data;
+    //         console.log('用户信息:', userinfo);
+    //
+    //         // 获取简历数据
+    //         const resumeResponse = await fetch(baseURL+'/resume/resume/list', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //
+    //         if (resumeResponse.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const resumeData = await resumeResponse.json();
+    //         console.log('简历数据:', resumeData);
+    //
+    //         if (resumeData.data.length === 0) {
+    //             // 没有简历时的处理
+    //             defaultResumeContainer.innerHTML = '<div class="no-resume">您尚未创建任何简历，请点击"创建简历"按钮开始</div>';
+    //             return;
+    //         }
+    //
+    //         const defaultResume = resumeData.data.filter(r => r.def == 1)[0] || resumeData.data[0];
+    //         const otherResumes = resumeData.data.filter(r => r.id !== defaultResume.id);
+    //
+    //         // 渲染默认简历
+    //         renderDefaultResume(defaultResume, userinfo);
+    //
+    //         // 渲染其他简历
+    //         if (otherResumes.length > 0) {
+    //             renderOtherResumes(otherResumes,userinfo);
+    //         } else {
+    //             // 如果没有其他简历，移除备用简历区域
+    //             backupResumesContainer.remove();
+    //         }
+    //
+    //     } catch (error) {
+    //         console.error('初始化页面失败:', error);
+    //         const defaultResumeContainer = document.querySelector('.user_resume_box')?.parentNode;
+    //         if (defaultResumeContainer) {
+    //             defaultResumeContainer.innerHTML = '<div class="error-message">加载数据失败，请刷新页面重试</div>';
+    //         }
+    //     }
+    // });
+    //
+    // // 渲染默认简历的函数
+    // function renderDefaultResume(resume, userinfo) {
+    //     console.log('渲染默认简历:', resume, userinfo);
+    //
+    //     // 更新照片
+    //     const photoImg = document.querySelector('.user_resume_photo img');
+    //     console.log("photoImg:"+photoImg)
+    //     if (photoImg) {
+    //         photoImg.src = userinfo.avatar
+    //         photoImg.alt = resume.name
+    //     }
+    //
+    //     // 更新基本信息
+    //     const nameElement = document.querySelector('.user_resume_name');
+    //     if (nameElement) {
+    //         nameElement.innerHTML = `
+    //         ${resume.name || '未填写'}<span class="user_resume_job">${resume.intent || '未填写'}</span>
+    //         ${resume.def == 1 ? '<span class="user_resume_mr">默认</span>' : ''}
+    //     `;
+    //     }
+    //
+    //     // 更新个人信息
+    //     const infoElement = document.querySelector('.user_resume_p');
+    //     if (infoElement) {
+    //         infoElement.innerHTML = `
+    //         ${resume.age || '未填写'}岁<span class="user_resume_line">|</span>
+    //         ${resume.experience || '未填写'}年以上经验<span class="user_resume_line">|</span>
+    //         ${resume.education || '未填写'}
+    //     `;
+    //     }
+    //
+    //     // 更新求职状态
+    //     const statusElement = document.querySelector('.user_resume_p2');
+    //     if (statusElement) {
+    //         statusElement.textContent = resume.jobStatus || '未填写求职状态';
+    //     }
+    //
+    //     // 更新简历完整度
+    //     const completenessBar = document.querySelector('.user_resume_wzd_c');
+    //     const completenessText = document.querySelector('.user_resume_wzd_r');
+    //     if (completenessBar && completenessText) {
+    //         const completeness = resume.completeness || 0;
+    //         completenessBar.style.width = `${completeness}%`;
+    //         completenessText.textContent = `${completeness}%`;
+    //     }
+    //
+    //     // 更新日期和浏览数
+    //     const updateElements = document.querySelectorAll('.user_resume_p.user_resume_pd');
+    //     if (updateElements.length > 0) {
+    //         updateElements[0].textContent = `更新日期：${resume.updateTime || '未更新'}`;
+    //     }
+    //
+    //     const viewElements = document.querySelectorAll('.user_resume_p');
+    //     if (viewElements.length > 1) {
+    //         viewElements[1].textContent = `被浏览：${resume.viewCount || 0}`;
+    //     }
+    //
+    //     // 更新操作链接的ID
+    //     const actionLinks = document.querySelectorAll('.user_resume_cz a');
+    //     if (actionLinks.length >= 4) {
+    //         actionLinks[0].setAttribute('onclick', `deleteResume('${localStorage.getItem('token')}', ${resume.id})`);
+    //         actionLinks[1].href = `/resume/edit/${resume.id}`;
+    //         actionLinks[2].href = `/resume/preview/${resume.id}`;
+    //         actionLinks[3].setAttribute('onclick', `refreshResume('${localStorage.getItem('token')}', ${resume.id})`);
+    //     }
+    //
+    //     // 更新提示信息
+    //     const tipBox = document.querySelector('.user_resume_boxtip');
+    //     if (tipBox) {
+    //         if (resume.missingFields && resume.missingFields.includes('projectExperience')) {
+    //             tipBox.style.display = 'block';
+    //             const tipButton = document.querySelector('.user_resume_boxtip_bth');
+    //             if (tipButton) {
+    //                 tipButton.href = `/resume/edit/${resume.id}#project`;
+    //             }
+    //         } else {
+    //             tipBox.style.display = 'none';
+    //         }
+    //     }
+    // }
+    //
+    // // 渲染其他简历的函数
+    // function renderOtherResumes(resumes,userinfo) {
+    //     const backupResumesContainer = document.querySelector('.myresume')?.parentNode;
+    //     if (!backupResumesContainer) return;
+    //
+    //     // 清空备用简历区域
+    //     backupResumesContainer.innerHTML = '';
+    //
+    //     const token = localStorage.getItem('token');
+    //
+    //     // 为每个备用简历创建HTML
+    //     resumes.forEach(resume => {
+    //         const resumeHtml = `
+    //         <div class="myresume mt20" style="margin-left: 0px;">
+    //             <span class="myresume_by">备用</span>
+    //             <div class="myresume_left">
+    //                 <div class="myresume_name">
+    //                     <a href="/resume/view?id=${resume.id}">${resume.intent || '未填写职位'}</a>
+    //                 </div>
+    //                 <div class="user_resume_wzd" id="tipid" rid="${resume.id}">
+    //                     <span class="user_resume_wzd_name">简历完整度：</span>
+    //                     <div class="user_resume_wzd_b">
+    //                         <span class="user_resume_wzd_c" style="width:100 %"></span>
+    //                     </div>
+    //                     <span class="user_resume_wzd_r">100%</span>
+    //                 </div>
+    //                 <div class="myresume_type">
+    //                     <span class="myresume_type_s">类型: 标准简历</span>
+    //                     <span class="myresume_type_s">更新时间：${resume.refreshTime }</span>
+    //                     <span class="myresume_type_s">被浏览：${resume.viewNum || 0}</span>
+    //                     <span class="myresume_type_s">
+    //                         状态：<span class="myresume_state_ysh">${resume.status==1?'已审核':'未审核'}</span>
+    //                     </span>
+    //                 </div>
+    //             </div>
+    //             <div class="myresume_right">
+    //                 <a href="javascript:void(0);" onclick="setAsDefault('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">设为默认</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="/resume/edit/${resume.id}" class="myresume_right_cz_fmr_a">修改简历</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="/resume/view?id=${resume.id}" target="_blank" class="myresume_right_cz_fmr_a">预览简历</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="javascript:void(0)" onclick="deleteResume('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">删除简历</a>
+    //             </div>
+    //         </div>
+    //     `;
+    //         backupResumesContainer.insertAdjacentHTML('beforeend', resumeHtml);
+    //     });
+    // }
+    //
+    // // 设为默认简历的函数
+    // async function setAsDefault(token, resumeId) {
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/set-default`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('设置默认简历成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '设置失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('设置默认简历失败:', error);
+    //         alert('设置默认简历失败: ' + error.message);
+    //     }
+    // }
+    //
+    // // 删除简历的函数
+    // async function deleteResume(token, resumeId) {
+    //     if (!confirm('确定要删除这份简历吗？删除后将无法恢复！')) {
+    //         return;
+    //     }
+    //
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/delete`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('删除简历成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '删除失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('删除简历失败:', error);
+    //         alert('删除简历失败: ' + error.message);
+    //     }
+    // }
+    //
+    // // 刷新简历的函数
+    // async function refreshResume(token, resumeId) {
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/refresh`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('简历刷新成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '刷新失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('刷新简历失败:', error);
+    //         alert('刷新简历失败: ' + error.message);
+    //     }
+    // }
+
+    // document.addEventListener('DOMContentLoaded', async function() {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         if (!token) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         // 获取DOM元素
+    //         const defaultResumeContainer = document.querySelector('.user_resume_box').parentNode;
+    //         const backupResumesContainer = document.querySelector('.myresume').parentNode;
+    //
+    //         // 获取用户信息
+    //         const userResponse = await fetch(baseURL+'/user/getuserinfo', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //
+    //         if (userResponse.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const userData = await userResponse.json();
+    //         const userinfo = userData.data;
+    //         console.log('用户信息:', userinfo);
+    //
+    //         // 获取简历数据
+    //         const resumeResponse = await fetch(baseURL+'/resume/resume/list', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //
+    //         if (resumeResponse.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const resumeData = await resumeResponse.json();
+    //         console.log('简历数据:', resumeData);
+    //
+    //         if (resumeData.data.length === 0) {
+    //             // 没有简历时的处理
+    //             defaultResumeContainer.innerHTML = '<div class="no-resume">您尚未创建任何简历，请点击"创建简历"按钮开始</div>';
+    //             return;
+    //         }
+    //
+    //         const defaultResume = resumeData.data.filter(r => r.def == 1)[0] || resumeData.data[0];
+    //         const otherResumes = resumeData.data.filter(r => r.id !== defaultResume.id);
+    //
+    //         // 渲染默认简历
+    //         renderDefaultResume(defaultResume, userinfo);
+    //
+    //         // 渲染其他简历
+    //         if (otherResumes.length > 0) {
+    //             renderOtherResumes(otherResumes,userinfo);
+    //         } else {
+    //             // 如果没有其他简历，移除备用简历区域
+    //             backupResumesContainer.remove();
+    //         }
+    //
+    //     } catch (error) {
+    //         console.error('初始化页面失败:', error);
+    //         const defaultResumeContainer = document.querySelector('.user_resume_box')?.parentNode;
+    //         if (defaultResumeContainer) {
+    //             defaultResumeContainer.innerHTML = '<div class="error-message">加载数据失败，请刷新页面重试</div>';
+    //         }
+    //     }
+    // });
+    //
+    // // 渲染默认简历的函数
+    // function renderDefaultResume(resume, userinfo) {
+    //     console.log('渲染默认简历:', resume, userinfo);
+    //
+    //     // 更新照片
+    //     const photoImg = document.querySelector('.user_resume_photo img');
+    //     console.log("photoImg:"+photoImg)
+    //     if (photoImg) {
+    //         photoImg.src = userinfo.avatar
+    //         photoImg.alt = resume.name
+    //     }
+    //
+    //     // 更新基本信息
+    //     const nameElement = document.querySelector('.user_resume_name');
+    //     if (nameElement) {
+    //         nameElement.innerHTML = `
+    //         ${resume.name || '未填写'}<span class="user_resume_job">${resume.intent || '未填写'}</span>
+    //         ${resume.def == 1 ? '<span class="user_resume_mr">默认</span>' : ''}
+    //     `;
+    //     }
+    //
+    //     // 更新个人信息
+    //     const infoElement = document.querySelector('.user_resume_p');
+    //     if (infoElement) {
+    //         infoElement.innerHTML = `
+    //         ${resume.age || '未填写'}岁<span class="user_resume_line">|</span>
+    //         ${resume.experience || '未填写'}年以上经验<span class="user_resume_line">|</span>
+    //         ${resume.education || '未填写'}
+    //     `;
+    //     }
+    //
+    //     // 更新求职状态
+    //     const statusElement = document.querySelector('.user_resume_p2');
+    //     if (statusElement) {
+    //         statusElement.textContent = resume.jobStatus || '未填写求职状态';
+    //     }
+    //
+    //     // 更新简历完整度
+    //     const completenessBar = document.querySelector('.user_resume_wzd_c');
+    //     const completenessText = document.querySelector('.user_resume_wzd_r');
+    //     if (completenessBar && completenessText) {
+    //         const completeness = resume.completeness || 0;
+    //         completenessBar.style.width = `${completeness}%`;
+    //         completenessText.textContent = `${completeness}%`;
+    //     }
+    //
+    //     // 更新日期和浏览数
+    //     const updateElements = document.querySelectorAll('.user_resume_p.user_resume_pd');
+    //     if (updateElements.length > 0) {
+    //         updateElements[0].textContent = `更新日期：${resume.updateTime || '未更新'}`;
+    //     }
+    //
+    //     const viewElements = document.querySelectorAll('.user_resume_p');
+    //     if (viewElements.length > 1) {
+    //         viewElements[1].textContent = `被浏览：${resume.viewCount || 0}`;
+    //     }
+    //
+    //     // 更新操作链接的ID
+    //     const actionLinks = document.querySelectorAll('.user_resume_cz a');
+    //     if (actionLinks.length >= 4) {
+    //         actionLinks[0].setAttribute('onclick', `deleteResume('${localStorage.getItem('token')}', ${resume.id})`);
+    //         actionLinks[1].href = `/resume/edit/${resume.id}`;
+    //         actionLinks[2].href = `/resume/preview/${resume.id}`;
+    //         actionLinks[3].setAttribute('onclick', `refreshResume('${localStorage.getItem('token')}', ${resume.id})`);
+    //     }
+    //
+    //     // 更新提示信息
+    //     const tipBox = document.querySelector('.user_resume_boxtip');
+    //     if (tipBox) {
+    //         if (resume.missingFields && resume.missingFields.includes('projectExperience')) {
+    //             tipBox.style.display = 'block';
+    //             const tipButton = document.querySelector('.user_resume_boxtip_bth');
+    //             if (tipButton) {
+    //                 tipButton.href = `/resume/edit/${resume.id}#project`;
+    //             }
+    //         } else {
+    //             tipBox.style.display = 'none';
+    //         }
+    //     }
+    // }
+    //
+    // // 渲染其他简历的函数
+    // function renderOtherResumes(resumes,userinfo) {
+    //     const backupResumesContainer = document.querySelector('.myresume')?.parentNode;
+    //     if (!backupResumesContainer) return;
+    //
+    //     // 清空备用简历区域
+    //     backupResumesContainer.innerHTML = '';
+    //
+    //     const token = localStorage.getItem('token');
+    //
+    //     // 为每个备用简历创建HTML
+    //     resumes.forEach(resume => {
+    //         const resumeHtml = `
+    //         <div class="myresume mt20" style="margin-left: 0px;">
+    //             <span class="myresume_by">备用</span>
+    //             <div class="myresume_left">
+    //                 <div class="myresume_name">
+    //                     <a href="/resume/view?id=${resume.id}">${resume.intent || '未填写职位'}</a>
+    //                 </div>
+    //                 <div class="user_resume_wzd" id="tipid" rid="${resume.id}">
+    //                     <span class="user_resume_wzd_name">简历完整度：</span>
+    //                     <div class="user_resume_wzd_b">
+    //                         <span class="user_resume_wzd_c" style="width:100 %"></span>
+    //                     </div>
+    //                     <span class="user_resume_wzd_r">100%</span>
+    //                 </div>
+    //                 <div class="myresume_type">
+    //                     <span class="myresume_type_s">类型: 标准简历</span>
+    //                     <span class="myresume_type_s">更新时间：${resume.refreshTime }</span>
+    //                     <span class="myresume_type_s">被浏览：${resume.viewNum || 0}</span>
+    //                     <span class="myresume_type_s">
+    //                         状态：<span class="myresume_state_ysh">${resume.status==1?'已审核':'未审核'}</span>
+    //                     </span>
+    //                 </div>
+    //             </div>
+    //             <div class="myresume_right">
+    //                 <a href="javascript:void(0);" onclick="setAsDefault('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">设为默认</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="/resume/edit/${resume.id}" class="myresume_right_cz_fmr_a">修改简历</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="/resume/view?id=${resume.id}" target="_blank" class="myresume_right_cz_fmr_a">预览简历</a>
+    //                 <span class="myresume_right_cz_fmr_line">|</span>
+    //                 <a href="javascript:void(0)" onclick="deleteResume('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">删除简历</a>
+    //             </div>
+    //         </div>
+    //     `;
+    //         backupResumesContainer.insertAdjacentHTML('beforeend', resumeHtml);
+    //     });
+    // }
+    //
+    // // 设为默认简历的函数
+    // async function setAsDefault(token, resumeId) {
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/set-default`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('设置默认简历成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '设置失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('设置默认简历失败:', error);
+    //         alert('设置默认简历失败: ' + error.message);
+    //     }
+    // }
+    //
+    // // 删除简历的函数
+    // async function deleteResume(token, resumeId) {
+    //     if (!confirm('确定要删除这份简历吗？删除后将无法恢复！')) {
+    //         return;
+    //     }
+    //
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/delete`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('删除简历成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '删除失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('删除简历失败:', error);
+    //         alert('删除简历失败: ' + error.message);
+    //     }
+    // }
+    //
+    // // 刷新简历的函数
+    // async function refreshResume(token, resumeId) {
+    //     try {
+    //         const response = await fetch(`${baseURL}/resume/resume/refresh`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'token': token,
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ resumeId })
+    //         });
+    //
+    //         if (response.status === 401) {
+    //             window.location.href = '/login';
+    //             return;
+    //         }
+    //
+    //         const result = await response.json();
+    //         if (result.code === 200) {
+    //             alert('简历刷新成功');
+    //             location.reload();
+    //         } else {
+    //             throw new Error(result.message || '刷新失败');
+    //         }
+    //     } catch (error) {
+    //         console.error('刷新简历失败:', error);
+    //         alert('刷新简历失败: ' + error.message);
+    //     }
+    // }
+
+    const config = {
+        baseURL: baseURL // 替换为实际API地址
+    };
+
+    document.addEventListener('DOMContentLoaded', async function() {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/login';
+                return;
+            }
+
+            // 获取用户信息和简历数据
+            const [userinfo, resumeData] = await Promise.all([
+                getUserInfo(token),
+                getResumeList(token)
+            ]);
+
+            // 渲染简历
+            renderResumes(resumeData, userinfo);
+
+        } catch (error) {
+            console.error('页面初始化失败:', error);
+            showError('加载数据失败，请刷新页面重试');
+        }
+    });
+
+    // 获取用户信息
+    async function getUserInfo(token) {
+        const response = await fetch(`${config.baseURL}/user/getuserinfo`, {
+            method: 'POST',
+            headers: {
+                'token': token,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 401) {
+            window.location.href = '/login';
+            return;
+        }
+
+        const result = await response.json();
+        return result.data;
+    }
+
+    // 获取简历列表
+    async function getResumeList(token) {
+        const response = await fetch(`${config.baseURL}/resume/resume/list`, {
+            method: 'POST',
+            headers: {
+                'token': token,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 401) {
+            window.location.href = '/login';
+            return;
+        }
+
+        const result = await response.json();
+        return result.data ;
+    }
+
+    // 渲染简历
+    function renderResumes(resumes, userinfo) {
+        if (!resumes || resumes.length === 0) {
+            document.querySelector('.user_resume_box').parentNode.innerHTML =
+                '<div class="no-resume">您尚未创建任何简历，请点击"创建简历"按钮开始</div>';
+            return;
+        }
+
+        // 确定默认简历
+        const defaultResume = resumes.filter(r => r.def == 1)[0]
+        const otherResumes = resumes.filter(r => r.id !== defaultResume.id);
+
+        // 渲染默认简历
+        renderDefaultResume(defaultResume, userinfo);
+
+        console.log(defaultResume)
+        // 渲染其他简历
+        if (otherResumes.length > 0) {
+            renderOtherResumes(otherResumes);
+        }
+    }
+
+    // 渲染默认简历
+    function renderDefaultResume(resume, userinfo) {
+        // 照片
+        const photoImg = document.querySelector('.user_resume_photo img');
+        if (photoImg) {
+            photoImg.src = userinfo.avatar
+            photoImg.alt = resume.name
+        }
+        // 基本信息
+        const nameElement = document.querySelector('.user_resume_name');
+        if (nameElement) {
+            nameElement.innerHTML = `
+                ${resume.name}
+                <span class="user_resume_job">${resume.intent }</span>
+                ${resume.def === 1 ? '<span class="user_resume_mr">默认</span>' : ''}
+            `;
+        }
+
+        // 个人信息
+        const infoElement = document.querySelector('.user_resume_p');
+        if (infoElement) {
+            infoElement.innerHTML = `
+                ${calculateAge(resume.birthdate)}岁<span class="user_resume_line">|</span>
+                ${resume.workDuration}年以上经验<span class="user_resume_line">|</span>
+                ${getDegreeText(resume.highestDegree)}
+            `;
+        }
+
+        // 求职状态
+        const statusElement = document.querySelector('.user_resume_p2');
+        if (statusElement) {
+            statusElement.textContent = getstatus(resume.hunterStatus) + " ->"+getAvailableTime(resume.arriveDate)
+        }
+
+        // 简历完整度
+        const completenessBar = document.querySelector('.user_resume_wzd_c');
+        const completenessText = document.querySelector('.user_resume_wzd_r');
+        if (completenessBar && completenessText) {
+            const completeness = 100
+            completenessBar.style.width = `${completeness}%`;
+            completenessText.textContent = `${completeness}%`;
+        }
+
+        // 更新日期和浏览数
+        const updateElements = document.querySelectorAll('.user_resume_p.user_resume_pd');
+        if (updateElements.length > 0) {
+            updateElements[0].textContent = `更新日期：${resume.refreshTime || '未更新'}`;
+        }
+
+        const viewElements = document.querySelectorAll('.user_resume_p');
+        if (viewElements.length > 1) {
+            viewElements[1].textContent = `被浏览：${resume.viewNum || 0}`;
+        }
+
+        // 操作链接
+        const actionLinks = document.querySelectorAll('.user_resume_cz a');
+        if (actionLinks.length >= 4) {
+            const token = localStorage.getItem('token');
+            actionLinks[0].setAttribute('onclick', `deleteResume('${token}', ${resume.id})`);
+            actionLinks[1].href = ``;///resume/edit/${resume.id}
+            actionLinks[2].href = `/resume/view?id=${resume.id}`;
+            actionLinks[3].setAttribute('onclick', `refreshResume('${token}', ${resume.id})`);
+        }
+
+        // 提示信息
+        const tipBox = document.querySelector('.user_resume_boxtip');
+        if (tipBox) {
+            if (resume.missingFields && resume.missingFields.includes('projectExperience')) {
+                tipBox.style.display = 'block';
+                const tipButton = document.querySelector('.user_resume_boxtip_bth');
+                if (tipButton) {
+                    tipButton.href = `/resume/edit/${resume.id}#project`;
+                }
+            }
+        }
+    }
+
+    // 渲染其他简历
+    function renderOtherResumes(resumes) {
+        const container = document.getElementById('backupResumesContainer');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        const token = localStorage.getItem('token');
+
+        resumes.forEach(resume => {
+            const resumeHtml = `
+                <div class="myresume mt20" style="margin-left: 0px;">
+                    <span class="myresume_by">备用</span>
+                    <div class="myresume_left">
+                        <div class="myresume_name">
+                            <a href="/resume/view?id=${resume.id}">${resume.intent || '未填写职位'}</a>
+                        </div>
+                        <div class="user_resume_wzd" id="tipid" rid="${resume.id}">
+                            <span class="user_resume_wzd_name">简历完整度：</span>
+                            <div class="user_resume_wzd_b">
+                                <span class="user_resume_wzd_c" style="width:100 %"></span>
+                            </div>
+                            <span class="user_resume_wzd_r">100%</span>
+                        </div>
+                        <div class="myresume_type">
+                            <span class="myresume_type_s">类型: 标准简历</span>
+                            <span class="myresume_type_s">更新时间：${resume.refreshTime || '未更新'}</span>
+                            <span class="myresume_type_s">被浏览：${resume.viewNum || 0}</span>
+                            <span class="myresume_type_s">
+                                状态：<span class="myresume_state_ysh">${resume.status === 1 ? '已审核' : '未审核'}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="myresume_right">
+                        <a href="javascript:void(0);" onclick="setAsDefault('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">设为默认</a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="" class="myresume_right_cz_fmr_a">修改简历</a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="/resume/view?id=${resume.id}" target="_blank" class="myresume_right_cz_fmr_a">预览简历</a>
+                        <span class="myresume_right_cz_fmr_line">|</span>
+                        <a href="javascript:void(0)" onclick="deleteResume('${token}', ${resume.id})" class="myresume_right_cz_fmr_a">删除简历</a>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', resumeHtml);
+        });
+    }
+
+    // 显示错误
+    function showError(message) {
+        const container = document.querySelector('.user_resume_box').parentNode;
+        if (container) {
+            container.innerHTML = `<div class="error-message">${message}</div>`;
+        }
+    }
+
+    function getDegreeText(degreeCode) {
+        const degrees = {1: '高中以下', 2: '高中', 3: '中专',4:'大专',5:'本科',6:'硕士',7:'博士' };
+        return degrees[degreeCode] ;
+    }
+
+    function getstatus(id) {
+        const status = {1:'已离职，寻求新工作',2:'在职，考虑更好职位',3:'其他' };
+        return status[id]
+    }
+
+    function calculateAge(birthdate) {
+        if (!birthdate) return 45;
+        const birthYear = new Date(birthdate).getFullYear();
+        return new Date().getFullYear() - birthYear;
+    }
+
+    function getAvailableTime(id) {
+        const timeMap = {
+            1: '随时到岗',
+            2: '1周以内',
+            3: '3周以内',
+            4: '1个月之内',
+            5: '3个月之内',
+            6: '不确定'
+        };
+        return timeMap[id] || '未填写';
+    }
+
+    function getIndustry(id) {
+        const industryMap = {
+            0: '不限',
+            1: '计算机/互联网',
+            2: '贸易/百货',
+            3: '机械/设备/技工',
+            4: '公务员/翻译/其他',
+            5: '化工/能源',
+            6: '销售/客服/技术支持',
+            7: '会计/金融/银行/保险',
+            8: '生产/营运/采购/物流',
+            9: '生物/制药/医疗/护理',
+            10: '广告/市场/媒体/艺术',
+            11: '建筑/房地产',
+            12: '人事/行政/高级管理',
+            13: '咨询/法律/教育/科研',
+            14: '服务业',
+            15: '通信/电子'
+        };
+        return industryMap[id] || '不限';
+    }
+
+    // 设为默认简历
+    async function setAsDefault(token, resumeId) {
+        try {
+            const response = await fetch(`${config.baseURL}/resume/resume/def`, {
+                method: 'POST',
+                headers: {
+                    'token': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({resumeid:resumeId})
+            });
+
+
+            if (response.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+
+            const result = await response.json();
+            if (result.code === 200) {
+                alert('设置默认简历成功');
+                location.reload();
+            } else {
+                throw new Error(result.message || '设置失败');
+            }
+        } catch (error) {
+            console.error('设置默认简历失败:', error);
+            alert('设置默认简历失败: ' + error.message);
+        }
+    }
+
+    // 删除简历
+    async function deleteResume(token, resumeId) {
+        if (!confirm('确定要删除这份简历吗？删除后将无法恢复！')) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`${config.baseURL}/resume/resume/del`, {
+                method: 'POST',
+                headers: {
+                    'token': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ resumeid:resumeId })
+            });
+
+            if (response.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+
+            const result = await response.json();
+            if (result.code === 200) {
+                alert('删除简历成功');
+                location.reload();
+            } else {
+                throw new Error(result.message || '删除失败');
+            }
+        } catch (error) {
+            console.error('删除简历失败:', error);
+            alert('删除简历失败: ' + error.message);
+        }
+    }
+
+    // 刷新简历
+    async function refreshResume(token, resumeId) {
+        try {
+            const response = await fetch(`${config.baseURL}/resume/resume/refresh`, {
+                method: 'POST',
+                headers: {
+                    'token': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ resumeid:resumeId })
+            });
+
+            if (response.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+
+            const result = await response.json();
+            if (result.code === 200) {
+                alert('简历刷新成功');
+                location.reload();
+            } else {
+                throw new Error(result.message || '刷新失败');
+            }
+        } catch (error) {
+            console.error('刷新简历失败:', error);
+            alert('刷新简历失败: ' + error.message);
+        }
+    }
+</script>
 </body>
 </html>
 

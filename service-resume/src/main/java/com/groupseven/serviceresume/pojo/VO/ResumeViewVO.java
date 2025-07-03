@@ -1,15 +1,15 @@
-package com.groupseven.serviceresume.pojo.entity;
+package com.groupseven.serviceresume.pojo.VO;
 
+import com.groupseven.serviceresume.pojo.entity.Edubg;
+import com.groupseven.serviceresume.pojo.entity.Workexp;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
-/**
- * @author 老谭（<a href="http://www.woniuxy.com">蜗牛学苑</a>）
- */
 @Data
-public class Resume {
+public class ResumeViewVO {
     private Integer id;
     private Integer userId;
     private String name;
@@ -24,18 +24,16 @@ public class Resume {
     private String telphone;
     private Integer workDuration;
     private String email;
-
     private Integer arriveDate;
     private String hunterStatus;
     private Integer industry;
     private LocalDateTime createdTime;
     private LocalDateTime refreshTime;
-
     private Integer viewNum;
     private Integer favorNum;
     private String def;
     private String  status;
     private String isDeleted;
+    private List<Workexp> workexpList;
+    private List<Edubg> edubgList;
 }
-
-

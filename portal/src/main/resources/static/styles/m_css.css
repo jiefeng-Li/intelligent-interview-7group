@@ -1734,3 +1734,14 @@ right:10px;top:10px;    font-size: 30px;
 
 .ppjobname{ font-size: 16px;}
 .ppxz{color:#ff7b1a; font-size: 16px;  }
+
+
+.news_expect_sex.selected-sex {
+    background-color: #f2f2f2;
+    border-color: #1E9FFF;
+    color: #1E9FFF;
+}
+
+.news_expect_sex.selected-sex i {
+    background-position: 0 -20px; /* 调整图标位置显示选中状态 */
+}

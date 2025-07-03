@@ -6,6 +6,8 @@ import com.groupseven.servicebase.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class RegionServiceImpl implements RegionService {
@@ -16,5 +18,11 @@ public class RegionServiceImpl implements RegionService {
     public Region getById(Integer id) {
         Region region = regionMapper.selectById(id);
         return region;
+    }
+
+    @Override
+    public List<Region> all() {
+
+        return regionMapper.selectList(null);
     }
 }

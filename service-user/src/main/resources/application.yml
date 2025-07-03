@@ -6,9 +6,9 @@ spring:
     name: service-user
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/iidb
+    url: jdbc:mysql://localhost:3306/db_qlm
     username: root
-    password: 3121
+    password: 147258369fb.
   cloud:
     compatibility-verifier:
       enabled: false
