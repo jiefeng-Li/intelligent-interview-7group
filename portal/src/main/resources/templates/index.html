@@ -58,6 +58,7 @@
                             $(".login_ok").show()
                             $(".login_no_ok").hide()
                             $("#index_account").text(r.data.account)
+                            $("#login_ok_user_photo_img").attr("src", r.data.avatar)
                         }
                     }
                 })
@@ -147,7 +148,7 @@
                         <div class="login_ok">
                             <div class="login_ok_user">
                                 <div class="login_ok_user_photo">
-                                    <img width="60" height="60" src="">
+                                    <img id="login_ok_user_photo_img" width="60" height="60" src="">
                                 </div>
                                 <div class="login_ok_username">hi , <span id="index_account"></span></div>
                                 <div class="login_ok_hi">欢迎回来</div>

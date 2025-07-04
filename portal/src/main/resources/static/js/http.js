@@ -1,4 +1,5 @@
 const BASE_URL = "http://localhost:10005/";
+const baseURL = "http://localhost:10005";
 
 function postAjax(option = {
     url: "",
@@ -37,7 +38,6 @@ function httpJsonRequest(url, method, data = {}, token, contentType, back) {
         type: method,
         data: data,
         cache: false,
-        timeout: timeout,
         headers: {'token': token},
         contentType: contentType,
         dataType: "json",
@@ -64,7 +64,4 @@ function postAjaxJsonHttpRequest(url, data, token, callBack) {
     httpJsonRequest(url, "POST", data, token, "application/json;charset=UTF-8", function(res) {
         return typeof callBack == "function" && callBack(res);
     });
-}
-
-    })
 }

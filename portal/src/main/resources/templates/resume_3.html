@@ -112,7 +112,7 @@
                 <div class="news_expect_nbth">
 
                     <input type="button" class="news_expect_list_sub" value="保存" id="savebtn" name="submit">
-                    <input type="button" class="layui-btn layui-btn-primary" value="返回上一步" name="submit"
+                    <input type="button" class="layui-btn layui-btn-primary" id="lastbtn" value="返回上一步" name="submit"
                            style="margin-left:20px">
                 </div>
             </div>
@@ -126,6 +126,9 @@
     layui.use(['layer', 'form', 'laydate'], function () {
     })
     $(function () {
+        $('#lastbtn').click(()=>{
+            location.href = `/resume/add2`
+        })
         $("#savebtn").click(() => {
             let b = collectAndValidateEducation();
             if(b){

@@ -18,9 +18,9 @@ public class IndexController {
         return "ucenter/upload_avatar";
     }
     @GetMapping("resume")
-    public String resume(){
+    public String resume() {
         return "ucenter/resume";
-
+    }
 
     @GetMapping("invite")
     public String invite(){

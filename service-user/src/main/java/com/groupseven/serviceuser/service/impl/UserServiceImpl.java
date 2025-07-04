@@ -28,12 +28,15 @@ public class UserServiceImpl implements UserService {
         if (userMapper.selectOne(Wrappers.lambdaQuery(User.class)
                 .eq(User::getAccount, account)) != null)
             return false;
-        User user = User.builder()
-                .account(account)
-                .password(password)
-                .regTime(LocalDateTime.now())
-                .score(0)
-                .status("1").build();
+        if (userMapper.selectOne(Wrappers.lambdaQuery(User.class)
+                .eq(User::getAccount, account)) != null)
+            return false;
+        User user = new User();
+        user.setAccount(account);
+        user.setPassword(password);
+        user.setRegTime(LocalDateTime.now());
+        user.setScore(0);
+        user.setStatus("1");
         userMapper.insert(user);
         return true;
     }
@@ -72,9 +75,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void setUserType(int id, String type) {
-        User user = User.builder()
-                .id(id)
-                .type(type).build();
+        User user = new User();
+        user.setId(id);
+        user.setType(type);
         userMapper.updateById(user);
     }
 }

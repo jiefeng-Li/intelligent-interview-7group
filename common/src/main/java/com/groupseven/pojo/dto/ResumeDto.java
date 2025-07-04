@@ -25,7 +25,7 @@ public class ResumeDto {
     private String telphone;
     private Integer workDuration;
     private String email;
-    private LocalDate arriveDate;
+    private Integer arriveDate;
     private String hunterStatus;
     private Integer industry;
     private LocalDate createdTime;
